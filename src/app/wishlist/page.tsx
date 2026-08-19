@@ -58,7 +58,7 @@ export default function WishlistPage() {
                       {/* Product Thumbnail & Details */}
                       <div className="sm:col-span-6 flex items-center gap-4">
                         <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-[#FAFAFA] shrink-0 border border-gray-200">
-                          <SoapPlaceholderImage alt={product.name} className="w-full h-full" />
+                          <SoapPlaceholderImage alt={product.name} src={product.image} className="w-full h-full" />
                         </div>
 
                         <div className="flex flex-col gap-1">
