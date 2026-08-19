@@ -25,6 +25,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${josefin.variable} scroll-smooth antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-white text-[#0F0F0F] selection:bg-[#CB8C00] selection:text-white">

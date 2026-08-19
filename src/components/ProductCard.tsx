@@ -12,7 +12,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToWishlist, removeFromWishlist, isInWishlist, generateWhatsAppLink } = useWishlist();
+  const { addToWishlist, removeFromWishlist, isInWishlist, generateWhatsAppLink, sendAutomatedEnquiry } = useWishlist();
   const wishlisted = isInWishlist(product.id);
 
   const handleWishlistToggle = (e: React.MouseEvent) => {
@@ -25,7 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="group bg-white rounded-lg border border-[rgba(15,15,15,0.06)] overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+    <div className="group bg-white rounded-lg border border-[rgba(15,15,15,0.06)] overflow-hidden hover-lift transition-all duration-300 flex flex-col justify-between h-full">
       <div>
         {/* Image Container with Badge */}
         <Link href={`/shop/${product.id}`} className="block relative overflow-hidden bg-[#FAFAFA]">
@@ -39,13 +39,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         {/* Card Content */}
         <div className="p-5 flex flex-col gap-2">
-          <Link href={`/shop/${product.id}`} className="group-hover:text-[#CB8C00] transition-colors">
-            <h3 className="font-serif text-lg font-semibold text-[#0F0F0F] leading-snug line-clamp-2">
+          <Link href={`/shop/${product.id}`} className="group-hover:text-[#CB8C00] transition-colors block overflow-hidden">
+            <h3 className="font-serif text-lg font-semibold text-[#0F0F0F] leading-snug truncate" title={product.name}>
               {product.name}
             </h3>
           </Link>
 
-          <p className="text-xs text-[#6B6B6B] font-medium tracking-wide">
+          <p className="text-xs text-[#6B6B6B] font-medium tracking-wide truncate" title={product.subtitle}>
             {product.subtitle}
           </p>
 
@@ -76,6 +76,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           href={generateWhatsAppLink(product, 1)}
           target="_blank"
           rel="noreferrer"
+          onClick={() => sendAutomatedEnquiry(product, 1)}
           className="w-full bg-[#020101] hover:bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider py-3 rounded-md flex items-center justify-center gap-2 transition-colors shadow-sm"
         >
           <MessageCircle className="w-4 h-4" />

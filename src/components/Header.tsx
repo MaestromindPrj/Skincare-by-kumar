@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -11,6 +12,11 @@ export const Header: React.FC = () => {
   const pathname = usePathname();
   const { items } = useWishlist();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const totalWishlistItems = items.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -22,12 +28,12 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[rgba(15,15,15,0.06)] transition-all">
-      <div className="w-full px-6 sm:px-10 lg:px-16 h-20 grid grid-cols-3 items-center">
+      <div className="w-full px-4 sm:px-10 lg:px-16 h-20 flex items-center justify-between md:grid md:grid-cols-3">
 
         {/* Left: Brand Logo */}
         <div className="flex items-center justify-start">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-16 w-56 sm:w-60 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative h-14 w-44 sm:h-16 sm:w-60 transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="/logo.png"
                 alt="Skincare By Kumar Logo"
@@ -48,8 +54,8 @@ export const Header: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 className={`text-base tracking-wide font-medium transition-colors relative py-1 ${isActive
-                    ? "text-[#0F0F0F] font-semibold"
-                    : "text-[#6B6B6B] hover:text-[#0F0F0F]"
+                  ? "text-[#0F0F0F] font-semibold"
+                  : "text-[#6B6B6B] hover:text-[#0F0F0F]"
                   }`}
               >
                 {link.name}
@@ -62,10 +68,10 @@ export const Header: React.FC = () => {
         </nav>
 
         {/* Right: Actions */}
-        <div className="flex items-center gap-4 justify-end">
+        <div className="flex items-center gap-3 justify-end ml-auto md:ml-0">
           <Link
             href="/wishlist"
-            className="relative p-2.5 rounded-full text-[#0F0F0F] hover:bg-[#FAFAFA] transition-colors flex items-center justify-center group"
+            className="hidden md:flex relative p-2.5 rounded-full text-[#0F0F0F] hover:bg-[#FAFAFA] transition-colors items-center justify-center group"
             title="View Wishlist"
           >
             <Heart className="w-5 h-5 transition-transform group-hover:scale-110" />
@@ -79,7 +85,7 @@ export const Header: React.FC = () => {
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-md text-[#0F0F0F] hover:bg-[#FAFAFA]"
+            className="md:hidden p-2.5 rounded-lg text-[#0F0F0F] hover:bg-[#FAFAFA] transition-colors border border-gray-100 flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -87,33 +93,66 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-[rgba(15,15,15,0.06)] px-6 py-5 shadow-lg animate-in slide-in-from-top duration-300">
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
+      {/* Mobile Right Side Drawer Navigation (Rendered via Portal to ensure full opacity & no stacking issues) */}
+      {mobileMenuOpen && mounted && createPortal(
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/60 z-[9998] transition-opacity"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          {/* Right Side Drawer */}
+          <div className="fixed top-0 right-0 bottom-0 z-[9999] w-80 max-w-[85vw] h-full bg-white border-l border-gray-200 shadow-2xl flex flex-col justify-between p-6 overflow-y-auto animate-in slide-in-from-right duration-300">
+            <div>
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between pb-6 border-b border-gray-100">
+                <span className="text-xs uppercase font-bold tracking-widest text-[#0F0F0F]">
+                  Menu
+                </span>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-2 rounded-full hover:bg-gray-100 text-[#0F0F0F] transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Drawer Links */}
+              <div className="flex flex-col gap-3 pt-6">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`text-base py-3.5 px-4 rounded-xl font-medium transition-all flex items-center justify-between ${isActive
+                        ? "bg-[#020101] text-white font-semibold shadow-sm"
+                        : "text-[#0F0F0F] hover:bg-gray-100 bg-gray-50 border border-gray-100"
+                        }`}
+                    >
+                      <span>{link.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Bottom Action in Drawer */}
+            <div className="border-t border-gray-100 pt-6 flex flex-col gap-3">
               <Link
-                key={link.href}
-                href={link.href}
+                href="/shop"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-base py-2 font-medium border-b border-gray-100 ${pathname === link.href ? "text-[#020101] font-semibold" : "text-[#6B6B6B]"
-                  }`}
+                className="w-full bg-[#020101] text-white text-xs font-semibold uppercase tracking-wider py-4 rounded-xl text-center block shadow-md hover:bg-[#CB8C00] transition-colors"
               >
-                {link.name}
+                Explore Shop
               </Link>
-            ))}
-            <Link
-              href="/wishlist"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between text-base py-2 font-medium text-[#0F0F0F]"
-            >
-              <span>Wishlist</span>
-              <span className="bg-[#020101] text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">
-                {totalWishlistItems} items
-              </span>
-            </Link>
+            </div>
           </div>
-        </div>
+        </>,
+        document.body
       )}
     </header>
   );
