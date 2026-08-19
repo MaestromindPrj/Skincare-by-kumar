@@ -8,6 +8,7 @@ import {
   Heart,
   Check,
   ChevronRight,
+  ChevronLeft,
   ShieldCheck,
   Leaf,
   Sun,
@@ -28,9 +29,18 @@ export default function ProductDetailPage() {
   const id = params?.id as string;
 
   const product = getProductById(id) || PRODUCTS[0];
-  
+
   const [quantity, setQuantity] = useState(3); // Default 3 as per PDF design banner "Minimum 3 soaps per enquiry"
-  const { addToWishlist, removeFromWishlist, isInWishlist, generateWhatsAppLink } = useWishlist();
+  const { addToWishlist, removeFromWishlist, isInWishlist, generateWhatsAppLink, sendAutomatedEnquiry } = useWishlist();
+
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollRecommendations = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = direction === "left" ? -340 : 340;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   const wishlisted = isInWishlist(product.id);
 
@@ -47,12 +57,12 @@ export default function ProductDetailPage() {
   };
 
   // Recommended products (excluding current)
-  const recommendations = PRODUCTS.filter((p) => p.id !== product.id).slice(0, 3);
+  const recommendations = PRODUCTS.filter((p) => p.id !== product.id);
 
   return (
     <div className="min-h-screen bg-white text-[#0F0F0F] py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center gap-2 text-xs text-[#6B6B6B] mb-8">
           <Link href="/" className="hover:text-[#0F0F0F] transition-colors">
@@ -70,7 +80,7 @@ export default function ProductDetailPage() {
 
         {/* Top Product Section (2 Columns) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
-          
+
           {/* Left Column: Image & Thumbnails */}
           <div className="lg:col-span-6 flex flex-col gap-4">
             <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-[#FAFAFA] border border-[rgba(15,15,15,0.06)] shadow-sm">
@@ -92,7 +102,7 @@ export default function ProductDetailPage() {
 
           {/* Right Column: Details & Actions */}
           <div className="lg:col-span-6 flex flex-col gap-6">
-            
+
             {/* Free From Badges */}
             <div className="flex flex-wrap gap-2">
               {product.freeFrom.map((badge, idx) => (
@@ -100,7 +110,7 @@ export default function ProductDetailPage() {
                   key={idx}
                   className="text-[11px] font-medium tracking-wider text-[#6B6B6B] bg-[#FAFAFA] border border-gray-200 px-3 py-1 rounded-full flex items-center gap-1.5"
                 >
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#CB8C00]" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#0F0F0F]" />
                   {badge}
                 </span>
               ))}
@@ -183,6 +193,7 @@ export default function ProductDetailPage() {
                 href={generateWhatsAppLink(product, quantity)}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => sendAutomatedEnquiry(product, quantity)}
                 className="flex-1 bg-[#020101] hover:bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider py-4 rounded-md flex items-center justify-center gap-2 transition-colors shadow-md text-center"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -193,11 +204,10 @@ export default function ProductDetailPage() {
             {/* Add to Wishlist Button */}
             <button
               onClick={handleWishlistToggle}
-              className={`w-full text-xs font-semibold uppercase tracking-wider py-3.5 rounded-md flex items-center justify-center gap-2 border transition-all ${
-                wishlisted
+              className={`w-full text-xs font-semibold uppercase tracking-wider py-3.5 rounded-md flex items-center justify-center gap-2 border transition-all ${wishlisted
                   ? "bg-[#FAFAFA] border-[#020101] text-[#020101]"
                   : "bg-white border-[#0F0F0F]/20 hover:border-[#0F0F0F] text-[#0F0F0F]"
-              }`}
+                }`}
             >
               {wishlisted ? (
                 <>
@@ -216,40 +226,43 @@ export default function ProductDetailPage() {
 
         </div>
 
-        {/* NATURAL INGREDIENTS SECTION */}
-        <section className="bg-[#FAF8F5] rounded-2xl p-8 sm:p-12 mb-20 border border-[rgba(15,15,15,0.06)]">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#CB8C00] font-semibold mb-2">
-              <Leaf className="w-4 h-4" />
-              Pure Formulation
+        {/* NATURAL INGREDIENTS SECTION MATCHING DESIGN TEMPLATE */}
+        <section className="bg-[#F8F9FA] rounded-2xl py-14 px-6 sm:px-12 mb-20 border border-gray-100">
+          {/* Header */}
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="flex items-center justify-center gap-2.5 mb-3">
+              <Leaf className="w-6 h-6 text-[#222222]" />
+              <h2 className="font-sans text-2xl sm:text-3xl font-bold text-[#222222] tracking-tight">
+                Natural <span className="font-normal text-[#444444]">Ingredients</span>
+              </h2>
             </div>
-            <h2 className="font-serif text-3xl font-semibold text-[#0F0F0F]">
-              Natural Ingredients
-            </h2>
-            <p className="text-sm text-[#6B6B6B] mt-2">
-              Saponified oils of Olive, Coconut, and Shea Butter, blended with natural Sandalwood extract, turmeric, and essential oils.
+            <p className="text-xs sm:text-sm text-[#666666] leading-relaxed max-w-xl mx-auto font-normal">
+              Saponified cold-processed oils blended with {product.keyIngredients.map((ing) => ing.name).join(", ")}, essential plant extracts, and natural skin-nourishing butter.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 4-Column Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {product.keyIngredients.map((ing, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-xl border border-[rgba(15,15,15,0.06)] flex flex-col items-center text-center gap-3 shadow-xs hover:shadow-md transition-shadow"
-              >
-                <div className="w-12 h-12 rounded-full bg-[#FAFAFA] border border-gray-100 flex items-center justify-center text-[#CB8C00]">
-                  {ing.icon === "Sun" && <Sun className="w-5 h-5" />}
-                  {ing.icon === "Droplet" && <Droplet className="w-5 h-5" />}
-                  {ing.icon === "HeartHandshake" && <HeartHandshake className="w-5 h-5" />}
-                  {ing.icon === "Leaf" && <Leaf className="w-5 h-5" />}
+              <div key={index} className="flex flex-col items-center text-center">
+                {/* White Rounded Box Container for Icon */}
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white shadow-xs border border-gray-100 flex items-center justify-center mx-auto mb-5 hover:shadow-md transition-shadow">
+                  {ing.icon === "Sun" && <Sun className="w-10 h-10 text-[#222222] stroke-[1.75]" />}
+                  {ing.icon === "Droplet" && <Droplet className="w-10 h-10 text-[#222222] stroke-[1.75]" />}
+                  {ing.icon === "HeartHandshake" && <HeartHandshake className="w-10 h-10 text-[#222222] stroke-[1.75]" />}
+                  {ing.icon === "Leaf" && <Leaf className="w-10 h-10 text-[#222222] stroke-[1.75]" />}
                   {!["Sun", "Droplet", "HeartHandshake", "Leaf"].includes(ing.icon) && (
-                    <Sparkles className="w-5 h-5" />
+                    <Sparkles className="w-10 h-10 text-[#222222] stroke-[1.75]" />
                   )}
                 </div>
-                <h3 className="font-semibold text-base text-[#0F0F0F]">
+
+                {/* Ingredient Title */}
+                <h3 className="font-sans font-semibold text-lg sm:text-xl text-[#111111] mb-2">
                   {ing.name}
                 </h3>
-                <p className="text-xs text-[#6B6B6B] leading-relaxed">
+
+                {/* Ingredient Description */}
+                <p className="text-xs sm:text-sm text-[#666666] leading-relaxed max-w-xs font-normal">
                   {ing.description}
                 </p>
               </div>
@@ -257,15 +270,50 @@ export default function ProductDetailPage() {
           </div>
         </section>
 
-        {/* YOU MAY ALSO LIKE SECTION */}
+        {/* YOU MAY ALSO LIKE SECTION WITH SIDE SCROLL */}
         <section className="py-8">
-          <h2 className="font-serif text-3xl font-semibold text-[#0F0F0F] text-center mb-10">
-            You May Also Like
-          </h2>
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <span className="text-xs uppercase tracking-widest text-[#CB8C00] font-semibold">
+                Explore More
+              </span>
+              <h2 className="font-serif text-3xl font-semibold text-[#0F0F0F] mt-1">
+                You May Also Like
+              </h2>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Scroll Navigation Buttons */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => scrollRecommendations("left")}
+                className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-[#FAFAFA] active:scale-95 flex items-center justify-center text-[#0F0F0F] transition-all shadow-xs cursor-pointer"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => scrollRecommendations("right")}
+                className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-[#FAFAFA] active:scale-95 flex items-center justify-center text-[#0F0F0F] transition-all shadow-xs cursor-pointer"
+                aria-label="Scroll right"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Horizontal Side-Scroll Container */}
+          <div
+            ref={scrollContainerRef}
+            className="flex items-stretch gap-6 overflow-x-auto scrollbar-none pb-6 snap-x snap-mandatory scroll-smooth"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
             {recommendations.map((rec) => (
-              <ProductCard key={rec.id} product={rec} />
+              <div
+                key={rec.id}
+                className="w-[280px] sm:w-[320px] md:w-[calc((100%-3rem)/3)] shrink-0 snap-start"
+              >
+                <ProductCard product={rec} />
+              </div>
             ))}
           </div>
         </section>

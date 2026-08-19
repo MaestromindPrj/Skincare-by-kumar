@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { Search, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import { PRODUCTS, Product } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function ShopPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -56,8 +57,8 @@ export default function ShopPage() {
     <div className="min-h-screen bg-white text-[#0F0F0F] py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Page Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
+        {/* Page Heading (Fade-in animation only) */}
+        <div className="text-center max-w-2xl mx-auto mb-10 animate-fade-in">
           <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-[#0F0F0F]">
             Handcrafted soaps made for you
           </h1>

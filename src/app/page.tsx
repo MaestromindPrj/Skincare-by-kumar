@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function HomePage() {
   const featuredProducts = PRODUCTS.slice(0, 3);
@@ -109,8 +110,8 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[460px] lg:min-h-[520px]">
 
-            {/* Left Content */}
-            <div className="lg:col-span-6 flex flex-col justify-center gap-6 z-10 py-2">
+            {/* Left Content Column */}
+            <div className="lg:col-span-6 flex flex-col gap-6 py-4 sm:py-8 animate-hero-slide-up">
 
               {/* Main Heading */}
               <div className="flex flex-col gap-1">
@@ -305,7 +306,7 @@ export default function HomePage() {
 
       {/* A CURATED SELECTION (FEATURED PRODUCTS) */}
       <section className="py-20 bg-[#FAFAFA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-12">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#CB8C00] font-semibold">
@@ -329,12 +330,12 @@ export default function HomePage() {
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* DISCOVER YOUR EVERYDAY CARE (CATEGORIES) */}
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-14">
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#0F0F0F]">
               Discover Your Everyday Care
@@ -347,12 +348,18 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
             {/* Category 1: Face & Glow */}
-            <div className="relative group rounded-xl overflow-hidden bg-gradient-to-t from-black/80 via-black/30 to-transparent p-8 flex flex-col justify-end min-h-[360px] shadow-lg border border-gray-100">
-              <div className="absolute inset-0 bg-[#E5DFC4] group-hover:scale-105 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+            <div className="relative group rounded-xl overflow-hidden p-8 flex flex-col justify-end min-h-[380px] sm:min-h-[420px] shadow-lg border border-gray-100 hover-lift">
+              <Image
+                src="/discover/face and glow.jpg"
+                alt="Face & Glow Soaps"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
               <div className="relative z-10 text-white flex flex-col gap-2">
-                <h3 className="font-serif text-2xl font-bold">Face & Glow</h3>
-                <p className="text-xs text-white/80">Radiant, refreshed skin</p>
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold">Face & Glow</h3>
+                <p className="text-xs sm:text-sm text-white/80">Radiant, refreshed skin</p>
                 <Link
                   href="/shop?category=Brightness"
                   className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white mt-4 hover:text-[#CB8C00] transition-colors"
@@ -364,12 +371,18 @@ export default function HomePage() {
             </div>
 
             {/* Category 2: Fresh & Clean */}
-            <div className="relative group rounded-xl overflow-hidden bg-gradient-to-t from-black/80 via-black/30 to-transparent p-8 flex flex-col justify-end min-h-[360px] shadow-lg border border-gray-100">
-              <div className="absolute inset-0 bg-[#D4E2D4] group-hover:scale-105 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+            <div className="relative group rounded-xl overflow-hidden p-8 flex flex-col justify-end min-h-[380px] sm:min-h-[420px] shadow-lg border border-gray-100 hover-lift">
+              <Image
+                src="/discover/Fresh  and clean.png"
+                alt="Fresh & Clean Soaps"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
               <div className="relative z-10 text-white flex flex-col gap-2">
-                <h3 className="font-serif text-2xl font-bold">Fresh & Clean</h3>
-                <p className="text-xs text-white/80">Everyday cleansing care</p>
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold">Fresh & Clean</h3>
+                <p className="text-xs sm:text-sm text-white/80">Everyday cleansing care</p>
                 <Link
                   href="/shop?category=Hydrating"
                   className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white mt-4 hover:text-[#CB8C00] transition-colors"
@@ -381,12 +394,18 @@ export default function HomePage() {
             </div>
 
             {/* Category 3: Kid's Care */}
-            <div className="relative group rounded-xl overflow-hidden bg-gradient-to-t from-black/80 via-black/30 to-transparent p-8 flex flex-col justify-end min-h-[360px] shadow-lg border border-gray-100">
-              <div className="absolute inset-0 bg-[#F5EBE0] group-hover:scale-105 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+            <div className="relative group rounded-xl overflow-hidden p-8 flex flex-col justify-end min-h-[380px] sm:min-h-[420px] shadow-lg border border-gray-100 hover-lift">
+              <Image
+                src="/discover/kids care.png"
+                alt="Kid's Care Soaps"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
               <div className="relative z-10 text-white flex flex-col gap-2">
-                <h3 className="font-serif text-2xl font-bold">Kid's Care</h3>
-                <p className="text-xs text-white/80">Gentle, nourishing care</p>
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold">Kid's Care</h3>
+                <p className="text-xs sm:text-sm text-white/80">Gentle, nourishing care</p>
                 <Link
                   href="/shop?category=Baby+Friendly"
                   className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white mt-4 hover:text-[#CB8C00] transition-colors"
@@ -398,12 +417,12 @@ export default function HomePage() {
             </div>
 
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* SOURCING & ORDERING PROCESS */}
       <section className="py-20 bg-[#F9F8F6]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollReveal className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#111111] tracking-tight leading-snug">
               Good soaps. Clear sourcing. A simpler way to choose.
@@ -448,12 +467,12 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* REVIEWS & VIDEO TESTIMONIALS */}
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-12">
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#0F0F0F]">
               See What Our Customers Are Saying
@@ -560,12 +579,12 @@ export default function HomePage() {
 
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* FAQ SECTION ("Questions, Answered") */}
       <section id="faq" className="py-20 sm:py-28 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollReveal className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-bold text-[#111111] tracking-tight">
               Questions, Answered
@@ -601,7 +620,7 @@ export default function HomePage() {
               );
             })}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
     </div>

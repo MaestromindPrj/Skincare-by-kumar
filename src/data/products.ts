@@ -275,6 +275,7 @@ export const PRODUCTS: Product[] = [
     category: "Face & Glow",
     skinFocus: "Deep Moisture & Exotic Arabian Oudh Fragrance",
     weight: "118 - 123 Gms",
+    image: "/soaps/OASIS ARABIIAN OUDH.png",
     freeFrom: ["Harsh Chemicals Free", "Paraben Free"],
     description: "Enriched with Agar Oil, Sandalwood Oil, AloeVera Puree, Saponified Shea Butter, Cocoa Butter, Kokum Butter, Olive Oil, Almond Oil, Coconut Oil, Castor Oil, Organic Palmate, Colours in compliance with EU and other global standards. Premium Fragrance Oils, Natural Kaolin Clay.",
     keyIngredients: [
@@ -296,6 +297,7 @@ export const PRODUCTS: Product[] = [
     category: "Fresh & Clean",
     skinFocus: "Purifying Spice & Citrus Refreshment",
     weight: "118 - 123 Gms",
+    image: "/soaps/INDUS RIVERR - CINNAMON BERGAMOT.png",
     freeFrom: ["Harsh Chemicals Free", "Paraben Free"],
     description: "Enriched with Bergamot Essential Oil, Citrus Extract, Cinnamon Essential Oil, Rose Geranium Oil, AloeVera Puree, Shea Butter, Kokum Butter, Olive Oil, Almond Oil, Coconut Oil, Castor Oil, Organic Palmate, Colours in compliance with EU and other global standards. Premium Fragrance Oils, Pink French Clay, Natural Kaolin Clay.",
     keyIngredients: [

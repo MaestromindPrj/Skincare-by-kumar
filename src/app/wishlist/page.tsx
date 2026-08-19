@@ -14,6 +14,7 @@ export default function WishlistPage() {
     clearWishlist,
     totalEstimatedPrice,
     generateWhatsAppLink,
+    sendAutomatedEnquiry,
   } = useWishlist();
 
   return (
@@ -162,6 +163,7 @@ export default function WishlistPage() {
                   href={generateWhatsAppLink()}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() => sendAutomatedEnquiry()}
                   className="w-full bg-[#020101] hover:bg-[#25D366] text-white text-xs font-semibold uppercase tracking-widest py-4 rounded-md flex items-center justify-center gap-2 transition-colors shadow-md text-center"
                 >
                   <MessageCircle className="w-4 h-4" />
