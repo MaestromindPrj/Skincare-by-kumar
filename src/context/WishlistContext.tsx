@@ -28,25 +28,13 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     setMounted(true);
+    // Refresh & clear wishlist on every session entry so each user gets a clean, empty wishlist
     try {
-      const saved = localStorage.getItem("skincare_wishlist");
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        setItems(parsed);
-      } else {
-        // Default initial items matching PDF mockup wishlist page (Page 4):
-        // 1. Zaarraa ~Spearmint (Qty: 3)
-        // 2. Chandaan Gold Face Soap (Qty: 12)
-        const item1 = PRODUCTS.find(p => p.id === "zaarraa-spearmint");
-        const item2 = PRODUCTS.find(p => p.id === "chandaan-gold-face-soap");
-        const initial = [];
-        if (item1) initial.push({ product: item1, quantity: 3 });
-        if (item2) initial.push({ product: item2, quantity: 12 });
-        setItems(initial);
-      }
+      localStorage.removeItem("skincare_wishlist");
     } catch (e) {
-      console.error("Failed to load wishlist from localStorage", e);
+      console.error("Failed to clear wishlist storage", e);
     }
+    setItems([]);
   }, []);
 
   useEffect(() => {
