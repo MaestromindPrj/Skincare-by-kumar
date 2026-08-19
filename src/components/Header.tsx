@@ -121,8 +121,12 @@ export const Header: React.FC = () => {
 
               {/* Drawer Links */}
               <div className="flex flex-col gap-3 pt-6">
-                {navLinks.map((link) => {
+                {[
+                  ...navLinks,
+                  { name: "Wishlist", href: "/wishlist" },
+                ].map((link) => {
                   const isActive = pathname === link.href;
+                  const isWishlist = link.href === "/wishlist";
                   return (
                     <Link
                       key={link.href}
@@ -133,22 +137,20 @@ export const Header: React.FC = () => {
                         : "text-[#0F0F0F] hover:bg-gray-100 bg-gray-50 border border-gray-100"
                         }`}
                     >
-                      <span>{link.name}</span>
+                      <span className="flex items-center gap-2.5">
+                        {isWishlist && <Heart className={`w-4 h-4 ${isActive ? "text-white" : "text-[#0F0F0F]"}`} />}
+                        <span>{link.name}</span>
+                      </span>
+                      {isWishlist && totalWishlistItems > 0 && (
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${isActive ? "bg-white text-[#020101]" : "bg-[#020101] text-white"
+                          }`}>
+                          {totalWishlistItems}
+                        </span>
+                      )}
                     </Link>
                   );
                 })}
               </div>
-            </div>
-
-            {/* Bottom Action in Drawer */}
-            <div className="border-t border-gray-100 pt-6 flex flex-col gap-3">
-              <Link
-                href="/shop"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full bg-[#020101] text-white text-xs font-semibold uppercase tracking-wider py-4 rounded-xl text-center block shadow-md hover:bg-[#CB8C00] transition-colors"
-              >
-                Explore Shop
-              </Link>
             </div>
           </div>
         </>,
