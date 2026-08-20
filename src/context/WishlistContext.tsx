@@ -26,23 +26,34 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [items, setItems] = useState<WishlistItem[]>([]);
   const [mounted, setMounted] = useState(false);
 
+  // Load wishlist from sessionStorage on mount (persists across refreshes within the same session)
   useEffect(() => {
     setMounted(true);
-    // Refresh & clear wishlist on every session entry so each user gets a clean, empty wishlist
     try {
-      localStorage.removeItem("skincare_wishlist");
+      const stored = sessionStorage.getItem("skincare_wishlist");
+      if (stored) {
+        const parsed = JSON.parse(stored) as WishlistItem[];
+        // Rehydrate product references from PRODUCTS data to ensure fresh data
+        const rehydrated = parsed
+          .map((item) => {
+            const product = PRODUCTS.find((p) => p.id === item.product.id);
+            return product ? { product, quantity: item.quantity } : null;
+          })
+          .filter(Boolean) as WishlistItem[];
+        setItems(rehydrated);
+      }
     } catch (e) {
-      console.error("Failed to clear wishlist storage", e);
+      console.error("Failed to load wishlist from sessionStorage", e);
     }
-    setItems([]);
   }, []);
 
+  // Save wishlist to sessionStorage on every change
   useEffect(() => {
     if (mounted) {
       try {
-        localStorage.setItem("skincare_wishlist", JSON.stringify(items));
+        sessionStorage.setItem("skincare_wishlist", JSON.stringify(items));
       } catch (e) {
-        console.error("Failed to save wishlist to localStorage", e);
+        console.error("Failed to save wishlist to sessionStorage", e);
       }
     }
   }, [items, mounted]);

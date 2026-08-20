@@ -127,23 +127,23 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen bg-white text-[#0F0F0F]">
 
       {/* HERO SECTION */}
-      <section className="relative bg-white pt-8 pb-12 lg:pt-12 lg:pb-16 overflow-hidden">
+      <section className="relative bg-white pt-0 pb-12 lg:pt-0 lg:pb-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[480px] lg:min-h-[540px]">
 
-            {/* Mobile Hero Image (Flush to right corner with no right gap) */}
-            <div className="lg:hidden relative w-[calc(100%+1rem)] sm:w-[calc(100%+1.5rem)] -mr-4 sm:-mr-6 ml-auto h-52 sm:h-64 my-1 overflow-hidden">
+            {/* Mobile Hero Image (Flush to right corner with no gap) */}
+            <div className="lg:hidden relative w-[calc(100%+1rem)] sm:w-[calc(100%+1.5rem)] -mr-4 sm:-mr-6 ml-auto h-52 sm:h-64 -mt-4 mb-2 overflow-hidden">
               <Image
                 src="/hero-soap.png"
                 alt="Pure Ingredients. Beautifully Crafted."
                 fill
                 priority
-                className="object-cover object-right"
+                className="object-cover object-right-top scale-105 origin-top-right"
               />
             </div>
 
             {/* Left Content Column */}
-            <div className="lg:col-span-7 xl:col-span-7 flex flex-col gap-6 py-2 sm:py-6 animate-hero-slide-up z-10 text-left items-start">
+            <div className="lg:col-span-7 xl:col-span-7 flex flex-col gap-6 pt-6 sm:pt-10 pb-4 sm:pb-8 animate-hero-slide-up z-10 text-left items-start">
 
               {/* Main Heading */}
               <div className="flex flex-col gap-1 text-left">
@@ -225,14 +225,14 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Desktop Hero Image (Kept in perfect position as requested) */}
-        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[55%] xl:w-[53%] 2xl:w-[50%] h-full pointer-events-none z-0 overflow-hidden">
+        {/* Desktop Hero Image (Flush to navbar bottom with zero gap) */}
+        <div className="hidden lg:block absolute right-0 -top-6 lg:-top-10 bottom-0 w-[55%] xl:w-[53%] 2xl:w-[50%] h-[calc(100%+2.5rem)] pointer-events-none z-0 overflow-hidden">
           <Image
             src="/hero-soap.png"
             alt="Pure Ingredients. Beautifully Crafted."
             fill
             priority
-            className="object-cover object-right-bottom"
+            className="object-cover object-right-top scale-105 origin-top-right"
           />
         </div>
       </section>

@@ -20,7 +20,7 @@ export default function WishlistPage() {
   return (
     <div className="min-h-screen bg-white text-[#0F0F0F] py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Page Title (Matches UI Design Exactly) */}
         <div className="text-center max-w-xl mx-auto mb-10 sm:mb-14">
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0F0F0F]">
@@ -30,10 +30,10 @@ export default function WishlistPage() {
 
         {items.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            
+
             {/* Left Column: Product List Table */}
             <div className="lg:col-span-8 bg-white border border-[rgba(15,15,15,0.08)] rounded-xl overflow-hidden shadow-xs">
-              
+
               {/* Table Header */}
               <div className="hidden sm:grid grid-cols-12 gap-4 px-6 py-4 bg-white border-b border-[rgba(15,15,15,0.08)] text-xs uppercase tracking-widest font-bold text-[#6B6B6B]">
                 <div className="col-span-6">PRODUCT</div>
@@ -84,11 +84,10 @@ export default function WishlistPage() {
                             <button
                               onClick={() => updateQuantity(product.id, Math.max(3, currentQty - 1))}
                               disabled={currentQty <= 3}
-                              className={`p-1.5 min-w-[32px] min-h-[32px] flex items-center justify-center transition-all ${
-                                currentQty <= 3
+                              className={`p-1.5 min-w-[32px] min-h-[32px] flex items-center justify-center transition-all ${currentQty <= 3
                                   ? "text-gray-300 cursor-not-allowed"
                                   : "text-[#0F0F0F] hover:text-[#CB8C00] active:scale-90 cursor-pointer"
-                              }`}
+                                }`}
                               aria-label="Decrease quantity (minimum 3)"
                               title={currentQty <= 3 ? "Minimum quantity is 3. Use delete button to remove." : "Decrease quantity"}
                             >
@@ -141,8 +140,7 @@ export default function WishlistPage() {
                   href="/shop"
                   className="text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] flex items-center gap-1.5 min-h-[40px]"
                 >
-                  <ArrowLeft className="w-4 h-4" />
-                  <span>Continue Shopping</span>
+
                 </Link>
 
                 <button
@@ -178,7 +176,7 @@ export default function WishlistPage() {
                   onClick={() => sendAutomatedEnquiry()}
                   className="w-full bg-[#181818] hover:bg-[#25D366] active:bg-[#20b858] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider min-h-[48px] py-3.5 rounded-md flex items-center justify-center gap-2 transition-colors shadow-sm text-center cursor-pointer"
                 >
-                  <MessageCircle className="w-4 h-4 shrink-0 text-[#25D366] group-hover:text-white" />
+                  <MessageCircle className="w-4 h-4 shrink-0 text-white" />
                   <span>ENQUIRE ON WHATSAPP</span>
                 </a>
 
