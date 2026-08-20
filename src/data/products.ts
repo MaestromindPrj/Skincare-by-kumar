@@ -44,8 +44,8 @@ export const PRODUCTS: Product[] = [
     ]
   },
   {
-    id: "kidoos-extra-luxurious",
-    name: "KIDOOS - Extra Luxurious Bar",
+    id: "kid-soap-extra-luxurious",
+    name: "Kid Soap - Extra Luxurious Bar",
     subtitle: "Calendula Flowers • Almond Milk • Mango Butter",
     badge: "KIDS' FAVOURITE",
     price: 510,

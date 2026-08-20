@@ -71,9 +71,9 @@ export const Footer: React.FC = () => {
                 <Image
                   src="/maps_logo_black.png"
                   alt="Location"
-                  width={30}
-                  height={30}
-                  className="w-7.5 h-7.5 object-contain"
+                  width={22}
+                  height={22}
+                  className="w-5.5 h-5.5 object-contain"
                 />
               </a>
 

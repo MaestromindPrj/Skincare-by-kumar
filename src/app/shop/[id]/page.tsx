@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
 import {
@@ -17,7 +19,9 @@ import {
   Minus,
   Plus,
   Sparkles,
-  Trees
+  Trees,
+  Maximize2,
+  X
 } from "lucide-react";
 import { getProductById, PRODUCTS } from "@/data/products";
 import { useWishlist } from "@/context/WishlistContext";
@@ -31,9 +35,39 @@ export default function ProductDetailPage() {
   const product = getProductById(id) || PRODUCTS[0];
 
   const [quantity, setQuantity] = useState(3); // Default 3 as per PDF design banner "Minimum 3 soaps per enquiry"
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   const { addToWishlist, removeFromWishlist, isInWishlist, generateWhatsAppLink, sendAutomatedEnquiry } = useWishlist();
 
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const galleryImages = [product.image, product.image, product.image].filter(Boolean) as string[];
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setIsLightboxOpen(false);
+        if (e.key === "ArrowLeft") {
+          setActiveImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+        }
+        if (e.key === "ArrowRight") {
+          setActiveImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [isLightboxOpen, galleryImages.length]);
 
   const scrollRecommendations = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
@@ -83,18 +117,38 @@ export default function ProductDetailPage() {
 
           {/* Left Column: Image & Thumbnails */}
           <div className="lg:col-span-6 flex flex-col gap-4">
-            <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-[#FAFAFA] border border-[rgba(15,15,15,0.06)] shadow-sm">
-              <SoapPlaceholderImage alt={product.name} src={product.image} className="w-full h-full" />
+            {/* Main Interactive Product Image */}
+            <div
+              onClick={() => setIsLightboxOpen(true)}
+              className="relative w-full aspect-square rounded-xl overflow-hidden bg-[#FAFAFA] border border-[rgba(15,15,15,0.06)] shadow-sm cursor-pointer group select-none active:scale-[0.99] transition-transform"
+              title="Click to view full screen"
+            >
+              <SoapPlaceholderImage alt={product.name} src={galleryImages[activeImageIndex]} className="w-full h-full object-contain" />
+
+              {/* Tap for Full Screen Overlay Badge */}
+              <div className="absolute bottom-3 right-3 bg-[#020101]/85 hover:bg-[#020101] text-white text-[11px] font-semibold tracking-wider px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md backdrop-blur-xs transition-all">
+                <Maximize2 className="w-3.5 h-3.5" />
+                <span>Tap for full screen</span>
+              </div>
             </div>
 
             {/* Thumbnail Row */}
-            <div className="grid grid-cols-3 gap-4">
-              {[1, 2, 3].map((thumb) => (
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+              {galleryImages.map((img, idx) => (
                 <div
-                  key={thumb}
-                  className="aspect-square rounded-lg overflow-hidden bg-[#FAFAFA] border border-gray-200 cursor-pointer hover:border-[#020101] transition-all"
+                  key={idx}
+                  onClick={() => {
+                    setActiveImageIndex(idx);
+                    setIsLightboxOpen(true);
+                  }}
+                  className={`aspect-square rounded-lg overflow-hidden bg-[#FAFAFA] border cursor-pointer transition-all ${
+                    activeImageIndex === idx
+                      ? "border-[#020101] ring-2 ring-[#020101]/30 shadow-xs"
+                      : "border-gray-200 hover:border-[#020101]"
+                  }`}
+                  title={`View image ${idx + 1}`}
                 >
-                  <SoapPlaceholderImage alt={`${product.name} view ${thumb}`} src={product.image} className="w-full h-full" />
+                  <SoapPlaceholderImage alt={`${product.name} view ${idx + 1}`} src={img} className="w-full h-full object-contain" />
                 </div>
               ))}
             </div>
@@ -241,28 +295,28 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
-          {/* 4-Column Grid (2 Columns on Mobile) */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-6xl mx-auto">
+          {/* 4-Column Grid (2 Columns on Mobile with Compact Icon Sizes) */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
             {product.keyIngredients.map((ing, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                {/* White Rounded Box Container for Icon */}
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white shadow-xs border border-gray-100 flex items-center justify-center mx-auto mb-5 hover:shadow-md transition-shadow">
-                  {ing.icon === "Sun" && <Sun className="w-10 h-10 text-[#222222] stroke-[1.75]" />}
-                  {ing.icon === "Droplet" && <Droplet className="w-10 h-10 text-[#222222] stroke-[1.75]" />}
-                  {ing.icon === "HeartHandshake" && <HeartHandshake className="w-10 h-10 text-[#222222] stroke-[1.75]" />}
-                  {ing.icon === "Leaf" && <Leaf className="w-10 h-10 text-[#222222] stroke-[1.75]" />}
+              <div key={index} className="flex flex-col items-center text-center p-2 sm:p-0">
+                {/* Compact White Rounded Box Container for Icon */}
+                <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-xl sm:rounded-2xl bg-white shadow-xs border border-gray-100 flex items-center justify-center mx-auto mb-3 sm:mb-5 hover:shadow-md transition-shadow">
+                  {ing.icon === "Sun" && <Sun className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#222222] stroke-[1.75]" />}
+                  {ing.icon === "Droplet" && <Droplet className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#222222] stroke-[1.75]" />}
+                  {ing.icon === "HeartHandshake" && <HeartHandshake className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#222222] stroke-[1.75]" />}
+                  {ing.icon === "Leaf" && <Leaf className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#222222] stroke-[1.75]" />}
                   {!["Sun", "Droplet", "HeartHandshake", "Leaf"].includes(ing.icon) && (
-                    <Sparkles className="w-10 h-10 text-[#222222] stroke-[1.75]" />
+                    <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#222222] stroke-[1.75]" />
                   )}
                 </div>
 
                 {/* Ingredient Title */}
-                <h3 className="font-sans font-semibold text-lg sm:text-xl text-[#111111] mb-2">
+                <h3 className="font-sans font-semibold text-sm sm:text-lg md:text-xl text-[#111111] mb-1 sm:mb-2 leading-snug">
                   {ing.name}
                 </h3>
 
                 {/* Ingredient Description */}
-                <p className="text-xs sm:text-sm text-[#666666] leading-relaxed max-w-xs font-normal">
+                <p className="text-[11px] sm:text-xs md:text-sm text-[#666666] leading-relaxed max-w-xs font-normal">
                   {ing.description}
                 </p>
               </div>
@@ -319,6 +373,115 @@ export default function ProductDetailPage() {
         </section>
 
       </div>
+
+      {/* FULL-SCREEN IMAGE LIGHTBOX MODAL */}
+      {isLightboxOpen && mounted && createPortal(
+        <div 
+          onClick={() => setIsLightboxOpen(false)}
+          className="fixed inset-0 z-[99999] bg-black/90 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6 animate-in fade-in duration-200"
+        >
+          {/* Lightbox Header Bar */}
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center justify-between pt-[max(0.5rem,env(safe-area-inset-top))] pb-3 px-2 text-white border-b border-white/15"
+          >
+            <div className="flex flex-col">
+              <h3 className="font-serif font-bold text-base sm:text-lg text-white truncate max-w-[220px] sm:max-w-md">
+                {product.name}
+              </h3>
+              <span className="text-xs text-white/70 font-medium">
+                Image {activeImageIndex + 1} of {galleryImages.length}
+              </span>
+            </div>
+
+            <button
+              onClick={() => setIsLightboxOpen(false)}
+              className="min-w-[44px] min-h-[44px] p-2.5 rounded-full bg-white/15 hover:bg-white/30 active:bg-white/40 text-white transition-colors flex items-center justify-center cursor-pointer shadow-md"
+              aria-label="Close full screen view"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Center Main Image Display with Next/Prev Arrow Controls */}
+          <div className="relative flex-1 w-full max-w-5xl mx-auto flex items-center justify-center py-4 px-2 select-none">
+            {/* Previous Button */}
+            {galleryImages.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+                }}
+                className="absolute left-1 sm:left-4 z-20 min-w-[44px] min-h-[44px] p-3 rounded-full bg-black/70 hover:bg-black/90 active:scale-95 text-white border border-white/20 transition-all flex items-center justify-center cursor-pointer backdrop-blur-xs shadow-xl"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+            )}
+
+            {/* Full Screen Image Frame (Crisp White Card Container) */}
+            <div 
+              className="relative w-full max-w-3xl h-[60vh] sm:h-[70vh] bg-white rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 flex items-center justify-center border border-white/20"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {galleryImages[activeImageIndex] ? (
+                <Image
+                  src={galleryImages[activeImageIndex]}
+                  alt={product.name}
+                  fill
+                  priority
+                  className="object-contain p-2 sm:p-4 drop-shadow-md"
+                />
+              ) : (
+                <SoapPlaceholderImage
+                  alt={product.name}
+                  className="w-full h-full"
+                />
+              )}
+            </div>
+
+            {/* Next Button */}
+            {galleryImages.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+                }}
+                className="absolute right-1 sm:right-4 z-20 min-w-[44px] min-h-[44px] p-3 rounded-full bg-black/70 hover:bg-black/90 active:scale-95 text-white border border-white/20 transition-all flex items-center justify-center cursor-pointer backdrop-blur-xs shadow-xl"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            )}
+          </div>
+
+          {/* Lightbox Bottom Thumbnail Bar */}
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-3 flex items-center justify-center gap-3 border-t border-white/15"
+          >
+            {galleryImages.map((img, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveImageIndex(idx)}
+                className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-white border transition-all cursor-pointer ${
+                  activeImageIndex === idx
+                    ? "border-white ring-4 ring-[#CB8C00] scale-105 shadow-xl"
+                    : "border-white/30 opacity-65 hover:opacity-100"
+                }`}
+                aria-label={`View thumbnail ${idx + 1}`}
+              >
+                {img ? (
+                  <Image src={img} alt={`Thumbnail ${idx + 1}`} fill className="object-contain p-1" />
+                ) : (
+                  <SoapPlaceholderImage alt={`Thumbnail ${idx + 1}`} className="w-full h-full" />
+                )}
+              </button>
+            ))}
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }
