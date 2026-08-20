@@ -20,16 +20,16 @@ import { SoapPlaceholderImage } from "@/components/SoapPlaceholderImage";
 
 export default function OurStoryPage() {
   return (
-    <div className="min-h-screen bg-white text-[#0F0F0F]">
+    <div className="min-h-screen bg-white text-[#0F0F0F] animate-fade-in">
 
       {/* HERO BANNER */}
-      <section className="relative pt-0 pb-10 sm:pt-2 sm:pb-14 lg:pt-4 lg:pb-14 -mt-2 sm:-mt-4 overflow-hidden bg-white text-center">
+      <section className="relative pt-6 pb-10 sm:pt-10 sm:pb-14 lg:pt-12 lg:pb-16 overflow-hidden bg-white text-center">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
           
-          {/* Brand Logo at the top (Prominent & Crisp) */}
-          <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 mb-0 -mt-1 sm:-mt-2 shrink-0">
+          {/* Brand Logo at the top (Fits right below navbar) */}
+          <div className="relative w-48 sm:w-64 md:w-72 h-16 sm:h-20 md:h-24 mb-4 mt-0 shrink-0">
             <Image
-              src="/skincarebykumar logo.png"
+              src="/logo.png"
               alt="Skincare By Kumar Logo"
               fill
               priority
@@ -309,68 +309,133 @@ export default function OurStoryPage() {
         </div>
       </section>
 
-      {/* SECTION 4: CERTIFIED TRUST BADGES */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-serif text-3xl sm:text-5xl font-semibold text-[#111111] mb-12 sm:mb-16">
+      {/* SECTION 4: CERTIFIED TRUST BADGES (Marquee Ticker Loop) */}
+      <section className="py-16 sm:py-24 bg-white overflow-hidden select-none border-t border-[rgba(15,15,15,0.06)]">
+        <div className="text-center mb-10 sm:mb-14 px-4">
+          <h2 className="font-serif text-3xl sm:text-5xl font-semibold text-[#111111]">
             Certified
           </h2>
+        </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 items-center justify-items-center gap-4 sm:gap-6 md:gap-8 w-full max-w-7xl mx-auto">
-            {/* Badge 1: ISO 9001 (Smaller) */}
-            <div className="w-full h-36 sm:h-44 md:h-48 flex items-center justify-center p-1 transition-transform duration-300 hover:scale-105">
-              <Image
-                src="/Certifies/certified is00 9001.png"
-                alt="ISO 9001 Certified"
-                width={200}
-                height={200}
-                className="max-h-24 sm:max-h-30 md:max-h-34 w-auto max-w-full object-contain block"
-              />
+        <div className="w-full overflow-hidden py-4">
+          <div className="animate-marquee-fast flex items-center shrink-0">
+            
+            {/* Track 1 */}
+            <div className="flex items-center shrink-0 gap-10 sm:gap-16 md:gap-20 pr-10 sm:pr-16 md:pr-20">
+              {/* Badge 1: ISO 9001 */}
+              <div className="relative h-20 sm:h-28 md:h-32 w-32 sm:w-44 md:w-48 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/certified is00 9001.png"
+                  alt="ISO 9001 Certified"
+                  fill
+                  sizes="200px"
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Badge 2: MSME */}
+              <div className="relative h-24 sm:h-32 md:h-40 w-40 sm:w-52 md:w-60 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/Msme.png"
+                  alt="MSME Certified"
+                  fill
+                  sizes="300px"
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Badge 3: FSSAI */}
+              <div className="relative h-20 sm:h-28 md:h-36 w-40 sm:w-52 md:w-60 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/Fssai.png"
+                  alt="FSSAI Certified"
+                  fill
+                  sizes="300px"
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Badge 4: Vocal For Local */}
+              <div className="relative h-24 sm:h-32 md:h-40 w-40 sm:w-52 md:w-60 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/VocalOrLocal.png"
+                  alt="Vocal For Local"
+                  fill
+                  sizes="300px"
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Badge 5: GMP Certified */}
+              <div className="relative h-20 sm:h-28 md:h-32 w-32 sm:w-44 md:w-48 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/gmp-certified.png"
+                  alt="GMP Certified"
+                  fill
+                  sizes="200px"
+                  className="object-contain"
+                />
+              </div>
             </div>
 
-            {/* Badge 2: MSME (Bigger) */}
-            <div className="w-full h-44 sm:h-52 md:h-60 flex items-center justify-center p-1 transition-transform duration-300 hover:scale-105">
-              <Image
-                src="/Certifies/Msme.png"
-                alt="MSME Certified"
-                width={400}
-                height={400}
-                className="max-h-40 sm:max-h-48 md:max-h-56 w-auto max-w-full object-contain block"
-              />
+            {/* Track 2 (Exact Duplicate for Seamless Loop) */}
+            <div className="flex items-center shrink-0 gap-10 sm:gap-16 md:gap-20 pr-10 sm:pr-16 md:pr-20">
+              {/* Badge 1: ISO 9001 */}
+              <div className="relative h-20 sm:h-28 md:h-32 w-32 sm:w-44 md:w-48 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/certified is00 9001.png"
+                  alt="ISO 9001 Certified"
+                  fill
+                  sizes="200px"
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Badge 2: MSME */}
+              <div className="relative h-24 sm:h-32 md:h-40 w-40 sm:w-52 md:w-60 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/Msme.png"
+                  alt="MSME Certified"
+                  fill
+                  sizes="300px"
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Badge 3: FSSAI */}
+              <div className="relative h-20 sm:h-28 md:h-36 w-40 sm:w-52 md:w-60 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/Fssai.png"
+                  alt="FSSAI Certified"
+                  fill
+                  sizes="300px"
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Badge 4: Vocal For Local */}
+              <div className="relative h-24 sm:h-32 md:h-40 w-40 sm:w-52 md:w-60 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/VocalOrLocal.png"
+                  alt="Vocal For Local"
+                  fill
+                  sizes="300px"
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Badge 5: GMP Certified */}
+              <div className="relative h-20 sm:h-28 md:h-32 w-32 sm:w-44 md:w-48 flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/Certifies/gmp-certified.png"
+                  alt="GMP Certified"
+                  fill
+                  sizes="200px"
+                  className="object-contain"
+                />
+              </div>
             </div>
 
-            {/* Badge 3: FSSAI (Bigger) */}
-            <div className="w-full h-44 sm:h-52 md:h-60 flex items-center justify-center p-1 transition-transform duration-300 hover:scale-105">
-              <Image
-                src="/Certifies/Fssai.png"
-                alt="FSSAI Certified"
-                width={400}
-                height={250}
-                className="max-h-36 sm:max-h-44 md:max-h-52 w-auto max-w-full object-contain block"
-              />
-            </div>
-
-            {/* Badge 4: Vocal For Local (Bigger) */}
-            <div className="w-full h-44 sm:h-52 md:h-60 flex items-center justify-center p-1 transition-transform duration-300 hover:scale-105">
-              <Image
-                src="/Certifies/VocalOrLocal.png"
-                alt="Vocal For Local"
-                width={400}
-                height={400}
-                className="max-h-40 sm:max-h-48 md:max-h-56 w-auto max-w-full object-contain block"
-              />
-            </div>
-
-            {/* Badge 5: GMP Certified (Smaller) */}
-            <div className="w-full h-36 sm:h-44 md:h-48 flex items-center justify-center p-1 transition-transform duration-300 hover:scale-105">
-              <Image
-                src="/Certifies/gmp-certified.png"
-                alt="GMP Certified"
-                width={200}
-                height={200}
-                className="max-h-24 sm:max-h-30 md:max-h-34 w-auto max-w-full object-contain block"
-              />
-            </div>
           </div>
         </div>
       </section>

@@ -144,9 +144,30 @@ a, button, input, select, textarea {
   100% { transform: translateX(-50%); }
 }
 
+@keyframes shimmerWave {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(240, 238, 234, 0.9) 25%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(240, 238, 234, 0.9) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmerWave 1.8s ease-in-out infinite;
+  will-change: background-position;
+}
+
 /* Animation Utility Classes - Clean, crisp luxury timings */
 .animate-fade-in {
-  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.85s ease-out forwards;
 }
 
 .animate-slide-up {
@@ -180,8 +201,16 @@ a, button, input, select, textarea {
   will-change: transform;
 }
 
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
 @media (hover: hover) {
-  .animate-marquee:hover {
+  .animate-marquee:hover,
+  .animate-marquee-fast:hover {
     animation-play-state: paused;
   }
 }

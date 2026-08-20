@@ -15,14 +15,20 @@ export const SoapPlaceholderImage: React.FC<SoapPlaceholderImageProps> = ({
   className = "w-full h-64",
   src,
 }) => {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
   if (src) {
     return (
       <div className={`relative overflow-hidden bg-[#F7F5F0] rounded-sm ${className}`}>
+        {!isLoaded && <div className="absolute inset-0 skeleton-shimmer z-0" />}
         <Image
           src={src}
           alt={alt}
           fill
-          className="object-contain p-1 transition-transform duration-500 ease-out hover:scale-105"
+          onLoad={() => setIsLoaded(true)}
+          className={`object-contain p-1 transition-all duration-500 ease-out hover:scale-105 ${
+            isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
         />
       </div>
     );

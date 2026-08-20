@@ -1,18 +1,43 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { Search, SlidersHorizontal, ArrowUpDown, ChevronDown } from "lucide-react";
+import { Search, SlidersHorizontal, ArrowUpDown, ChevronDown, RotateCcw } from "lucide-react";
 import { PRODUCTS, Product } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function ShopPage() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTag, setSelectedTag] = useState<string>("All");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [priceFilter, setPriceFilter] = useState<string>("All");
   const [sortBy, setSortBy] = useState<string>("newest");
 
   const tags = ["All", "Brightness", "Hydrating", "Baby Friendly", "Tan Removal"];
+
+  // Toggle multi-tag selection
+  const toggleTag = (tag: string) => {
+    if (tag === "All") {
+      setSelectedTags([]);
+    } else {
+      setSelectedTags((prev) =>
+        prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+      );
+    }
+  };
+
+  // Reset all filters
+  const handleReset = () => {
+    setSearchTerm("");
+    setSelectedTags([]);
+    setPriceFilter("All");
+    setSortBy("newest");
+  };
+
+  const hasActiveFilters =
+    searchTerm.trim() !== "" ||
+    selectedTags.length > 0 ||
+    priceFilter !== "All" ||
+    sortBy !== "newest";
 
   // Filter and Sort logic
   const filteredProducts = useMemo(() => {
@@ -23,14 +48,20 @@ export default function ShopPage() {
         product.subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.description.toLowerCase().includes(searchTerm.toLowerCase());
 
-      // Tag filter
+      // Multi-tag filter
+      const checkTagMatch = (tag: string) => {
+        return (
+          product.tags.includes(tag as any) ||
+          (tag === "Brightness" && product.benefits.includes("Brightening")) ||
+          (tag === "Baby Friendly" && (product.category === "Kid's Care" || product.benefits.includes("Ultra Gentle"))) ||
+          (tag === "Hydrating" && product.benefits.includes("Hydrating")) ||
+          (tag === "Tan Removal" && (product.benefits.includes("Tan Removal") || product.skinFocus.toLowerCase().includes("tan")))
+        );
+      };
+
       const matchesTag =
-        selectedTag === "All" ||
-        product.tags.includes(selectedTag as any) ||
-        (selectedTag === "Brightness" && product.benefits.includes("Brightening")) ||
-        (selectedTag === "Baby Friendly" && (product.category === "Kid's Care" || product.benefits.includes("Ultra Gentle"))) ||
-        (selectedTag === "Hydrating" && product.benefits.includes("Hydrating")) ||
-        (selectedTag === "Tan Removal" && (product.benefits.includes("Tan Removal") || product.skinFocus.toLowerCase().includes("tan")));
+        selectedTags.length === 0 ||
+        selectedTags.some((tag) => checkTagMatch(tag));
 
       // Price Filter
       const matchesPrice =
@@ -49,10 +80,10 @@ export default function ShopPage() {
       }
       return 0; // Default newest order
     });
-  }, [searchTerm, selectedTag, priceFilter, sortBy]);
+  }, [searchTerm, selectedTags, priceFilter, sortBy]);
 
   return (
-    <div className="min-h-screen bg-white text-[#0F0F0F] py-12 lg:py-16">
+    <div className="min-h-screen bg-white text-[#0F0F0F] py-12 lg:py-16 animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page Heading (Matches UI Design Image 3 Exactly) */}
@@ -65,11 +96,11 @@ export default function ShopPage() {
         {/* Search & Filter Toolbar */}
         <div className="bg-[#FAFAFA] p-4 sm:p-6 rounded-xl border border-[rgba(15,15,15,0.08)] mb-10 flex flex-col gap-4 sm:gap-5 shadow-xs">
           
-          {/* Top Bar: Search Input & Dropdowns */}
+          {/* Top Bar: Search Input, Dropdowns & Reset Button */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-center">
             
             {/* Search Input */}
-            <div className="md:col-span-6 relative">
+            <div className="md:col-span-4 relative">
               <Search className="w-4 h-4 text-[#888888] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
@@ -111,6 +142,23 @@ export default function ShopPage() {
               <ChevronDown className="w-4 h-4 text-[#888888] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
 
+            {/* Reset Button */}
+            <div className="md:col-span-2 flex items-center">
+              <button
+                onClick={handleReset}
+                disabled={!hasActiveFilters}
+                title="Reset all filters"
+                className={`w-full min-h-[44px] px-4 py-3 rounded-md border transition-all flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-wider cursor-pointer ${
+                  hasActiveFilters
+                    ? "bg-[#181818] text-white border-[#181818] hover:bg-[#333333] active:scale-95 shadow-xs"
+                    : "bg-white text-gray-400 border-[rgba(15,15,15,0.12)] opacity-60 cursor-not-allowed"
+                }`}
+              >
+                <RotateCcw className="w-3.5 h-3.5 shrink-0" />
+                <span>Reset</span>
+              </button>
+            </div>
+
           </div>
 
           {/* Bottom Bar: Tag Pills & Counter */}
@@ -119,11 +167,13 @@ export default function ShopPage() {
             {/* Filter Pills with Horizontal Swipe on Mobile */}
             <div className="flex items-center gap-2.5 overflow-x-auto pb-1.5 sm:pb-0 scrollbar-none max-w-full">
               {tags.map((tag) => {
-                const isActive = selectedTag === tag;
+                const isAll = tag === "All";
+                const isActive = isAll ? selectedTags.length === 0 : selectedTags.includes(tag);
+
                 return (
                   <button
                     key={tag}
-                    onClick={() => setSelectedTag(isActive && tag !== "All" ? "All" : tag)}
+                    onClick={() => toggleTag(tag)}
                     className={`text-xs sm:text-sm font-medium px-4 py-2 min-h-[38px] rounded-md transition-all shrink-0 active:scale-95 flex items-center gap-2 cursor-pointer ${
                       isActive
                         ? "bg-[#181818] text-white shadow-xs font-semibold"
@@ -131,7 +181,7 @@ export default function ShopPage() {
                     }`}
                   >
                     <span>{tag}</span>
-                    {isActive && tag !== "All" && (
+                    {isActive && !isAll && (
                       <span className="text-white/70 hover:text-white text-xs font-bold leading-none">✕</span>
                     )}
                   </button>
@@ -163,11 +213,7 @@ export default function ShopPage() {
               Try clearing filters or searching for another skin concern like 'hydration' or 'brightening'.
             </p>
             <button
-              onClick={() => {
-                setSearchTerm("");
-                setSelectedTag("All");
-                setPriceFilter("All");
-              }}
+              onClick={handleReset}
               className="mt-5 text-xs font-semibold uppercase tracking-wider bg-[#020101] text-white px-6 py-2.5 rounded-md hover:bg-[#CB8C00] transition-colors cursor-pointer"
             >
               Reset Filters

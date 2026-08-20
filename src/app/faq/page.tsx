@@ -35,7 +35,7 @@ export default function FaqPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#0F0F0F] py-12 sm:py-16">
+    <div className="min-h-screen bg-white text-[#0F0F0F] py-12 sm:py-16 animate-fade-in">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Back Link */}

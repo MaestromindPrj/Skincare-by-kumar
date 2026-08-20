@@ -124,7 +124,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-[#0F0F0F]">
+    <div className="flex flex-col min-h-screen bg-white text-[#0F0F0F] animate-fade-in">
 
       {/* HERO SECTION */}
       <section className="relative bg-white pt-0 pb-12 lg:pt-0 lg:pb-16 overflow-hidden">
@@ -238,7 +238,7 @@ export default function HomePage() {
       </section>
 
       {/* HIGHLIGHTS RIBBON STRIP - DESKTOP 3-COLUMNS & MOBILE CLEAN ANIMATED SINGLE SENTENCE */}
-      <section className="bg-white border-t border-b border-gray-200 py-3.5 sm:py-5">
+      <section className="bg-[#FAFAFA] border-t border-b border-gray-200 py-3.5 sm:py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Desktop View: 3 items with dividers */}
           <div className="hidden md:grid md:grid-cols-3 md:divide-x divide-gray-200 text-center text-base sm:text-lg font-medium text-[#111111] tracking-wide">
@@ -256,9 +256,8 @@ export default function HomePage() {
           {/* Mobile View: Single sentence with premium fade-and-slide animation */}
           <div className="md:hidden flex items-center justify-center py-1 min-h-[36px] overflow-hidden">
             <span
-              className={`text-sm sm:text-base font-medium text-[#111111] tracking-wide text-center transition-all duration-200 ease-out transform ${
-                isRibbonFading ? "opacity-0 -translate-y-1.5 scale-[0.98]" : "opacity-100 translate-y-0 scale-100"
-              }`}
+              className={`text-sm sm:text-base font-medium text-[#111111] tracking-wide text-center transition-all duration-200 ease-out transform ${isRibbonFading ? "opacity-0 -translate-y-1.5 scale-[0.98]" : "opacity-100 translate-y-0 scale-100"
+                }`}
             >
               {ribbonHighlights[activeRibbonIndex]}
             </span>
@@ -524,19 +523,18 @@ export default function HomePage() {
 
               {/* Quote Content with Smooth Fade Animation */}
               <div
-                className={`flex-1 text-center transition-opacity duration-200 ease-out min-h-[160px] flex flex-col items-center justify-center ${
-                  isFading ? "opacity-0" : "opacity-100"
-                }`}
+                className={`flex-1 text-center transition-opacity duration-200 ease-out min-h-[160px] flex flex-col items-center justify-center ${isFading ? "opacity-0" : "opacity-100"
+                  }`}
               >
                 <p className="font-serif italic text-lg sm:text-xl md:text-2xl lg:text-[28px] text-[#0F0F0F] leading-relaxed max-w-3xl mx-auto mb-6">
                   "{testimonials[activeTestimonial].quote}"
                 </p>
 
                 <div className="flex items-center justify-center gap-2">
-                  <span className="font-semibold text-base sm:text-lg text-[#0F0F0F]">
+                  <span className="font-bold text-lg sm:text-xl md:text-2xl text-[#0F0F0F] tracking-tight">
                     {testimonials[activeTestimonial].author}
                   </span>
-                  <svg className="w-5 h-5 text-[#0084FF] fill-[#0084FF]" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#0084FF] fill-[#0084FF] shrink-0" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                   </svg>
                 </div>
