@@ -58,20 +58,20 @@ export default function ShopPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page Heading (Fade-in animation only) */}
-        <div className="text-center max-w-2xl mx-auto mb-10 animate-fade-in">
-          <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-[#0F0F0F]">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 animate-fade-in px-2">
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#0F0F0F]">
             Handcrafted soaps made for you
           </h1>
-          <p className="text-sm text-[#6B6B6B] mt-3">
+          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-2.5 sm:mt-3">
             Pure, artisanal cold-process soaps designed for everyday radiance, moisture, and gentle care.
           </p>
         </div>
 
         {/* Search & Filter Toolbar */}
-        <div className="bg-[#FAFAFA] p-4 sm:p-6 rounded-xl border border-[rgba(15,15,15,0.06)] mb-8 flex flex-col gap-5 shadow-xs">
+        <div className="bg-[#FAFAFA] p-3.5 sm:p-6 rounded-xl border border-[rgba(15,15,15,0.06)] mb-8 flex flex-col gap-4 sm:gap-5 shadow-xs">
           
           {/* Top Bar: Search Input & Dropdowns */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-center">
             
             {/* Search Input */}
             <div className="md:col-span-6 relative">
@@ -81,7 +81,7 @@ export default function ShopPage() {
                 placeholder="Search by name, benefits, ingredients..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white text-sm text-[#0F0F0F] pl-10 pr-4 py-3 rounded-md border border-[rgba(15,15,15,0.1)] focus:outline-none focus:border-[#020101] transition-colors placeholder:text-[#A9A5A5]"
+                className="w-full bg-white text-base sm:text-sm text-[#0F0F0F] pl-10 pr-4 py-3 min-h-[44px] rounded-md border border-[rgba(15,15,15,0.1)] focus:outline-none focus:border-[#020101] transition-colors placeholder:text-[#A9A5A5]"
               />
             </div>
 
@@ -92,7 +92,7 @@ export default function ShopPage() {
                 <select
                   value={priceFilter}
                   onChange={(e) => setPriceFilter(e.target.value)}
-                  className="w-full bg-white text-sm text-[#0F0F0F] px-3.5 py-3 rounded-md border border-[rgba(15,15,15,0.1)] focus:outline-none focus:border-[#020101] cursor-pointer"
+                  className="w-full bg-white text-base sm:text-sm text-[#0F0F0F] px-3.5 py-3 min-h-[44px] rounded-md border border-[rgba(15,15,15,0.1)] focus:outline-none focus:border-[#020101] cursor-pointer"
                 >
                   <option value="All">Price Range: All</option>
                   <option value="under-350">Under ₹350</option>
@@ -109,7 +109,7 @@ export default function ShopPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full bg-white text-sm text-[#0F0F0F] px-3.5 py-3 rounded-md border border-[rgba(15,15,15,0.1)] focus:outline-none focus:border-[#020101] cursor-pointer"
+                  className="w-full bg-white text-base sm:text-sm text-[#0F0F0F] px-3.5 py-3 min-h-[44px] rounded-md border border-[rgba(15,15,15,0.1)] focus:outline-none focus:border-[#020101] cursor-pointer"
                 >
                   <option value="newest">Sort by: Newest</option>
                   <option value="price-low">Price: Low to High</option>
@@ -121,17 +121,17 @@ export default function ShopPage() {
           </div>
 
           {/* Bottom Bar: Tag Pills & Counter */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2 border-t border-[rgba(15,15,15,0.06)]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-[rgba(15,15,15,0.06)]">
             
-            {/* Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2">
+            {/* Filter Pills with Horizontal Swipe on Mobile */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-1.5 sm:pb-0 scrollbar-none max-w-full">
               {tags.map((tag) => {
                 const isActive = selectedTag === tag;
                 return (
                   <button
                     key={tag}
                     onClick={() => setSelectedTag(tag)}
-                    className={`text-xs font-medium px-4 py-2 rounded-md transition-all ${
+                    className={`text-xs font-medium px-4 py-2.5 min-h-[40px] rounded-md transition-all shrink-0 active:scale-95 ${
                       isActive
                         ? "bg-[#020101] text-white shadow-sm font-semibold"
                         : "bg-white text-[#0F0F0F] border border-[rgba(15,15,15,0.1)] hover:bg-[#FAF8F5]"

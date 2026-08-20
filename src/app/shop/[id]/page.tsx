@@ -166,12 +166,12 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Quantity Stepper & Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4 pt-2">
               {/* Stepper */}
-              <div className="flex items-center justify-between border border-[rgba(15,15,15,0.15)] rounded-md px-4 py-3 sm:w-36 bg-white shadow-xs">
+              <div className="flex items-center justify-between border border-[rgba(15,15,15,0.15)] rounded-md px-4 py-3 min-h-[48px] sm:w-36 bg-white shadow-xs">
                 <button
                   onClick={() => handleQuantityChange(-1)}
-                  className="text-[#0F0F0F] hover:text-[#CB8C00] p-1"
+                  className="text-[#0F0F0F] hover:text-[#CB8C00] active:scale-90 p-2 min-w-[36px] min-h-[36px] flex items-center justify-center"
                   aria-label="Decrease quantity"
                 >
                   <Minus className="w-4 h-4" />
@@ -181,7 +181,7 @@ export default function ProductDetailPage() {
                 </span>
                 <button
                   onClick={() => handleQuantityChange(1)}
-                  className="text-[#0F0F0F] hover:text-[#CB8C00] p-1"
+                  className="text-[#0F0F0F] hover:text-[#CB8C00] active:scale-90 p-2 min-w-[36px] min-h-[36px] flex items-center justify-center"
                   aria-label="Increase quantity"
                 >
                   <Plus className="w-4 h-4" />
@@ -194,9 +194,9 @@ export default function ProductDetailPage() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => sendAutomatedEnquiry(product, quantity)}
-                className="flex-1 bg-[#020101] hover:bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider py-4 rounded-md flex items-center justify-center gap-2 transition-colors shadow-md text-center"
+                className="flex-1 bg-[#020101] hover:bg-[#25D366] active:bg-[#20b858] text-white text-xs font-semibold uppercase tracking-wider min-h-[48px] py-3.5 rounded-md flex items-center justify-center gap-2 transition-colors shadow-md text-center"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4 shrink-0" />
                 <span>Enquire on WhatsApp</span>
               </a>
             </div>
@@ -204,19 +204,19 @@ export default function ProductDetailPage() {
             {/* Add to Wishlist Button */}
             <button
               onClick={handleWishlistToggle}
-              className={`w-full text-xs font-semibold uppercase tracking-wider py-3.5 rounded-md flex items-center justify-center gap-2 border transition-all ${wishlisted
+              className={`w-full text-xs font-semibold uppercase tracking-wider min-h-[48px] py-3.5 rounded-md flex items-center justify-center gap-2 border transition-all active:scale-[0.99] ${wishlisted
                   ? "bg-[#FAFAFA] border-[#020101] text-[#020101]"
                   : "bg-white border-[#0F0F0F]/20 hover:border-[#0F0F0F] text-[#0F0F0F]"
                 }`}
             >
               {wishlisted ? (
                 <>
-                  <Check className="w-4 h-4 text-[#CB8C00]" />
+                  <Check className="w-4 h-4 text-[#CB8C00] shrink-0" />
                   <span>In Your Wishlist (Click to Remove)</span>
                 </>
               ) : (
                 <>
-                  <Heart className="w-4 h-4" />
+                  <Heart className="w-4 h-4 shrink-0" />
                   <span>Add to Wishlist</span>
                 </>
               )}
@@ -227,11 +227,11 @@ export default function ProductDetailPage() {
         </div>
 
         {/* NATURAL INGREDIENTS SECTION MATCHING DESIGN TEMPLATE */}
-        <section className="bg-[#F8F9FA] rounded-2xl py-14 px-6 sm:px-12 mb-20 border border-gray-100">
+        <section className="bg-[#F8F9FA] rounded-2xl py-10 sm:py-14 px-4 sm:px-12 mb-16 sm:mb-20 border border-gray-100">
           {/* Header */}
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
             <div className="flex items-center justify-center gap-2.5 mb-3">
-              <Leaf className="w-6 h-6 text-[#222222]" />
+              <Leaf className="w-5 h-5 sm:w-6 sm:h-6 text-[#222222]" />
               <h2 className="font-sans text-2xl sm:text-3xl font-bold text-[#222222] tracking-tight">
                 Natural <span className="font-normal text-[#444444]">Ingredients</span>
               </h2>
@@ -241,8 +241,8 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
-          {/* 4-Column Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {/* 4-Column Grid (2 Columns on Mobile) */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-6xl mx-auto">
             {product.keyIngredients.map((ing, index) => (
               <div key={index} className="flex flex-col items-center text-center">
                 {/* White Rounded Box Container for Icon */}

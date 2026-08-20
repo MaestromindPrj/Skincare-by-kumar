@@ -38,30 +38,30 @@ export default function OurStoryPage() {
           </div>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-[#111111] leading-tight">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
+          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[#111111] leading-[1.15] text-center w-full">
             10+ Years of Experience.
           </h1>
-          <p className="font-serif text-2xl sm:text-4xl lg:text-5xl font-normal text-[#333333] tracking-tight mt-3 sm:mt-4">
+          <p className="font-serif text-lg sm:text-3xl md:text-4xl lg:text-5xl font-normal text-[#333333] tracking-tight mt-3 sm:mt-4 text-center w-full">
             A Passion for Better Skincare
           </p>
 
           {/* 4 Points Horizontal Row */}
-          <div className="mt-16 sm:mt-20 flex flex-wrap items-center justify-center gap-8 sm:gap-14 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#222222]">
-            <div className="flex items-center gap-2.5">
-              <Star className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222]" />
+          <div className="mt-10 sm:mt-16 md:mt-20 flex flex-wrap items-center justify-center gap-4 sm:gap-10 lg:gap-14 text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-widest text-[#222222] text-center w-full">
+            <div className="flex items-center gap-2">
+              <Star className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222] shrink-0" />
               <span>10+ Years</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222]" />
+            <div className="flex items-center gap-2">
+              <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222] shrink-0" />
               <span>Expert Exploration</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222]" />
+            <div className="flex items-center gap-2">
+              <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222] shrink-0" />
               <span>Carefully Selected</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222]" />
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222] shrink-0" />
               <span>Quality Assured</span>
             </div>
           </div>

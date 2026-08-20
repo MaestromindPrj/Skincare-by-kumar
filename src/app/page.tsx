@@ -115,7 +115,7 @@ export default function HomePage() {
 
               {/* Main Heading */}
               <div className="flex flex-col gap-1">
-                <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0F0F0F] leading-[1.12]">
+                <h1 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0F0F0F] leading-[1.12]">
                   Pure Ingredients. <br />
                   <span>Beautifully Crafted.</span>
                 </h1>
@@ -127,44 +127,44 @@ export default function HomePage() {
               </p>
 
               {/* 4 Circular Outline Icons Row */}
-              <div className="grid grid-cols-4 gap-3 max-w-md py-1">
+              <div className="grid grid-cols-4 gap-1.5 sm:gap-3 max-w-md py-1">
 
                 {/* 1. Natural Ingredients */}
-                <div className="flex flex-col items-center text-center gap-2 group">
-                  <div className="w-11 h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all">
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
                     <Leaf className="w-4 h-4" />
                   </div>
-                  <span className="text-[11px] font-medium text-[#0F0F0F] leading-tight">
+                  <span className="text-[10px] sm:text-[11px] font-medium text-[#0F0F0F] leading-tight">
                     Natural <br /> Ingredients
                   </span>
                 </div>
 
                 {/* 2. Gentle On Skin */}
-                <div className="flex flex-col items-center text-center gap-2 group">
-                  <div className="w-11 h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all">
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
                     <Droplets className="w-4 h-4" />
                   </div>
-                  <span className="text-[11px] font-medium text-[#0F0F0F] leading-tight">
+                  <span className="text-[10px] sm:text-[11px] font-medium text-[#0F0F0F] leading-tight">
                     Gentle On <br /> Skin
                   </span>
                 </div>
 
                 {/* 3. Eco Friendly */}
-                <div className="flex flex-col items-center text-center gap-2 group">
-                  <div className="w-11 h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all">
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
                     <FlaskConical className="w-4 h-4" />
                   </div>
-                  <span className="text-[11px] font-medium text-[#0F0F0F] leading-tight">
+                  <span className="text-[10px] sm:text-[11px] font-medium text-[#0F0F0F] leading-tight">
                     Eco <br /> Friendly
                   </span>
                 </div>
 
                 {/* 4. Handmade With Care */}
-                <div className="flex flex-col items-center text-center gap-2 group">
-                  <div className="w-11 h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all">
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
                     <HeartHandshake className="w-4 h-4" />
                   </div>
-                  <span className="text-[11px] font-medium text-[#0F0F0F] leading-tight">
+                  <span className="text-[10px] sm:text-[11px] font-medium text-[#0F0F0F] leading-tight">
                     Handmade <br /> With Care
                   </span>
                 </div>
@@ -172,17 +172,17 @@ export default function HomePage() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
                 <Link
                   href="/shop"
-                  className="bg-[#1E1E1E] hover:bg-[#25D366] text-white text-xs font-semibold uppercase tracking-widest px-8 py-3.5 rounded-md transition-all text-center flex items-center justify-center gap-2 group"
+                  className="bg-[#1E1E1E] hover:bg-[#25D366] active:bg-[#20b858] text-white text-xs font-semibold uppercase tracking-widest min-h-[44px] px-8 py-3.5 rounded-md transition-all text-center flex items-center justify-center gap-2 group"
                 >
                   <span>EXPLORE SOAPS</span>
                 </Link>
 
                 <Link
                   href="/our-story"
-                  className="bg-white border border-[#1E1E1E] text-[#1E1E1E] hover:bg-[#1E1E1E] hover:text-white text-xs font-semibold uppercase tracking-widest px-8 py-3.5 rounded-md transition-all text-center"
+                  className="bg-white border border-[#1E1E1E] text-[#1E1E1E] hover:bg-[#1E1E1E] hover:text-white active:bg-gray-100 text-xs font-semibold uppercase tracking-widest min-h-[44px] px-8 py-3.5 rounded-md transition-all text-center flex items-center justify-center"
                 >
                   DISCOVER OUR STORY
                 </Link>
@@ -190,8 +190,8 @@ export default function HomePage() {
 
             </div>
 
-            {/* Mobile Fallback Container for Right Hero Image */}
-            <div className="lg:hidden relative w-full aspect-[4/3] mt-4">
+            {/* Mobile & Tablet Right Hero Image (Touches Right Side Corner) */}
+            <div className="lg:hidden relative w-[calc(100%+1rem)] sm:w-[calc(100%+1.5rem)] -mr-4 sm:-mr-6 aspect-[4/3] mt-4 overflow-hidden">
               <Image
                 src="/hero-soap.png"
                 alt="Pure Ingredients. Beautifully Crafted."
@@ -204,8 +204,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Desktop Full-Bleed Right Hero Image (Fills Top-Right and Bottom-Right Corners of Hero Section) */}
-        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-1/2 h-full pointer-events-none z-0">
+        {/* Desktop Full-Bleed Right Hero Image (Touches Top-Right, Bottom-Right & Right Edge) */}
+        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-1/2 h-full pointer-events-none z-0 overflow-hidden">
           <Image
             src="/hero-soap.png"
             alt="Pure Ingredients. Beautifully Crafted."
