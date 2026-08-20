@@ -28,9 +28,9 @@ export default function ShopPage() {
         selectedTag === "All" ||
         product.tags.includes(selectedTag as any) ||
         (selectedTag === "Brightness" && product.benefits.includes("Brightening")) ||
-        (selectedTag === "Baby Friendly" && product.suitableFor.includes("Kids")) ||
-        (selectedTag === "Hydrating" && product.tags.includes("Deep Cleansing")) ||
-        (selectedTag === "Tan Removal" && product.tags.includes("Glow & Radiance"));
+        (selectedTag === "Baby Friendly" && (product.category === "Kid's Care" || product.benefits.includes("Ultra Gentle"))) ||
+        (selectedTag === "Hydrating" && product.benefits.includes("Hydrating")) ||
+        (selectedTag === "Tan Removal" && (product.benefits.includes("Tan Removal") || product.skinFocus.toLowerCase().includes("tan")));
 
       // Price Filter
       const matchesPrice =
