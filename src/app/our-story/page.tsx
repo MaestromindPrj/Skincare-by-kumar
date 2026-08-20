@@ -17,7 +17,6 @@ import {
   Leaf
 } from "lucide-react";
 import { SoapPlaceholderImage } from "@/components/SoapPlaceholderImage";
-import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function OurStoryPage() {
   return (
@@ -155,7 +154,7 @@ export default function OurStoryPage() {
 
       {/* SECTION 1: OUR STORY NARRATIVE */}
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
-        <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
             {/* Left Image Showcase */}
@@ -188,12 +187,12 @@ export default function OurStoryPage() {
             </div>
 
           </div>
-        </ScrollReveal>
+        </div>
       </section>
 
       {/* STATS HIGHLIGHTS BANNER */}
       <section className="py-16 bg-[#FAF8F5] border-b border-[rgba(15,15,15,0.06)]">
-        <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-[rgba(15,15,15,0.1)]">
             <div className="flex flex-col gap-1 p-4">
               <span className="font-serif text-4xl font-bold text-[#0F0F0F]">10,000+</span>
@@ -216,12 +215,12 @@ export default function OurStoryPage() {
               </span>
             </div>
           </div>
-        </ScrollReveal>
+        </div>
       </section>
 
       {/* SECTION 2: COLD PROCESS, DONE PROPERLY */}
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
-        <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
             {/* Left Narrative */}
@@ -262,12 +261,12 @@ export default function OurStoryPage() {
             </div>
 
           </div>
-        </ScrollReveal>
+        </div>
       </section>
 
       {/* SECTION 3: QUALITY FOCUS & PROMISE */}
       <section className="py-20 sm:py-28 bg-white border-y border-gray-200">
-        <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start mb-20 sm:mb-24">
 
             {/* Left Column */}
@@ -307,12 +306,12 @@ export default function OurStoryPage() {
               "My promise is simple – quality you can trust and products chosen with a focus on visible, result-oriented skincare."
             </p>
           </div>
-        </ScrollReveal>
+        </div>
       </section>
 
       {/* SECTION 4: CERTIFIED TRUST BADGES */}
       <section className="py-20 sm:py-28 bg-white">
-        <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-3xl sm:text-5xl font-semibold text-[#111111] mb-12 sm:mb-16">
             Certified
           </h2>
@@ -373,7 +372,7 @@ export default function OurStoryPage() {
               />
             </div>
           </div>
-        </ScrollReveal>
+        </div>
       </section>
 
     </div>

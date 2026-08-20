@@ -22,7 +22,7 @@ export const SoapPlaceholderImage: React.FC<SoapPlaceholderImageProps> = ({
           src={src}
           alt={alt}
           fill
-          className="object-cover transition-transform duration-700 hover:scale-105"
+          className="object-contain p-1 transition-transform duration-700 hover:scale-105"
         />
       </div>
     );
