@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
     };
   }, [mobileMenuOpen]);
 
-  const totalWishlistItems = items.reduce((acc, item) => acc + item.quantity, 0);
+  const totalWishlistItems = items.length;
 
   const navLinks = [
     { name: "Home", href: "/" },

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { Search, SlidersHorizontal, ArrowUpDown } from "lucide-react";
+import { Search, SlidersHorizontal, ArrowUpDown, ChevronDown } from "lucide-react";
 import { PRODUCTS, Product } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -28,25 +28,23 @@ export default function ShopPage() {
         selectedTag === "All" ||
         product.tags.includes(selectedTag as any) ||
         (selectedTag === "Brightness" && product.benefits.includes("Brightening")) ||
-        (selectedTag === "Hydrating" && product.benefits.includes("Hydrating")) ||
-        (selectedTag === "Baby Friendly" && product.benefits.includes("Gentle")) ||
-        (selectedTag === "Tan Removal" && product.benefits.includes("Tan Removal"));
+        (selectedTag === "Baby Friendly" && product.suitableFor.includes("Kids")) ||
+        (selectedTag === "Hydrating" && product.tags.includes("Deep Cleansing")) ||
+        (selectedTag === "Tan Removal" && product.tags.includes("Glow & Radiance"));
 
-      // Price range filter
-      let matchesPrice = true;
-      if (priceFilter === "under-350") {
-        matchesPrice = product.price <= 350;
-      } else if (priceFilter === "350-400") {
-        matchesPrice = product.price > 350 && product.price <= 400;
-      } else if (priceFilter === "above-400") {
-        matchesPrice = product.price > 400;
-      }
+      // Price Filter
+      const matchesPrice =
+        priceFilter === "All" ||
+        (priceFilter === "under-350" && product.price < 350) ||
+        (priceFilter === "350-400" && product.price >= 350 && product.price <= 400) ||
+        (priceFilter === "above-400" && product.price > 400);
 
       return matchesSearch && matchesTag && matchesPrice;
     }).sort((a, b) => {
       if (sortBy === "price-low") {
         return a.price - b.price;
-      } else if (sortBy === "price-high") {
+      }
+      if (sortBy === "price-high") {
         return b.price - a.price;
       }
       return 0; // Default newest order
@@ -54,97 +52,95 @@ export default function ShopPage() {
   }, [searchTerm, selectedTag, priceFilter, sortBy]);
 
   return (
-    <div className="min-h-screen bg-white text-[#0F0F0F] py-12">
+    <div className="min-h-screen bg-white text-[#0F0F0F] py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Page Heading (Fade-in animation only) */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 animate-fade-in px-2">
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#0F0F0F]">
+        {/* Page Heading (Matches UI Design Image 3 Exactly) */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 animate-fade-in px-2">
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0F0F0F]">
             Handcrafted soaps made for you
           </h1>
-          <p className="text-xs sm:text-sm text-[#6B6B6B] mt-2.5 sm:mt-3">
-            Pure, artisanal cold-process soaps designed for everyday radiance, moisture, and gentle care.
-          </p>
         </div>
 
         {/* Search & Filter Toolbar */}
-        <div className="bg-[#FAFAFA] p-3.5 sm:p-6 rounded-xl border border-[rgba(15,15,15,0.06)] mb-8 flex flex-col gap-4 sm:gap-5 shadow-xs">
+        <div className="bg-[#FAFAFA] p-4 sm:p-6 rounded-xl border border-[rgba(15,15,15,0.08)] mb-10 flex flex-col gap-4 sm:gap-5 shadow-xs">
           
           {/* Top Bar: Search Input & Dropdowns */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-center">
             
             {/* Search Input */}
             <div className="md:col-span-6 relative">
-              <Search className="w-5 h-5 text-[#A9A5A5] absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-[#888888] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
-                placeholder="Search by name, benefits, ingredients..."
+                placeholder="Search by name, benefits..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white text-base sm:text-sm text-[#0F0F0F] pl-10 pr-4 py-3 min-h-[44px] rounded-md border border-[rgba(15,15,15,0.1)] focus:outline-none focus:border-[#020101] transition-colors placeholder:text-[#A9A5A5]"
+                className="w-full bg-white text-sm sm:text-base text-[#0F0F0F] pl-10 pr-4 py-3 min-h-[44px] rounded-md border border-[rgba(15,15,15,0.12)] focus:outline-none focus:border-[#020101] transition-colors placeholder:text-[#888888]"
               />
             </div>
 
             {/* Price Range Filter */}
             <div className="md:col-span-3 relative">
-              <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#6B6B6B] hidden sm:inline" />
-                <select
-                  value={priceFilter}
-                  onChange={(e) => setPriceFilter(e.target.value)}
-                  className="w-full bg-white text-base sm:text-sm text-[#0F0F0F] px-3.5 py-3 min-h-[44px] rounded-md border border-[rgba(15,15,15,0.1)] focus:outline-none focus:border-[#020101] cursor-pointer"
-                >
-                  <option value="All">Price Range: All</option>
-                  <option value="under-350">Under ₹350</option>
-                  <option value="350-400">₹350 - ₹400</option>
-                  <option value="above-400">Above ₹400</option>
-                </select>
-              </div>
+              <SlidersHorizontal className="w-4 h-4 text-[#888888] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <select
+                value={priceFilter}
+                onChange={(e) => setPriceFilter(e.target.value)}
+                className="w-full bg-white text-sm sm:text-base text-[#0F0F0F] pl-10 pr-9 py-3 min-h-[44px] rounded-md border border-[rgba(15,15,15,0.12)] focus:outline-none focus:border-[#020101] appearance-none cursor-pointer"
+              >
+                <option value="All">Price Range</option>
+                <option value="under-350">Under ₹350</option>
+                <option value="350-400">₹350 - ₹400</option>
+                <option value="above-400">Above ₹400</option>
+              </select>
+              <ChevronDown className="w-4 h-4 text-[#888888] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
 
             {/* Sort Selector */}
             <div className="md:col-span-3 relative">
-              <div className="flex items-center gap-2">
-                <ArrowUpDown className="w-4 h-4 text-[#6B6B6B] hidden sm:inline" />
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full bg-white text-base sm:text-sm text-[#0F0F0F] px-3.5 py-3 min-h-[44px] rounded-md border border-[rgba(15,15,15,0.1)] focus:outline-none focus:border-[#020101] cursor-pointer"
-                >
-                  <option value="newest">Sort by: Newest</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                </select>
-              </div>
+              <ArrowUpDown className="w-4 h-4 text-[#888888] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="w-full bg-white text-sm sm:text-base text-[#0F0F0F] pl-10 pr-9 py-3 min-h-[44px] rounded-md border border-[rgba(15,15,15,0.12)] focus:outline-none focus:border-[#020101] appearance-none cursor-pointer"
+              >
+                <option value="newest">Sort by: Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+              </select>
+              <ChevronDown className="w-4 h-4 text-[#888888] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
 
           </div>
 
           {/* Bottom Bar: Tag Pills & Counter */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-[rgba(15,15,15,0.06)]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-[rgba(15,15,15,0.08)]">
             
             {/* Filter Pills with Horizontal Swipe on Mobile */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1.5 sm:pb-0 scrollbar-none max-w-full">
+            <div className="flex items-center gap-2.5 overflow-x-auto pb-1.5 sm:pb-0 scrollbar-none max-w-full">
               {tags.map((tag) => {
                 const isActive = selectedTag === tag;
                 return (
                   <button
                     key={tag}
-                    onClick={() => setSelectedTag(tag)}
-                    className={`text-xs font-medium px-4 py-2.5 min-h-[40px] rounded-md transition-all shrink-0 active:scale-95 ${
+                    onClick={() => setSelectedTag(isActive && tag !== "All" ? "All" : tag)}
+                    className={`text-xs sm:text-sm font-medium px-4 py-2 min-h-[38px] rounded-md transition-all shrink-0 active:scale-95 flex items-center gap-2 cursor-pointer ${
                       isActive
-                        ? "bg-[#020101] text-white shadow-sm font-semibold"
-                        : "bg-white text-[#0F0F0F] border border-[rgba(15,15,15,0.1)] hover:bg-[#FAF8F5]"
+                        ? "bg-[#181818] text-white shadow-xs font-semibold"
+                        : "bg-white text-[#0F0F0F] border border-[rgba(15,15,15,0.12)] hover:bg-[#FAF8F5]"
                     }`}
                   >
-                    {tag}
+                    <span>{tag}</span>
+                    {isActive && tag !== "All" && (
+                      <span className="text-white/70 hover:text-white text-xs font-bold leading-none">✕</span>
+                    )}
                   </button>
                 );
               })}
             </div>
 
             {/* Product Counter */}
-            <span className="text-xs font-semibold text-[#6B6B6B] shrink-0">
+            <span className="text-xs sm:text-sm font-medium text-[#6B6B6B] shrink-0">
               {filteredProducts.length} products
             </span>
           </div>
@@ -160,7 +156,7 @@ export default function ShopPage() {
           </div>
         ) : (
           <div className="text-center py-20 bg-[#FAFAFA] rounded-xl border border-dashed border-gray-200">
-            <h3 className="font-serif text-xl font-semibold text-[#0F0F0F]">
+            <h3 className="font-serif text-xl font-bold text-[#0F0F0F]">
               No soaps found matching your search.
             </h3>
             <p className="text-sm text-[#6B6B6B] mt-2">
@@ -172,7 +168,7 @@ export default function ShopPage() {
                 setSelectedTag("All");
                 setPriceFilter("All");
               }}
-              className="mt-5 text-xs font-semibold uppercase tracking-wider bg-[#020101] text-white px-6 py-2.5 rounded-md hover:bg-[#CB8C00] transition-colors"
+              className="mt-5 text-xs font-semibold uppercase tracking-wider bg-[#020101] text-white px-6 py-2.5 rounded-md hover:bg-[#CB8C00] transition-colors cursor-pointer"
             >
               Reset Filters
             </button>

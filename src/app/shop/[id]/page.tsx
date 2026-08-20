@@ -87,7 +87,7 @@ export default function ProductDetailPage() {
   };
 
   const handleQuantityChange = (delta: number) => {
-    setQuantity((prev) => Math.max(1, prev + delta));
+    setQuantity((prev) => Math.max(3, prev + delta));
   };
 
   // Recommended products (excluding current)
@@ -188,54 +188,63 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
-            {/* Specs Table */}
-            <div className="border-y border-[rgba(15,15,15,0.08)] py-4 flex flex-col gap-3 text-sm">
-              <div className="flex justify-between items-center py-1">
-                <span className="text-[#6B6B6B] font-medium">Skin focus</span>
+            {/* Specs & Description with Centered Divider Lines Matching UI Design */}
+            <div className="border-t border-gray-200 text-sm">
+              {/* Row 1: Skin focus */}
+              <div className="py-3.5 flex justify-between items-center border-b border-gray-200">
+                <span className="text-[#6B6B6B] font-normal">Skin focus</span>
                 <span className="text-[#0F0F0F] font-semibold text-right">
                   {product.skinFocus}
                 </span>
               </div>
-              <div className="flex justify-between items-center py-1 border-t border-[rgba(15,15,15,0.04)]">
-                <span className="text-[#6B6B6B] font-medium">Weight</span>
+
+              {/* Row 2: Weight */}
+              <div className="py-3.5 flex justify-between items-center border-b border-gray-200">
+                <span className="text-[#6B6B6B] font-normal">Weight</span>
                 <span className="text-[#0F0F0F] font-semibold">
                   {product.weight}
                 </span>
               </div>
-            </div>
 
-            {/* Description */}
-            <div className="flex flex-col gap-2">
-              <span className="text-xs uppercase tracking-widest text-[#6B6B6B] font-semibold">
-                Description
-              </span>
-              <p className="text-sm text-[#6B6B6B] leading-relaxed">
-                {product.description}
-              </p>
+              {/* Row 3: Description */}
+              <div className="py-4 flex flex-col gap-2 border-b border-gray-200">
+                <span className="text-xs uppercase tracking-wider text-[#6B6B6B] font-semibold">
+                  Description
+                </span>
+                <p className="text-sm text-[#555555] leading-relaxed">
+                  {product.description}
+                </p>
+              </div>
             </div>
 
             {/* Notice Callout Banner */}
-            <div className="bg-[#FAF8F5] border border-[rgba(15,15,15,0.08)] p-3.5 rounded-md text-center text-xs font-semibold text-[#0F0F0F] tracking-wide">
+            <div className="bg-[#FAF8F5] border border-gray-200/80 py-3 px-4 rounded-md text-center text-xs font-semibold text-[#0F0F0F] tracking-wide">
               Minimum 3 soaps per enquiry
             </div>
 
             {/* Quantity Stepper & Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4 pt-2">
-              {/* Stepper */}
-              <div className="flex items-center justify-between border border-[rgba(15,15,15,0.15)] rounded-md px-4 py-3 min-h-[48px] sm:w-36 bg-white shadow-xs">
+            <div className="flex flex-row items-stretch gap-3 pt-2">
+              {/* Stepper with Min 3 constraint */}
+              <div className="flex items-center justify-between border border-[rgba(15,15,15,0.15)] rounded-md px-2.5 sm:px-3 w-28 sm:w-36 h-12 bg-white shadow-2xs shrink-0">
                 <button
                   onClick={() => handleQuantityChange(-1)}
-                  className="text-[#0F0F0F] hover:text-[#CB8C00] active:scale-90 p-2 min-w-[36px] min-h-[36px] flex items-center justify-center"
+                  disabled={quantity <= 3}
+                  className={`w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-sm transition-all ${
+                    quantity <= 3
+                      ? "text-gray-300 cursor-not-allowed"
+                      : "text-[#0F0F0F] hover:text-[#CB8C00] hover:bg-gray-50 active:scale-90 cursor-pointer"
+                  }`}
                   aria-label="Decrease quantity"
+                  title={quantity <= 3 ? "Minimum quantity is 3" : "Decrease quantity"}
                 >
                   <Minus className="w-4 h-4" />
                 </button>
-                <span className="font-bold text-base text-[#0F0F0F] px-3">
+                <span className="font-bold text-sm sm:text-base text-[#0F0F0F] px-1 sm:px-2 select-none text-center">
                   {quantity}
                 </span>
                 <button
                   onClick={() => handleQuantityChange(1)}
-                  className="text-[#0F0F0F] hover:text-[#CB8C00] active:scale-90 p-2 min-w-[36px] min-h-[36px] flex items-center justify-center"
+                  className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-sm text-[#0F0F0F] hover:text-[#CB8C00] hover:bg-gray-50 active:scale-90 cursor-pointer"
                   aria-label="Increase quantity"
                 >
                   <Plus className="w-4 h-4" />
@@ -248,7 +257,7 @@ export default function ProductDetailPage() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => sendAutomatedEnquiry(product, quantity)}
-                className="flex-1 bg-[#020101] hover:bg-[#25D366] active:bg-[#20b858] text-white text-xs font-semibold uppercase tracking-wider min-h-[48px] py-3.5 rounded-md flex items-center justify-center gap-2 transition-colors shadow-md text-center"
+                className="flex-1 h-12 bg-[#020101] hover:bg-[#25D366] active:bg-[#20b858] text-white text-xs font-semibold uppercase tracking-wider rounded-md flex items-center justify-center gap-2 transition-colors shadow-sm text-center cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 shrink-0" />
                 <span>Enquire on WhatsApp</span>
@@ -258,15 +267,16 @@ export default function ProductDetailPage() {
             {/* Add to Wishlist Button */}
             <button
               onClick={handleWishlistToggle}
-              className={`w-full text-xs font-semibold uppercase tracking-wider min-h-[48px] py-3.5 rounded-md flex items-center justify-center gap-2 border transition-all active:scale-[0.99] ${wishlisted
+              className={`w-full h-12 text-xs font-semibold uppercase tracking-wider rounded-md flex items-center justify-center gap-2 border transition-all active:scale-[0.99] cursor-pointer ${
+                wishlisted
                   ? "bg-[#FAFAFA] border-[#020101] text-[#020101]"
                   : "bg-white border-[#0F0F0F]/20 hover:border-[#0F0F0F] text-[#0F0F0F]"
-                }`}
+              }`}
             >
               {wishlisted ? (
                 <>
                   <Check className="w-4 h-4 text-[#CB8C00] shrink-0" />
-                  <span>In Your Wishlist (Click to Remove)</span>
+                  <span>Added to Wishlist</span>
                 </>
               ) : (
                 <>

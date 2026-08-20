@@ -15,6 +15,15 @@ export const metadata: Metadata = {
   title: "Skincare By Kumar | Pure Ingredients. Beautifully Crafted.",
   description:
     "Carefully selected handcrafted soaps from an established manufacturer with 10+ years of market experience.",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", type: "image/png" },
+    ],
+    shortcut: "/icon.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -37,6 +46,11 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${josefin.variable} scroll-smooth antialiased`}
     >
+      <head>
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="shortcut icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
       <body className="min-h-screen flex flex-col bg-white text-[#0F0F0F] selection:bg-[#CB8C00] selection:text-white">
         <WishlistProvider>
           <Header />

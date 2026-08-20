@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, div, .font-
 
 /* Smooth Interactive Elements & Touch latency removal */
 a, button, input, select, textarea {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
   touch-action: manipulation;
 }
 
@@ -91,7 +91,7 @@ a, button, input, select, textarea {
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -102,7 +102,7 @@ a, button, input, select, textarea {
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-16px);
+    transform: translateY(-12px);
   }
   to {
     opacity: 1;
@@ -113,7 +113,7 @@ a, button, input, select, textarea {
 @keyframes scaleUp {
   from {
     opacity: 0;
-    transform: scale(0.96);
+    transform: scale(0.98);
   }
   to {
     opacity: 1;
@@ -126,16 +126,16 @@ a, button, input, select, textarea {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
 }
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(203, 140, 0, 0.2);
+    box-shadow: 0 0 0 0 rgba(203, 140, 0, 0.15);
   }
   50% {
-    box-shadow: 0 0 20px 4px rgba(203, 140, 0, 0.35);
+    box-shadow: 0 0 16px 2px rgba(203, 140, 0, 0.25);
   }
 }
 
@@ -144,39 +144,40 @@ a, button, input, select, textarea {
   100% { transform: translateX(-50%); }
 }
 
-/* Animation Utility Classes */
+/* Animation Utility Classes - Clean, crisp luxury timings */
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-slide-up {
-  animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-hero-slide-up {
-  animation: slideUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-slide-down {
-  animation: slideDown 0.5s ease-out forwards;
+  animation: slideDown 0.35s ease-out forwards;
 }
 
 .animate-scale-up {
-  animation: scaleUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: scaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-float {
-  animation: floatGentle 4s ease-in-out infinite;
+  animation: floatGentle 3.5s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
-  animation: pulseGlow 3s ease-in-out infinite;
+  animation: pulseGlow 2.5s ease-in-out infinite;
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 60s linear infinite;
+  animation: marquee 50s linear infinite;
+  will-change: transform;
 }
 
 @media (hover: hover) {
@@ -185,14 +186,15 @@ a, button, input, select, textarea {
   }
 }
 
-/* Hover Lift Effect scoped to desktop cursor pointers */
+/* Hover Lift Effect - Smooth, subtle luxury lift without cartoony bounce */
 .hover-lift {
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
 }
 @media (hover: hover) {
   .hover-lift:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.08);
   }
 }
 

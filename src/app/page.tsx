@@ -83,7 +83,7 @@ export default function HomePage() {
     setTimeout(() => {
       setActiveTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
       setIsFading(false);
-    }, 250);
+    }, 150);
   };
 
   const triggerPrev = () => {
@@ -91,107 +91,48 @@ export default function HomePage() {
     setTimeout(() => {
       setActiveTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
       setIsFading(false);
-    }, 250);
+    }, 150);
   };
 
   useEffect(() => {
     const timer = setInterval(() => {
       triggerNext();
-    }, 4500);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, [activeTestimonial]);
+
+  // Ribbon highlights rotating cycle on mobile
+  const ribbonHighlights = [
+    "10+ Years Of Manufacturing Trust",
+    "No Complicated Chemicals",
+    "Never Tested on Animals",
+  ];
+  const [activeRibbonIndex, setActiveRibbonIndex] = useState(0);
+  const [isRibbonFading, setIsRibbonFading] = useState(false);
+
+  useEffect(() => {
+    const ribbonTimer = setInterval(() => {
+      setIsRibbonFading(true);
+      setTimeout(() => {
+        setActiveRibbonIndex((prev) => (prev + 1) % ribbonHighlights.length);
+        setIsRibbonFading(false);
+      }, 150);
+    }, 3500);
+
+    return () => clearInterval(ribbonTimer);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-[#0F0F0F]">
 
       {/* HERO SECTION */}
-      <section className="relative bg-white pt-10 pb-12 lg:pt-14 lg:pb-16 overflow-hidden">
+      <section className="relative bg-white pt-8 pb-12 lg:pt-12 lg:pb-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[460px] lg:min-h-[520px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[480px] lg:min-h-[540px]">
 
-            {/* Left Content Column */}
-            <div className="lg:col-span-6 flex flex-col gap-6 py-4 sm:py-8 animate-hero-slide-up">
-
-              {/* Main Heading */}
-              <div className="flex flex-col gap-1">
-                <h1 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0F0F0F] leading-[1.12]">
-                  Pure Ingredients. <br />
-                  <span>Beautifully Crafted.</span>
-                </h1>
-              </div>
-
-              {/* Subtitle */}
-              <p className="text-sm sm:text-base text-[#444444] leading-relaxed max-w-md">
-                Carefully selected handcrafted soaps from an established manufacturer, chosen for everyday skin care.
-              </p>
-
-              {/* 4 Circular Outline Icons Row */}
-              <div className="grid grid-cols-4 gap-1.5 sm:gap-3 max-w-md py-1">
-
-                {/* 1. Natural Ingredients */}
-                <div className="flex flex-col items-center text-center gap-1.5 group">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
-                    <Leaf className="w-4 h-4" />
-                  </div>
-                  <span className="text-[10px] sm:text-[11px] font-medium text-[#0F0F0F] leading-tight">
-                    Natural <br /> Ingredients
-                  </span>
-                </div>
-
-                {/* 2. Gentle On Skin */}
-                <div className="flex flex-col items-center text-center gap-1.5 group">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
-                    <Droplets className="w-4 h-4" />
-                  </div>
-                  <span className="text-[10px] sm:text-[11px] font-medium text-[#0F0F0F] leading-tight">
-                    Gentle On <br /> Skin
-                  </span>
-                </div>
-
-                {/* 3. Eco Friendly */}
-                <div className="flex flex-col items-center text-center gap-1.5 group">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
-                    <FlaskConical className="w-4 h-4" />
-                  </div>
-                  <span className="text-[10px] sm:text-[11px] font-medium text-[#0F0F0F] leading-tight">
-                    Eco <br /> Friendly
-                  </span>
-                </div>
-
-                {/* 4. Handmade With Care */}
-                <div className="flex flex-col items-center text-center gap-1.5 group">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#0F0F0F]/25 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
-                    <HeartHandshake className="w-4 h-4" />
-                  </div>
-                  <span className="text-[10px] sm:text-[11px] font-medium text-[#0F0F0F] leading-tight">
-                    Handmade <br /> With Care
-                  </span>
-                </div>
-
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
-                <Link
-                  href="/shop"
-                  className="bg-[#1E1E1E] hover:bg-[#25D366] active:bg-[#20b858] text-white text-xs font-semibold uppercase tracking-widest min-h-[44px] px-8 py-3.5 rounded-md transition-all text-center flex items-center justify-center gap-2 group"
-                >
-                  <span>EXPLORE SOAPS</span>
-                </Link>
-
-                <Link
-                  href="/our-story"
-                  className="bg-white border border-[#1E1E1E] text-[#1E1E1E] hover:bg-[#1E1E1E] hover:text-white active:bg-gray-100 text-xs font-semibold uppercase tracking-widest min-h-[44px] px-8 py-3.5 rounded-md transition-all text-center flex items-center justify-center"
-                >
-                  DISCOVER OUR STORY
-                </Link>
-              </div>
-
-            </div>
-
-            {/* Mobile & Tablet Right Hero Image (Touches Right Side Corner) */}
-            <div className="lg:hidden relative w-[calc(100%+1rem)] sm:w-[calc(100%+1.5rem)] -mr-4 sm:-mr-6 aspect-[4/3] mt-4 overflow-hidden">
+            {/* Mobile Hero Image (Flush to right corner with no right gap) */}
+            <div className="lg:hidden relative w-[calc(100%+1rem)] sm:w-[calc(100%+1.5rem)] -mr-4 sm:-mr-6 ml-auto h-52 sm:h-64 my-1 overflow-hidden">
               <Image
                 src="/hero-soap.png"
                 alt="Pure Ingredients. Beautifully Crafted."
@@ -201,34 +142,126 @@ export default function HomePage() {
               />
             </div>
 
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 xl:col-span-7 flex flex-col gap-6 py-2 sm:py-6 animate-hero-slide-up z-10 text-left items-start">
+
+              {/* Main Heading */}
+              <div className="flex flex-col gap-1 text-left">
+                <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0F0F0F] leading-[1.12] text-left">
+                  Pure Ingredients. <br />
+                  <span>Beautifully Crafted.</span>
+                </h1>
+              </div>
+
+              {/* Subtitle (Consistent Lead Paragraph Scale) */}
+              <p className="text-base sm:text-lg text-[#444444] leading-relaxed max-w-xl text-left">
+                Carefully selected handcrafted soaps from an established manufacturer, chosen for everyday skin care.
+              </p>
+
+              {/* 4 Circular Outline Icons: 2x2 Grid on Mobile, 4 Columns on Desktop */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-5 gap-x-4 sm:gap-4 w-full max-w-lg py-2">
+
+                {/* 1. Natural Ingredients */}
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[#0F0F0F]/20 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
+                    <Leaf className="w-5 h-5" />
+                  </div>
+                  <span className="text-xs sm:text-xs md:text-sm font-medium text-[#0F0F0F] whitespace-nowrap">
+                    Natural Ingredients
+                  </span>
+                </div>
+
+                {/* 2. Suitable For All */}
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[#0F0F0F]/20 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
+                    <Droplets className="w-5 h-5" />
+                  </div>
+                  <span className="text-xs sm:text-xs md:text-sm font-medium text-[#0F0F0F] whitespace-nowrap">
+                    Suitable For All
+                  </span>
+                </div>
+
+                {/* 3. Hand Crafted */}
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[#0F0F0F]/20 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
+                    <FlaskConical className="w-5 h-5" />
+                  </div>
+                  <span className="text-xs sm:text-xs md:text-sm font-medium text-[#0F0F0F] whitespace-nowrap">
+                    Hand Crafted
+                  </span>
+                </div>
+
+                {/* 4. Cruelty Free */}
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[#0F0F0F]/20 flex items-center justify-center text-[#0F0F0F] bg-white group-hover:bg-[#020101] group-hover:text-white transition-all shrink-0">
+                    <HeartHandshake className="w-5 h-5" />
+                  </div>
+                  <span className="text-xs sm:text-xs md:text-sm font-medium text-[#0F0F0F] whitespace-nowrap">
+                    Cruelty Free
+                  </span>
+                </div>
+
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
+                <Link
+                  href="/shop"
+                  className="bg-[#181818] hover:bg-[#333333] active:bg-[#000000] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider min-h-[46px] px-8 py-3.5 rounded-md transition-all text-center flex items-center justify-center gap-2 group"
+                >
+                  <span>SEE ALL SOAPS</span>
+                </Link>
+
+                <Link
+                  href="/our-story"
+                  className="bg-white border border-gray-300 text-[#181818] hover:bg-[#181818] hover:text-white active:bg-gray-100 text-xs sm:text-sm font-semibold uppercase tracking-wider min-h-[46px] px-8 py-3.5 rounded-md transition-all text-center flex items-center justify-center"
+                >
+                  DISCOVER OUR STORY
+                </Link>
+              </div>
+
+            </div>
+
           </div>
         </div>
 
-        {/* Desktop Full-Bleed Right Hero Image (Touches Top-Right, Bottom-Right & Right Edge) */}
-        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-1/2 h-full pointer-events-none z-0 overflow-hidden">
+        {/* Desktop Hero Image (Kept in perfect position as requested) */}
+        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[55%] xl:w-[53%] 2xl:w-[50%] h-full pointer-events-none z-0 overflow-hidden">
           <Image
             src="/hero-soap.png"
             alt="Pure Ingredients. Beautifully Crafted."
             fill
             priority
-            className="object-cover object-right"
+            className="object-cover object-right-bottom"
           />
         </div>
       </section>
 
-      {/* HIGHLIGHTS RIBBON STRIP - MATCHING MOCKUP */}
-      <section className="bg-white border-t border-b border-gray-200 py-4">
+      {/* HIGHLIGHTS RIBBON STRIP - DESKTOP 3-COLUMNS & MOBILE CLEAN ANIMATED SINGLE SENTENCE */}
+      <section className="bg-white border-t border-b border-gray-200 py-3.5 sm:py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 text-center text-xs sm:text-sm font-semibold text-[#0F0F0F]">
-            <div className="py-2 px-4 flex items-center justify-center gap-2">
-              <span>10+ Years Of Manufacturer Trust</span>
+          {/* Desktop View: 3 items with dividers */}
+          <div className="hidden md:grid md:grid-cols-3 md:divide-x divide-gray-200 text-center text-base sm:text-lg font-medium text-[#111111] tracking-wide">
+            <div className="py-2.5 px-4 flex items-center justify-center gap-2">
+              <span>10+ Years Of Manufacturing Trust</span>
             </div>
-            <div className="py-2 px-4 flex items-center justify-center gap-2">
-              <span>No Complicated Checkout</span>
+            <div className="py-2.5 px-4 flex items-center justify-center gap-2">
+              <span>No Complicated Chemicals</span>
             </div>
-            <div className="py-2 px-4 flex items-center justify-center gap-2">
-              <span>Direct WhatsApp Enquiry</span>
+            <div className="py-2.5 px-4 flex items-center justify-center gap-2">
+              <span>Never Tested on Animals</span>
             </div>
+          </div>
+
+          {/* Mobile View: Single sentence with premium fade-and-slide animation */}
+          <div className="md:hidden flex items-center justify-center py-1 min-h-[36px] overflow-hidden">
+            <span
+              className={`text-sm sm:text-base font-medium text-[#111111] tracking-wide text-center transition-all duration-200 ease-out transform ${
+                isRibbonFading ? "opacity-0 -translate-y-1.5 scale-[0.98]" : "opacity-100 translate-y-0 scale-100"
+              }`}
+            >
+              {ribbonHighlights[activeRibbonIndex]}
+            </span>
           </div>
         </div>
       </section>
@@ -237,9 +270,9 @@ export default function HomePage() {
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Full-width Heading */}
-          <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#0F0F0F] text-center mb-14">
-            My promise is simple - <span className="italic">quality you can trust.</span>
+          {/* Full-width Heading (Normalized heading size matching other section headings) */}
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F] text-center mb-12">
+            My promise is simple - <span className="italic font-normal">quality you can trust.</span>
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -259,43 +292,33 @@ export default function HomePage() {
             {/* Right Text & Promises */}
             <div className="lg:col-span-8 flex flex-col gap-6">
 
-              <p className="text-sm sm:text-base text-[#6B6B6B] leading-relaxed">
+              <p className="text-base sm:text-lg text-[#444444] leading-relaxed">
                 For more than 10 years, I have explored the world of skincare, constantly searching for products that truly stand out in quality and effectiveness. I carefully select the products I offer based on quality, ingredients, craftsmanship and real-world experience.
               </p>
 
-              <blockquote className="font-serif italic text-xl sm:text-2xl text-[#0F0F0F] pl-4 border-l-2 border-[#0F0F0F] py-1">
+              <blockquote className="font-serif italic text-xl sm:text-2xl text-[#0F0F0F] pl-4 border-l-2 border-[#0F0F0F] py-1 font-semibold">
                 &ldquo;I explore the best. I recommend the best. I sell the best.&rdquo;
               </blockquote>
 
               {/* 4 Points Grid */}
               <div className="grid grid-cols-2 gap-4 py-3">
                 <div className="p-3 border-t border-[rgba(15,15,15,0.1)]">
-                  <div className="text-lg font-bold text-[#0F0F0F]">10+ Years</div>
-                  <div className="text-xs text-[#6B6B6B]">Industry Experience</div>
+                  <div className="text-base sm:text-lg font-bold text-[#0F0F0F]">10+ Years</div>
+                  <div className="text-xs sm:text-sm text-[#6B6B6B]">Carefully Selected</div>
                 </div>
 
                 <div className="p-3 border-t border-[rgba(15,15,15,0.1)]">
-                  <div className="text-lg font-bold text-[#0F0F0F]">Expert Exploration</div>
-                  <div className="text-xs text-[#6B6B6B]">Real Ingredients</div>
-                </div>
-
-                <div className="p-3 border-t border-[rgba(15,15,15,0.1)]">
-                  <div className="text-lg font-bold text-[#0F0F0F]">Carefully Selected</div>
-                  <div className="text-xs text-[#6B6B6B]">Handcrafted Soaps</div>
-                </div>
-
-                <div className="p-3 border-t border-[rgba(15,15,15,0.1)]">
-                  <div className="text-lg font-bold text-[#0F0F0F]">Quality Assured</div>
-                  <div className="text-xs text-[#6B6B6B]">Proven Sourcing</div>
+                  <div className="text-base sm:text-lg font-bold text-[#0F0F0F]">Expert Sourced</div>
+                  <div className="text-xs sm:text-sm text-[#6B6B6B]">Quality Assured</div>
                 </div>
               </div>
 
               <div>
                 <Link
                   href="/our-story"
-                  className="inline-block bg-[#020101] hover:bg-[#CB8C00] text-white text-xs font-semibold uppercase tracking-widest px-8 py-3.5 rounded-md transition-colors"
+                  className="inline-block bg-[#181818] hover:bg-[#CB8C00] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-8 py-3.5 rounded-md transition-colors"
                 >
-                  Read Our Story
+                  READ OUR STORY
                 </Link>
               </div>
             </div>
@@ -307,18 +330,18 @@ export default function HomePage() {
       {/* A CURATED SELECTION (FEATURED PRODUCTS) */}
       <section className="py-20 bg-[#FAFAFA]">
         <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 text-left items-start">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#CB8C00] font-semibold">
                 Artisanal Collection
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#0F0F0F] mt-1">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F] mt-1">
                 A Curated Selection
               </h2>
             </div>
             <Link
               href="/shop"
-              className="text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] flex items-center gap-1.5 transition-colors"
+              className="hidden sm:flex text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] items-center gap-1.5 transition-colors whitespace-nowrap shrink-0"
             >
               <span>View all</span>
               <ArrowRight className="w-4 h-4" />
@@ -330,6 +353,17 @@ export default function HomePage() {
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
+
+          {/* Centered View All button for mobile view only */}
+          <div className="flex justify-center mt-10 sm:hidden">
+            <Link
+              href="/shop"
+              className="text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] flex items-center gap-1.5 transition-colors whitespace-nowrap"
+            >
+              <span>View all</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </ScrollReveal>
       </section>
 
@@ -337,12 +371,9 @@ export default function HomePage() {
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
         <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-14">
-            <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#0F0F0F]">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F]">
               Discover Your Everyday Care
             </h2>
-            <p className="text-sm text-[#6B6B6B] mt-2">
-              Explore specialized cold-processed soap ranges formulated for specific skin preferences.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -354,7 +385,7 @@ export default function HomePage() {
                 alt="Face & Glow Soaps"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
               <div className="relative z-10 text-white flex flex-col gap-2">
@@ -377,7 +408,7 @@ export default function HomePage() {
                 alt="Fresh & Clean Soaps"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
               <div className="relative z-10 text-white flex flex-col gap-2">
@@ -400,7 +431,7 @@ export default function HomePage() {
                 alt="Kid's Care Soaps"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
               <div className="relative z-10 text-white flex flex-col gap-2">
@@ -423,11 +454,11 @@ export default function HomePage() {
       {/* SOURCING & ORDERING PROCESS */}
       <section className="py-20 bg-[#F9F8F6]">
         <ScrollReveal className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#111111] tracking-tight leading-snug">
-              Good soaps. Clear sourcing. A simpler way to choose.
+          <div className="text-center max-w-5xl mx-auto mb-16 px-4">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111111] tracking-tight leading-snug sm:whitespace-nowrap">
+              Good soaps. Clear sourcing. <br className="sm:hidden" /> A simpler way to choose.
             </h2>
-            <p className="text-sm sm:text-base text-[#666666] mt-4 font-normal">
+            <p className="text-base sm:text-lg text-[#666666] mt-4 font-normal">
               Browse · Build Your Favourites · Enquire directly on WhatsApp.
             </p>
           </div>
@@ -436,7 +467,7 @@ export default function HomePage() {
             <div className="py-6 md:py-0 md:pr-10 lg:pr-12 flex flex-col">
               <span className="text-2xl font-bold text-[#111111] mb-2">01</span>
               <h3 className="text-base font-semibold text-[#111111] mb-2">Established sourcing</h3>
-              <p className="text-sm text-[#555555] leading-relaxed">
+              <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
                 Carefully selected soaps sourced from an established manufacturer with more than 10 years of market experience.
               </p>
             </div>
@@ -444,7 +475,7 @@ export default function HomePage() {
             <div className="py-6 md:py-0 md:px-10 lg:px-12 flex flex-col">
               <span className="text-2xl font-bold text-[#111111] mb-2">02</span>
               <h3 className="text-base font-semibold text-[#111111] mb-2">Curated selection</h3>
-              <p className="text-sm text-[#555555] leading-relaxed">
+              <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
                 A focused range of soaps chosen for different everyday skincare preferences and routines.
               </p>
             </div>
@@ -452,7 +483,7 @@ export default function HomePage() {
             <div className="py-6 md:py-0 md:pl-10 lg:pl-12 flex flex-col">
               <span className="text-2xl font-bold text-[#111111] mb-2">03</span>
               <h3 className="text-base font-semibold text-[#111111] mb-2">Simple enquiries</h3>
-              <p className="text-sm text-[#555555] leading-relaxed">
+              <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
                 Save the soaps you like, build your wishlist, and send your selection together through WhatsApp.
               </p>
             </div>
@@ -461,7 +492,7 @@ export default function HomePage() {
           <div className="mt-16 text-center">
             <Link
               href="/our-story"
-              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#111111] border border-gray-300/80 text-xs font-semibold uppercase tracking-wider px-7 py-3 rounded-xs shadow-2xs transition-colors"
+              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#111111] border border-gray-300 text-xs font-semibold uppercase tracking-wider px-7 py-3 rounded-md shadow-2xs transition-colors"
             >
               <span>READ OUR STORY</span>
               <ArrowRight className="w-4 h-4" />
@@ -473,19 +504,19 @@ export default function HomePage() {
       {/* REVIEWS & VIDEO TESTIMONIALS */}
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
         <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#0F0F0F]">
-              See What Our Customers Are Saying
+          <div className="text-center max-w-4xl mx-auto mb-12 px-4">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F] sm:whitespace-nowrap leading-snug">
+              See What Our <br className="sm:hidden" /> Customers Are Saying
             </h2>
           </div>
 
           {/* Featured Quote */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-            <div className="flex items-center justify-between gap-6 sm:gap-12 lg:gap-16">
-              {/* Previous Button */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-12 lg:gap-16">
+              {/* Previous Button (Desktop) */}
               <button
                 onClick={triggerPrev}
-                className="w-11 h-11 rounded-md bg-[#F4F4F5] hover:bg-[#E4E4E7] text-[#18181B] flex items-center justify-center shrink-0 transition-colors cursor-pointer"
+                className="hidden sm:flex w-11 h-11 rounded-md bg-[#F4F4F5] hover:bg-[#E4E4E7] text-[#18181B] items-center justify-center shrink-0 transition-colors cursor-pointer"
                 aria-label="Previous quote"
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -493,15 +524,16 @@ export default function HomePage() {
 
               {/* Quote Content with Smooth Fade Animation */}
               <div
-                className={`flex-1 text-center transition-opacity duration-300 ease-in-out min-h-[160px] flex flex-col items-center justify-center ${isFading ? "opacity-0" : "opacity-100"
-                  }`}
+                className={`flex-1 text-center transition-opacity duration-200 ease-out min-h-[160px] flex flex-col items-center justify-center ${
+                  isFading ? "opacity-0" : "opacity-100"
+                }`}
               >
-                <p className="font-serif italic text-xl sm:text-2xl md:text-3xl lg:text-[28px] text-[#0F0F0F] leading-relaxed max-w-3xl mx-auto mb-6">
+                <p className="font-serif italic text-lg sm:text-xl md:text-2xl lg:text-[28px] text-[#0F0F0F] leading-relaxed max-w-3xl mx-auto mb-6">
                   "{testimonials[activeTestimonial].quote}"
                 </p>
 
                 <div className="flex items-center justify-center gap-2">
-                  <span className="font-semibold text-lg text-[#0F0F0F]">
+                  <span className="font-semibold text-base sm:text-lg text-[#0F0F0F]">
                     {testimonials[activeTestimonial].author}
                   </span>
                   <svg className="w-5 h-5 text-[#0084FF] fill-[#0084FF]" viewBox="0 0 24 24">
@@ -510,20 +542,38 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Next Button */}
+              {/* Next Button (Desktop) */}
               <button
                 onClick={triggerNext}
-                className="w-11 h-11 rounded-md bg-[#F4F4F5] hover:bg-[#E4E4E7] text-[#18181B] flex items-center justify-center shrink-0 transition-colors cursor-pointer"
+                className="hidden sm:flex w-11 h-11 rounded-md bg-[#F4F4F5] hover:bg-[#E4E4E7] text-[#18181B] items-center justify-center shrink-0 transition-colors cursor-pointer"
                 aria-label="Next quote"
               >
                 <ArrowRight className="w-5 h-5" />
               </button>
+
+              {/* Navigation Arrows for Mobile (Centered below the text) */}
+              <div className="flex sm:hidden items-center justify-center gap-4 mt-2">
+                <button
+                  onClick={triggerPrev}
+                  className="w-11 h-11 rounded-md bg-[#F4F4F5] hover:bg-[#E4E4E7] text-[#18181B] flex items-center justify-center transition-colors cursor-pointer"
+                  aria-label="Previous quote"
+                >
+                  <ArrowLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={triggerNext}
+                  className="w-11 h-11 rounded-md bg-[#F4F4F5] hover:bg-[#E4E4E7] text-[#18181B] flex items-center justify-center transition-colors cursor-pointer"
+                  aria-label="Next quote"
+                >
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Video Testimonials Grid */}
           <div className="mt-12">
-            <h3 className="font-serif text-2xl font-semibold text-[#0F0F0F] mb-6 text-center">
+            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F] mb-6 text-center">
               Other Video Testimonials
             </h3>
 
@@ -586,7 +636,7 @@ export default function HomePage() {
       <section id="faq" className="py-20 sm:py-28 bg-white">
         <ScrollReveal className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-bold text-[#111111] tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#111111] tracking-tight">
               Questions, Answered
             </h2>
           </div>
@@ -601,13 +651,13 @@ export default function HomePage() {
                     className="w-full flex items-center justify-between text-left gap-6 cursor-pointer group"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-normal text-lg sm:text-xl md:text-2xl text-[#111111] group-hover:text-neutral-700 transition-colors">
+                    <span className="font-medium text-base sm:text-lg text-[#111111] group-hover:text-neutral-700 transition-colors">
                       {faq.q}
                     </span>
                     {isOpen ? (
-                      <Minus className="w-6 h-6 text-[#111111] shrink-0" />
+                      <Minus className="w-5 h-5 text-[#111111] shrink-0" />
                     ) : (
-                      <Plus className="w-6 h-6 text-[#111111] shrink-0" />
+                      <Plus className="w-5 h-5 text-[#111111] shrink-0" />
                     )}
                   </button>
 

@@ -3,11 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, MessageCircle } from "lucide-react";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#FAFAFA] border-t border-gray-200/60 pt-16 pb-10 text-[#111111]">
+    <footer className="bg-[#FAFAFA] border-t border-gray-200 pt-16 pb-10 text-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 pb-14 items-start">
 
@@ -22,8 +21,8 @@ export const Footer: React.FC = () => {
               />
             </Link>
 
-            <p className="text-sm sm:text-base text-[#666666] leading-relaxed max-w-md">
-              Carefully selected handcrafted soaps, sourced from an established manufacturer with 10+ years of market experience
+            <p className="text-sm sm:text-base text-[#555555] leading-relaxed max-w-md">
+              Carefully selected handcrafted soaps, sourced from an established manufacturer with 10+ years of market experience.
             </p>
 
             {/* Social Icons */}
@@ -33,7 +32,7 @@ export const Footer: React.FC = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:opacity-75 transition-opacity flex items-center justify-center"
+                className="hover:opacity-75 transition-opacity flex items-center justify-center text-[#111111]"
                 aria-label="Instagram"
               >
                 <Image
@@ -82,7 +81,7 @@ export const Footer: React.FC = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#111111] hover:text-[#666666] transition-colors flex items-center justify-center"
+                className="text-[#111111] hover:text-[#555555] transition-colors flex items-center justify-center"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -125,29 +124,29 @@ export const Footer: React.FC = () => {
               </h3>
               <ul className="flex flex-col gap-3 text-sm text-[#555555]">
                 <li>
-                  <Link href="/#faq" className="hover:text-[#111111] transition-colors font-medium">
+                  <Link href="/faq" className="hover:text-[#111111] transition-colors font-medium">
                     FAQ
                   </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#111111] transition-colors font-medium">
+                  <Link href="/shipping-returns" className="hover:text-[#111111] transition-colors font-medium">
                     Shipping &amp; Returns
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#111111] transition-colors font-medium">
+                  <Link href="/terms" className="hover:text-[#111111] transition-colors font-medium">
                     Terms of Service
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#111111] transition-colors font-medium">
+                  <Link href="/privacy" className="hover:text-[#111111] transition-colors font-medium">
                     Privacy Statement
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-[#111111] transition-colors font-medium">
+                  <Link href="/cancellation-return-policy" className="hover:text-[#111111] transition-colors font-medium">
                     Cancellation &amp; Return Policy
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -156,7 +155,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Full-width Copyright Border Line */}
-      <div className="w-full border-t border-gray-200/80 pt-8 pb-2 text-center text-xs text-[#666666]">
+      <div className="w-full border-t border-gray-200 pt-8 pb-2 text-center text-xs text-[#777777]">
         &copy; 2026 SkincarebyKumar. All rights reserved.
       </div>
     </footer>

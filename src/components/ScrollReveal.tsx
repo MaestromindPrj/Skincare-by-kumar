@@ -16,7 +16,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   className = "",
   delay = 0,
   direction = "up",
-  duration = 750,
+  duration = 500,
   once = true,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,8 +35,8 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
         }
       },
       {
-        threshold: 0.15,
-        rootMargin: "0px 0px -40px 0px",
+        threshold: 0.05,
+        rootMargin: "0px 0px -10px 0px",
       }
     );
 
@@ -57,17 +57,17 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
     switch (direction) {
       case "up":
-        return "translateY(36px)";
+        return "translateY(16px)";
       case "down":
-        return "translateY(-36px)";
+        return "translateY(-16px)";
       case "left":
-        return "translateX(36px)";
+        return "translateX(16px)";
       case "right":
-        return "translateX(-36px)";
+        return "translateX(-16px)";
       case "fade":
-        return "scale(0.96)";
+        return "scale(0.98)";
       default:
-        return "translateY(36px)";
+        return "translateY(16px)";
     }
   };
 

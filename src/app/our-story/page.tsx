@@ -22,45 +22,45 @@ export default function OurStoryPage() {
   return (
     <div className="min-h-screen bg-white text-[#0F0F0F]">
 
-      {/* HERO BANNER MATCHING DESIGN SCREENSHOT */}
-      <section className="relative pt-28 pb-24 sm:pt-36 sm:pb-32 lg:pt-40 lg:pb-36 overflow-hidden bg-white text-center">
-        {/* Large Faint Logo Watermark */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-[0.15] pointer-events-none select-none overflow-hidden px-4">
-          <div className="relative w-full max-w-6xl h-80 sm:h-[480px] md:h-[540px]">
+      {/* HERO BANNER */}
+      <section className="relative pt-0 pb-10 sm:pt-2 sm:pb-14 lg:pt-4 lg:pb-14 -mt-2 sm:-mt-4 overflow-hidden bg-white text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
+          
+          {/* Brand Logo at the top (Prominent & Crisp) */}
+          <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 mb-0 -mt-1 sm:-mt-2 shrink-0">
             <Image
               src="/skincarebykumar logo.png"
-              alt="Skincare By Kumar Logo Watermark"
+              alt="Skincare By Kumar Logo"
               fill
               priority
               className="object-contain object-center"
             />
           </div>
-        </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
-          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[#111111] leading-[1.15] text-center w-full">
+          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[#111111] leading-[1.12] text-center w-full">
             10+ Years of Experience.
           </h1>
-          <p className="font-serif text-lg sm:text-3xl md:text-4xl lg:text-5xl font-normal text-[#333333] tracking-tight mt-3 sm:mt-4 text-center w-full">
+
+          <p className="font-serif text-lg sm:text-2xl md:text-3xl lg:text-4xl font-normal text-[#444444] tracking-tight mt-1.5 sm:mt-2.5 text-center w-full">
             A Passion for Better Skincare
           </p>
 
-          {/* 4 Points Horizontal Row */}
-          <div className="mt-10 sm:mt-16 md:mt-20 flex flex-wrap items-center justify-center gap-4 sm:gap-10 lg:gap-14 text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-widest text-[#222222] text-center w-full">
-            <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222] shrink-0" />
+          {/* 4 Points: 2x2 Grid below 630px (Left Aligned), Single Line above 630px */}
+          <div className="mt-5 sm:mt-6 lg:mt-8 grid grid-cols-2 gap-y-3.5 gap-x-4 max-w-sm mx-auto min-[630px]:max-w-none min-[630px]:flex min-[630px]:items-center min-[630px]:justify-center min-[630px]:flex-nowrap min-[630px]:gap-6 md:gap-8 lg:gap-12 text-xs sm:text-xs md:text-sm font-bold uppercase tracking-wider text-[#222222] text-left min-[630px]:text-center w-full min-[630px]:whitespace-nowrap py-1">
+            <div className="flex items-center justify-start min-[630px]:justify-center gap-1.5 sm:gap-2">
+              <Star className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
               <span>10+ Years</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222] shrink-0" />
+            <div className="flex items-center justify-start min-[630px]:justify-center gap-1.5 sm:gap-2">
+              <Compass className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
               <span>Expert Exploration</span>
             </div>
-            <div className="flex items-center gap-2">
-              <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222] shrink-0" />
+            <div className="flex items-center justify-start min-[630px]:justify-center gap-1.5 sm:gap-2">
+              <FileText className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
               <span>Carefully Selected</span>
             </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#222222] shrink-0" />
+            <div className="flex items-center justify-start min-[630px]:justify-center gap-1.5 sm:gap-2">
+              <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
               <span>Quality Assured</span>
             </div>
           </div>
@@ -173,15 +173,15 @@ export default function OurStoryPage() {
             {/* Right Story Text */}
             <div className="lg:col-span-6 flex flex-col gap-6">
 
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0F0F0F]">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F]">
                 Our Story
               </h2>
 
-              <p className="text-sm sm:text-base text-[#6B6B6B] leading-relaxed">
+              <p className="text-base sm:text-lg text-[#444444] leading-relaxed">
                 "For more than 10 years, I have explored the world of skincare, constantly searching for products that truly stand out in quality and effectiveness. Whenever I travel, I take the opportunity to discover new products, meet skincare experts, understand ingredients, and learn from experienced professionals."
               </p>
 
-              <p className="text-sm sm:text-base text-[#6B6B6B] leading-relaxed">
+              <p className="text-base sm:text-lg text-[#444444] leading-relaxed">
                 "This journey has helped me build knowledge, experience, and a strong understanding of what makes a skincare product worth choosing."
               </p>
             </div>
@@ -191,26 +191,26 @@ export default function OurStoryPage() {
       </section>
 
       {/* STATS HIGHLIGHTS BANNER */}
-      <section className="py-16 bg-[#FAF8F5] border-b border-[rgba(15,15,15,0.06)]">
+      <section className="py-4 sm:py-5 bg-[#FAF8F5] border-b border-[rgba(15,15,15,0.06)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-[rgba(15,15,15,0.1)]">
-            <div className="flex flex-col gap-1 p-4">
-              <span className="font-serif text-4xl font-bold text-[#0F0F0F]">10,000+</span>
-              <span className="text-xs text-[#6B6B6B] uppercase tracking-wider font-semibold">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 text-left sm:text-center divide-y sm:divide-y-0 sm:divide-x divide-[rgba(15,15,15,0.1)]">
+            <div className="flex flex-col items-start sm:items-center gap-0 py-1.5 px-3">
+              <span className="font-serif text-2xl sm:text-3xl font-bold text-[#0F0F0F]">10,000+</span>
+              <span className="text-[11px] sm:text-xs text-[#6B6B6B] uppercase tracking-wider font-semibold">
                 Happy Customers
               </span>
             </div>
 
-            <div className="flex flex-col gap-1 p-4">
-              <span className="font-serif text-4xl font-bold text-[#0F0F0F]">10+</span>
-              <span className="text-xs text-[#6B6B6B] uppercase tracking-wider font-semibold">
+            <div className="flex flex-col items-start sm:items-center gap-0 py-1.5 px-3">
+              <span className="font-serif text-2xl sm:text-3xl font-bold text-[#0F0F0F]">10+</span>
+              <span className="text-[11px] sm:text-xs text-[#6B6B6B] uppercase tracking-wider font-semibold">
                 Years of Manufacturer trust
               </span>
             </div>
 
-            <div className="flex flex-col gap-1 p-4">
-              <span className="font-serif text-4xl font-bold text-[#0F0F0F]">100%</span>
-              <span className="text-xs text-[#6B6B6B] uppercase tracking-wider font-semibold">
+            <div className="flex flex-col items-start sm:items-center gap-0 py-1.5 px-3">
+              <span className="font-serif text-2xl sm:text-3xl font-bold text-[#0F0F0F]">100%</span>
+              <span className="text-[11px] sm:text-xs text-[#6B6B6B] uppercase tracking-wider font-semibold">
                 Natural Ingredients
               </span>
             </div>
@@ -225,22 +225,22 @@ export default function OurStoryPage() {
 
             {/* Left Narrative */}
             <div className="lg:col-span-6 flex flex-col gap-6">
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0F0F0F]">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F]">
                 Cold Process, Done Properly
               </h2>
 
-              <p className="text-sm sm:text-base text-[#6B6B6B] leading-relaxed">
+              <p className="text-base sm:text-lg text-[#444444] leading-relaxed">
                 The journey led me to cold-process soap — a traditional method of soap making where carefully selected oils, butters, botanicals, and other ingredients are thoughtfully combined and allowed to transform naturally over time.
               </p>
 
-              <p className="text-sm sm:text-base text-[#6B6B6B] leading-relaxed">
+              <p className="text-base sm:text-lg text-[#444444] leading-relaxed">
                 We pride ourselves on transparency, ethical sourcing, and delivering results you can see and feel.
               </p>
 
               <div>
                 <Link
                   href="/shop"
-                  className="inline-block bg-[#020101] hover:bg-[#CB8C00] text-white text-xs font-semibold uppercase tracking-widest px-8 py-3.5 rounded-md transition-colors"
+                  className="inline-block bg-[#181818] hover:bg-[#CB8C00] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-8 py-3.5 rounded-md transition-colors"
                 >
                   Explore Our Collection
                 </Link>

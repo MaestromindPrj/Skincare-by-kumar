@@ -47,17 +47,18 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
   }, [items, mounted]);
 
-  const addToWishlist = (product: Product, quantity = 1) => {
+  const addToWishlist = (product: Product, quantity = 3) => {
+    const qtyToAdd = Math.max(3, quantity);
     setItems((prev) => {
       const existing = prev.find((item) => item.product.id === product.id);
       if (existing) {
         return prev.map((item) =>
           item.product.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
+            ? { ...item, quantity: item.quantity + qtyToAdd }
             : item
         );
       }
-      return [...prev, { product, quantity }];
+      return [...prev, { product, quantity: qtyToAdd }];
     });
   };
 
@@ -70,9 +71,10 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       removeFromWishlist(productId);
       return;
     }
+    const validatedQty = Math.max(3, quantity);
     setItems((prev) =>
       prev.map((item) =>
-        item.product.id === productId ? { ...item, quantity } : item
+        item.product.id === productId ? { ...item, quantity: validatedQty } : item
       )
     );
   };
@@ -97,7 +99,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     let message = "";
 
     if (singleProduct) {
-      const qty = singleQty || 1;
+      const qty = singleQty || 3;
       const productUrl = `${baseUrl}/shop/${singleProduct.id}`;
       const totalPrice = singleProduct.price * qty;
 
@@ -131,7 +133,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     try {
       if (singleProduct) {
-        const qty = singleQty || 1;
+        const qty = singleQty || 3;
         await fetch("/api/enquire", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
