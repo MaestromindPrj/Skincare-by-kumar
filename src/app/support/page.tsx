@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -22,7 +22,7 @@ import {
 
 type SupportTab = "contact" | "faq" | "shipping" | "returns" | "privacy" | "terms";
 
-export default function SupportPage() {
+function SupportContent() {
   const searchParams = useSearchParams();
   const initialTab = (searchParams?.get("tab") as SupportTab) || "contact";
   const [activeTab, setActiveTab] = useState<SupportTab>("contact");
@@ -459,5 +459,19 @@ export default function SupportPage() {
 
       </div>
     </div>
+  );
+}
+
+export default function SupportPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-white text-[#0F0F0F] py-16 text-center">
+          <p className="text-sm text-[#777777]">Loading Support Page...</p>
+        </div>
+      }
+    >
+      <SupportContent />
+    </Suspense>
   );
 }
