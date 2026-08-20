@@ -18,6 +18,18 @@ export const Header: React.FC = () => {
     setMounted(true);
   }, []);
 
+  // Lock body scroll when mobile drawer is open to prevent background scrolling
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   const totalWishlistItems = items.reduce((acc, item) => acc + item.quantity, 0);
 
   const navLinks = [
@@ -33,7 +45,7 @@ export const Header: React.FC = () => {
         {/* Left: Brand Logo */}
         <div className="flex items-center justify-start">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-14 w-44 sm:h-16 sm:w-60 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative h-12 w-40 sm:h-16 sm:w-60 transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="/logo.png"
                 alt="Skincare By Kumar Logo"
@@ -68,15 +80,17 @@ export const Header: React.FC = () => {
         </nav>
 
         {/* Right: Actions */}
-        <div className="flex items-center gap-3 justify-end ml-auto md:ml-0">
+        <div className="flex items-center gap-2.5 justify-end ml-auto md:ml-0">
+          {/* Desktop & Mobile Wishlist Icon Button */}
           <Link
             href="/wishlist"
-            className="hidden md:flex relative p-2.5 rounded-full text-[#0F0F0F] hover:bg-[#FAFAFA] transition-colors items-center justify-center group"
+            className="relative min-w-[44px] min-h-[44px] p-2.5 rounded-full text-[#0F0F0F] hover:bg-[#FAFAFA] active:bg-gray-100 transition-colors flex items-center justify-center group"
             title="View Wishlist"
+            aria-label="View Wishlist"
           >
             <Heart className="w-5 h-5 transition-transform group-hover:scale-110" />
             {totalWishlistItems > 0 && (
-              <span className="absolute top-1 right-1 bg-[#020101] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+              <span className="absolute top-1 right-1 bg-[#020101] text-white text-[10px] font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center shadow-sm">
                 {totalWishlistItems}
               </span>
             )}
@@ -85,7 +99,7 @@ export const Header: React.FC = () => {
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2.5 rounded-lg text-[#0F0F0F] hover:bg-[#FAFAFA] transition-colors border border-gray-100 flex items-center justify-center"
+            className="md:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-lg text-[#0F0F0F] hover:bg-[#FAFAFA] active:bg-gray-100 transition-colors border border-gray-100 flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -103,7 +117,7 @@ export const Header: React.FC = () => {
           />
 
           {/* Right Side Drawer */}
-          <div className="fixed top-0 right-0 bottom-0 z-[9999] w-80 max-w-[85vw] h-full bg-white border-l border-gray-200 shadow-2xl flex flex-col justify-between p-6 overflow-y-auto animate-in slide-in-from-right duration-300">
+          <div className="fixed top-0 right-0 bottom-0 z-[9999] w-80 max-w-[85vw] h-full bg-white border-l border-gray-200 shadow-2xl flex flex-col justify-between p-6 pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] overflow-y-auto animate-in slide-in-from-right duration-300">
             <div>
               {/* Drawer Header */}
               <div className="flex items-center justify-between pb-6 border-b border-gray-100">
@@ -112,7 +126,7 @@ export const Header: React.FC = () => {
                 </span>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-full hover:bg-gray-100 text-[#0F0F0F] transition-colors"
+                  className="min-w-[44px] min-h-[44px] p-2 rounded-full hover:bg-gray-100 active:bg-gray-200 text-[#0F0F0F] transition-colors flex items-center justify-center"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
@@ -132,9 +146,9 @@ export const Header: React.FC = () => {
                       key={link.href}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`text-base py-3.5 px-4 rounded-xl font-medium transition-all flex items-center justify-between ${isActive
+                      className={`text-base min-h-[48px] py-3.5 px-4 rounded-xl font-medium transition-all flex items-center justify-between ${isActive
                         ? "bg-[#020101] text-white font-semibold shadow-sm"
-                        : "text-[#0F0F0F] hover:bg-gray-100 bg-gray-50 border border-gray-100"
+                        : "text-[#0F0F0F] hover:bg-gray-100 active:bg-gray-200 bg-gray-50 border border-gray-100"
                         }`}
                     >
                       <span className="flex items-center gap-2.5">

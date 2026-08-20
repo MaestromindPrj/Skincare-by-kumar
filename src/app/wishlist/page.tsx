@@ -53,15 +53,15 @@ export default function WishlistPage() {
                   return (
                     <div
                       key={product.id}
-                      className="p-6 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center hover:bg-[#FAF8F5]/50 transition-colors"
+                      className="p-4 sm:p-6 flex flex-col sm:grid sm:grid-cols-12 gap-4 sm:gap-6 items-start sm:items-center hover:bg-[#FAF8F5]/50 transition-colors"
                     >
                       {/* Product Thumbnail & Details */}
-                      <div className="sm:col-span-6 flex items-center gap-4">
-                        <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-[#FAFAFA] shrink-0 border border-gray-200">
+                      <div className="sm:col-span-6 flex items-center gap-3 sm:gap-4 w-full">
+                        <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden bg-[#FAFAFA] shrink-0 border border-gray-200">
                           <SoapPlaceholderImage alt={product.name} src={product.image} className="w-full h-full" />
                         </div>
 
-                        <div className="flex flex-col gap-1">
+                        <div className="flex flex-col gap-0.5 sm:gap-1">
                           <Link
                             href={`/shop/${product.id}`}
                             className="font-serif font-semibold text-base text-[#0F0F0F] hover:text-[#CB8C00] transition-colors leading-snug"
@@ -74,49 +74,53 @@ export default function WishlistPage() {
                         </div>
                       </div>
 
-                      {/* Quantity Stepper */}
-                      <div className="sm:col-span-3 flex items-center justify-center">
-                        <div className="flex items-center border border-[rgba(15,15,15,0.15)] rounded-md px-3 py-1.5 bg-white">
-                          <button
-                            onClick={() => updateQuantity(product.id, quantity - 1)}
-                            className="text-[#0F0F0F] hover:text-[#CB8C00] p-1"
-                            aria-label="Decrease quantity"
-                          >
-                            <Minus className="w-3.5 h-3.5" />
-                          </button>
-                          <span className="font-bold text-sm text-[#0F0F0F] px-3">
-                            {quantity}
-                          </span>
-                          <button
-                            onClick={() => updateQuantity(product.id, quantity + 1)}
-                            className="text-[#0F0F0F] hover:text-[#CB8C00] p-1"
-                            aria-label="Increase quantity"
-                          >
-                            <Plus className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Price & Remove Button */}
-                      <div className="sm:col-span-3 flex items-center justify-between sm:justify-end gap-4">
-                        <div className="flex flex-col items-end">
-                          <span className="font-bold text-base text-[#0F0F0F]">
-                            ₹{itemTotal.toLocaleString("en-IN")}
-                          </span>
-                          {itemOriginalTotal > itemTotal && (
-                            <span className="text-xs text-[#A9A5A5] line-through">
-                              ₹{itemOriginalTotal.toLocaleString("en-IN")}
+                      {/* Quantity Stepper & Price Row on Mobile */}
+                      <div className="w-full sm:w-auto sm:col-span-6 flex items-center justify-between sm:grid sm:grid-cols-6 gap-4">
+                        {/* Stepper */}
+                        <div className="sm:col-span-3 flex items-center justify-start sm:justify-center">
+                          <div className="flex items-center border border-[rgba(15,15,15,0.15)] rounded-md px-2 py-1 bg-white">
+                            <button
+                              onClick={() => updateQuantity(product.id, quantity - 1)}
+                              className="text-[#0F0F0F] hover:text-[#CB8C00] active:scale-90 p-1.5 min-w-[36px] min-h-[36px] flex items-center justify-center"
+                              aria-label="Decrease quantity"
+                            >
+                              <Minus className="w-3.5 h-3.5" />
+                            </button>
+                            <span className="font-bold text-sm text-[#0F0F0F] px-2.5">
+                              {quantity}
                             </span>
-                          )}
+                            <button
+                              onClick={() => updateQuantity(product.id, quantity + 1)}
+                              className="text-[#0F0F0F] hover:text-[#CB8C00] active:scale-90 p-1.5 min-w-[36px] min-h-[36px] flex items-center justify-center"
+                              aria-label="Increase quantity"
+                            >
+                              <Plus className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
                         </div>
 
-                        <button
-                          onClick={() => removeFromWishlist(product.id)}
-                          className="p-2 text-red-500 hover:bg-red-50 rounded-full transition-colors"
-                          title="Remove item"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                        {/* Price & Remove Button */}
+                        <div className="sm:col-span-3 flex items-center justify-end gap-3 sm:gap-4">
+                          <div className="flex flex-col items-end">
+                            <span className="font-bold text-base text-[#0F0F0F]">
+                              ₹{itemTotal.toLocaleString("en-IN")}
+                            </span>
+                            {itemOriginalTotal > itemTotal && (
+                              <span className="text-xs text-[#A9A5A5] line-through">
+                                ₹{itemOriginalTotal.toLocaleString("en-IN")}
+                              </span>
+                            )}
+                          </div>
+
+                          <button
+                            onClick={() => removeFromWishlist(product.id)}
+                            className="p-2 text-red-500 hover:bg-red-50 active:bg-red-100 rounded-full transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center"
+                            title="Remove item"
+                            aria-label="Remove item"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   );
@@ -124,10 +128,10 @@ export default function WishlistPage() {
               </div>
 
               {/* Clear Wishlist Footer */}
-              <div className="px-6 py-4 bg-[#FAFAFA] border-t border-[rgba(15,15,15,0.06)] flex justify-between items-center">
+              <div className="px-4 sm:px-6 py-4 bg-[#FAFAFA] border-t border-[rgba(15,15,15,0.06)] flex justify-between items-center">
                 <Link
                   href="/shop"
-                  className="text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] flex items-center gap-1.5"
+                  className="text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] flex items-center gap-1.5 min-h-[40px]"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Continue Shopping</span>
@@ -135,7 +139,7 @@ export default function WishlistPage() {
 
                 <button
                   onClick={clearWishlist}
-                  className="text-xs font-semibold text-red-600 hover:underline"
+                  className="text-xs font-semibold text-red-600 hover:underline min-h-[40px] px-2 flex items-center"
                 >
                   Clear Wishlist
                 </button>
@@ -144,13 +148,13 @@ export default function WishlistPage() {
             </div>
 
             {/* Right Column: Estimated Total Summary Box */}
-            <div className="lg:col-span-4 bg-[#FAFAFA] p-8 rounded-xl border border-[rgba(15,15,15,0.06)] flex flex-col gap-6 shadow-xs sticky top-28">
+            <div className="lg:col-span-4 bg-[#FAFAFA] p-6 sm:p-8 rounded-xl border border-[rgba(15,15,15,0.06)] flex flex-col gap-5 sm:gap-6 shadow-xs sticky top-28">
               <span className="text-xs uppercase tracking-widest font-semibold text-[#6B6B6B]">
                 Estimated Total
               </span>
 
               <div>
-                <span className="font-serif text-4xl font-bold text-[#0F0F0F]">
+                <span className="font-serif text-3xl sm:text-4xl font-bold text-[#0F0F0F]">
                   ₹{totalEstimatedPrice.toLocaleString("en-IN")}
                 </span>
                 <p className="text-xs text-[#6B6B6B] mt-1">
@@ -164,15 +168,15 @@ export default function WishlistPage() {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => sendAutomatedEnquiry()}
-                  className="w-full bg-[#020101] hover:bg-[#25D366] text-white text-xs font-semibold uppercase tracking-widest py-4 rounded-md flex items-center justify-center gap-2 transition-colors shadow-md text-center"
+                  className="w-full bg-[#020101] hover:bg-[#25D366] active:bg-[#20b858] text-white text-xs font-semibold uppercase tracking-widest min-h-[48px] py-3.5 rounded-md flex items-center justify-center gap-2 transition-colors shadow-md text-center"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="w-4 h-4 shrink-0" />
                   <span>Enquire On WhatsApp</span>
                 </a>
 
                 <Link
                   href="/shop"
-                  className="w-full bg-white border border-[rgba(15,15,15,0.15)] text-[#0F0F0F] hover:bg-[#020101] hover:text-white text-xs font-semibold uppercase tracking-widest py-3.5 rounded-md transition-colors text-center"
+                  className="w-full bg-white border border-[rgba(15,15,15,0.15)] text-[#0F0F0F] hover:bg-[#020101] hover:text-white active:bg-gray-100 text-xs font-semibold uppercase tracking-widest min-h-[44px] py-3 rounded-md transition-colors text-center flex items-center justify-center"
                 >
                   Continue Shopping
                 </Link>

@@ -71,21 +71,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       {/* Buttons */}
-      <div className="px-5 pb-5 pt-1 flex flex-col gap-2.5">
+      <div className="px-4 sm:px-5 pb-5 pt-1 flex flex-col gap-2.5">
         <a
           href={generateWhatsAppLink(product, 1)}
           target="_blank"
           rel="noreferrer"
           onClick={() => sendAutomatedEnquiry(product, 1)}
-          className="w-full bg-[#020101] hover:bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider py-3 rounded-md flex items-center justify-center gap-2 transition-colors shadow-sm"
+          className="w-full bg-[#020101] hover:bg-[#25D366] active:bg-[#20b858] text-white text-xs font-semibold uppercase tracking-wider min-h-[44px] py-3 rounded-md flex items-center justify-center gap-2 transition-colors shadow-sm"
         >
-          <MessageCircle className="w-4 h-4" />
+          <MessageCircle className="w-4 h-4 shrink-0" />
           <span>Enquire on WhatsApp</span>
         </a>
 
         <button
           onClick={handleWishlistToggle}
-          className={`w-full text-xs font-semibold uppercase tracking-wider py-2.5 rounded-md flex items-center justify-center gap-2 border transition-all ${
+          className={`w-full text-xs font-semibold uppercase tracking-wider min-h-[44px] py-2.5 rounded-md flex items-center justify-center gap-2 border transition-all active:scale-[0.99] ${
             wishlisted
               ? "bg-[#FAFAFA] border-[#020101] text-[#020101]"
               : "bg-white border-[#0F0F0F]/10 hover:border-[#0F0F0F] text-[#0F0F0F]"
@@ -93,12 +93,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         >
           {wishlisted ? (
             <>
-              <Check className="w-4 h-4 text-[#CB8C00]" />
+              <Check className="w-4 h-4 text-[#CB8C00] shrink-0" />
               <span>Added to Wishlist</span>
             </>
           ) : (
             <>
-              <Heart className="w-4 h-4" />
+              <Heart className="w-4 h-4 shrink-0" />
               <span>Add to Wishlist</span>
             </>
           )}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -15,6 +15,15 @@ export const metadata: Metadata = {
   title: "Skincare By Kumar | Pure Ingredients. Beautifully Crafted.",
   description:
     "Carefully selected handcrafted soaps from an established manufacturer with 10+ years of market experience.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#FFFFFF",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
