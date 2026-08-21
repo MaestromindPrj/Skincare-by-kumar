@@ -47,44 +47,44 @@ export default function OurStoryPage() {
 
           {/* 4 Highlights: Elegant 2x2 Luxury Badges on Mobile, Single Row on Desktop */}
           <div className="mt-6 sm:mt-7 lg:mt-9 w-full max-w-lg min-[630px]:max-w-none">
-            <div className="grid grid-cols-2 gap-2 sm:gap-2.5 min-[630px]:flex min-[630px]:items-center min-[630px]:justify-center min-[630px]:gap-6 md:gap-8 lg:gap-10">
+            <div className="grid grid-cols-2 gap-2 sm:gap-2.5 min-[630px]:flex min-[630px]:items-center min-[630px]:justify-center min-[630px]:flex-nowrap min-[630px]:gap-6 md:gap-8 lg:gap-10">
               
               {/* Item 1 */}
-              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0">
+              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0 min-[630px]:shrink-0">
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
                   <Star className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00] fill-[#CB8C00]" />
                 </span>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center">
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center whitespace-nowrap">
                   10+ Years
                 </span>
               </div>
 
               {/* Item 2 */}
-              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0">
+              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0 min-[630px]:shrink-0">
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
                   <Compass className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
                 </span>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center">
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center whitespace-nowrap">
                   Expert Exploration
                 </span>
               </div>
 
               {/* Item 3 */}
-              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0">
+              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0 min-[630px]:shrink-0">
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
                   <FileText className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
                 </span>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center">
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center whitespace-nowrap">
                   Carefully Selected
                 </span>
               </div>
 
               {/* Item 4 */}
-              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0">
+              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0 min-[630px]:shrink-0">
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
                   <CheckCircle2 className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
                 </span>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center">
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center whitespace-nowrap">
                   Quality Assured
                 </span>
               </div>
