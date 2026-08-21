@@ -54,8 +54,8 @@ export default function OurStoryPage() {
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
                   <Star className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
                 </span>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center whitespace-nowrap">
-                  10+ Years
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center min-[630px]:whitespace-nowrap leading-tight">
+                  10+ <br className="min-[630px]:hidden" />Years
                 </span>
               </div>
 
@@ -64,8 +64,8 @@ export default function OurStoryPage() {
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
                   <Compass className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
                 </span>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center whitespace-nowrap">
-                  Expert Exploration
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center min-[630px]:whitespace-nowrap leading-tight">
+                  Expert <br className="min-[630px]:hidden" />Exploration
                 </span>
               </div>
 
@@ -74,8 +74,8 @@ export default function OurStoryPage() {
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
                   <FileText className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
                 </span>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center whitespace-nowrap">
-                  Carefully Selected
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center min-[630px]:whitespace-nowrap leading-tight">
+                  Carefully <br className="min-[630px]:hidden" />Selected
                 </span>
               </div>
 
@@ -84,8 +84,8 @@ export default function OurStoryPage() {
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
                   <CheckCircle2 className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
                 </span>
-                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center whitespace-nowrap">
-                  Quality Assured
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center min-[630px]:whitespace-nowrap leading-tight">
+                  Quality <br className="min-[630px]:hidden" />Assured
                 </span>
               </div>
 
