@@ -45,23 +45,50 @@ export default function OurStoryPage() {
             A Passion for Better Skincare
           </p>
 
-          {/* 4 Points: One by One on Mobile (< 630px), Single Line above 630px */}
-          <div className="mt-5 sm:mt-6 lg:mt-8 grid grid-cols-1 gap-y-3 gap-x-4 max-w-xs mx-auto min-[630px]:max-w-none min-[630px]:flex min-[630px]:items-center min-[630px]:justify-center min-[630px]:flex-nowrap min-[630px]:gap-6 md:gap-8 lg:gap-12 text-xs sm:text-xs md:text-sm font-bold uppercase tracking-wider text-[#222222] w-full min-[630px]:whitespace-nowrap py-1">
-            <div className="flex items-center justify-center min-[630px]:justify-center gap-2">
-              <Star className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
-              <span>10+ Years</span>
-            </div>
-            <div className="flex items-center justify-center min-[630px]:justify-center gap-2">
-              <Compass className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
-              <span>Expert Exploration</span>
-            </div>
-            <div className="flex items-center justify-center min-[630px]:justify-center gap-2">
-              <FileText className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
-              <span>Carefully Selected</span>
-            </div>
-            <div className="flex items-center justify-center min-[630px]:justify-center gap-2">
-              <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
-              <span>Quality Assured</span>
+          {/* 4 Highlights: Elegant 2x2 Luxury Badges on Mobile, Single Row on Desktop */}
+          <div className="mt-6 sm:mt-7 lg:mt-9 w-full max-w-lg min-[630px]:max-w-none">
+            <div className="grid grid-cols-2 gap-2 sm:gap-2.5 min-[630px]:flex min-[630px]:items-center min-[630px]:justify-center min-[630px]:flex-nowrap min-[630px]:gap-6 md:gap-8 lg:gap-10">
+              
+              {/* Item 1 */}
+              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0 min-[630px]:shrink-0">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
+                  <Star className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
+                </span>
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center min-[630px]:whitespace-nowrap leading-tight">
+                  10+ <br className="min-[630px]:hidden" />Years
+                </span>
+              </div>
+
+              {/* Item 2 */}
+              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0 min-[630px]:shrink-0">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
+                  <Compass className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
+                </span>
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center min-[630px]:whitespace-nowrap leading-tight">
+                  Expert <br className="min-[630px]:hidden" />Exploration
+                </span>
+              </div>
+
+              {/* Item 3 */}
+              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0 min-[630px]:shrink-0">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
+                  <FileText className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
+                </span>
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center min-[630px]:whitespace-nowrap leading-tight">
+                  Carefully <br className="min-[630px]:hidden" />Selected
+                </span>
+              </div>
+
+              {/* Item 4 */}
+              <div className="flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-[#FAFAFA] border border-[#EEEEEE] text-[#222222] min-[630px]:bg-transparent min-[630px]:border-none min-[630px]:p-0 min-[630px]:shrink-0">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#FCF8EC] text-[#CB8C00] shrink-0 min-[630px]:bg-transparent min-[630px]:w-auto min-[630px]:h-auto">
+                  <CheckCircle2 className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 text-[#CB8C00]" />
+                </span>
+                <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-left min-[630px]:text-center min-[630px]:whitespace-nowrap leading-tight">
+                  Quality <br className="min-[630px]:hidden" />Assured
+                </span>
+              </div>
+
             </div>
           </div>
         </div>

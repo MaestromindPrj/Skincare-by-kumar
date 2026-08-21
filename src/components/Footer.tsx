@@ -46,7 +46,7 @@ export const Footer: React.FC = () => {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/919344884149"
+                href="https://wa.me/919952820016"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:opacity-75 transition-opacity flex items-center justify-center"

@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       customerPhone,
     } = body;
 
-    const businessNumber = process.env.NEXT_PUBLIC_BUSINESS_WHATSAPP || "919344884149";
+    const businessNumber = process.env.NEXT_PUBLIC_BUSINESS_WHATSAPP || "919952820016";
 
     let formattedMessage = "";
 

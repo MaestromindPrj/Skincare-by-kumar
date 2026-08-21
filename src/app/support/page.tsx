@@ -130,7 +130,7 @@ function SupportContent() {
                 Need immediate help with a recommendation or order?
               </p>
               <a
-                href="https://wa.me/919344884149?text=Hello%20Skincare%20By%20Kumar,%20I%20need%20support"
+                href="https://wa.me/919952820016?text=Hello%20Skincare%20By%20Kumar,%20I%20need%20support"
                 target="_blank"
                 rel="noreferrer"
                 className="w-full bg-[#181818] hover:bg-[#333333] active:bg-[#000000] text-white text-xs font-semibold uppercase tracking-wider py-2.5 px-4 rounded-lg transition-all inline-flex items-center justify-center gap-2"
@@ -167,12 +167,12 @@ function SupportContent() {
                       Instant chat support for product recommendations, order enquiries, and fast resolutions.
                     </p>
                     <a
-                      href="https://wa.me/919344884149?text=Hello%20Skincare%20By%20Kumar,%20I%20have%20an%20enquiry"
+                      href="https://wa.me/919952820016?text=Hello%20Skincare%20By%20Kumar,%20I%20have%20an%20enquiry"
                       target="_blank"
                       rel="noreferrer"
                       className="text-xs font-bold text-[#181818] hover:underline mt-1 inline-flex items-center gap-1"
                     >
-                      +91 93448 84149 <ExternalLink className="w-3 h-3" />
+                      +91 99528 20016 <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
 
@@ -359,7 +359,7 @@ function SupportContent() {
                       Damaged or Incorrect Items in Transit
                     </h3>
                     <p>
-                      If your parcel arrives damaged, leaking, or if an incorrect product was received, please contact us on WhatsApp (+91 93448 84149) within <strong>48 hours of delivery</strong> with an unboxing photo/video. We will immediately dispatch a free replacement or issue a full refund without hassle.
+                      If your parcel arrives damaged, leaking, or if an incorrect product was received, please contact us on WhatsApp (+91 99528 20016) within <strong>48 hours of delivery</strong> with an unboxing photo/video. We will immediately dispatch a free replacement or issue a full refund without hassle.
                     </p>
                   </div>
 
