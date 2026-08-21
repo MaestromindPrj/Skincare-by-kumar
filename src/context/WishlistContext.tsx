@@ -104,7 +104,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   );
 
   const generateWhatsAppLink = (singleProduct?: Product, singleQty?: number) => {
-    const phoneNumber = "919344884149"; // Business WhatsApp phone number
+    const phoneNumber = "919952820016"; // Business WhatsApp phone number
     const baseUrl = "https://skincarebykumar.com";
 
     let message = "";

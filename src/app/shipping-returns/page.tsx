@@ -112,7 +112,7 @@ export default function ShippingReturnsPage() {
               </p>
             </div>
             <a
-              href="https://wa.me/919344884149?text=Hello%20Skincare%20By%20Kumar,%20I%20have%20a%20shipping%20query"
+              href="https://wa.me/919952820016?text=Hello%20Skincare%20By%20Kumar,%20I%20have%20a%20shipping%20query"
               target="_blank"
               rel="noreferrer"
               className="bg-[#181818] hover:bg-[#333333] text-white text-xs font-semibold uppercase tracking-wider py-3 px-6 rounded-md transition-all shrink-0 inline-flex items-center gap-2"
