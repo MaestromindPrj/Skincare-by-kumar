@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-5 pt-2 -ml-0.5">
               {/* Instagram */}
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/skincarebykumar?utm_source=qr&igsi=dDZmbGlud3FxdHN4"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:opacity-75 transition-opacity flex items-center justify-center text-[#111111]"
