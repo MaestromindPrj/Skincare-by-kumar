@@ -45,21 +45,21 @@ export default function OurStoryPage() {
             A Passion for Better Skincare
           </p>
 
-          {/* 4 Points: 2x2 Grid below 630px (Left Aligned), Single Line above 630px */}
-          <div className="mt-5 sm:mt-6 lg:mt-8 grid grid-cols-2 gap-y-3.5 gap-x-4 max-w-sm mx-auto min-[630px]:max-w-none min-[630px]:flex min-[630px]:items-center min-[630px]:justify-center min-[630px]:flex-nowrap min-[630px]:gap-6 md:gap-8 lg:gap-12 text-xs sm:text-xs md:text-sm font-bold uppercase tracking-wider text-[#222222] text-left min-[630px]:text-center w-full min-[630px]:whitespace-nowrap py-1">
-            <div className="flex items-center justify-start min-[630px]:justify-center gap-1.5 sm:gap-2">
+          {/* 4 Points: One by One on Mobile (< 630px), Single Line above 630px */}
+          <div className="mt-5 sm:mt-6 lg:mt-8 grid grid-cols-1 gap-y-3 gap-x-4 max-w-xs mx-auto min-[630px]:max-w-none min-[630px]:flex min-[630px]:items-center min-[630px]:justify-center min-[630px]:flex-nowrap min-[630px]:gap-6 md:gap-8 lg:gap-12 text-xs sm:text-xs md:text-sm font-bold uppercase tracking-wider text-[#222222] w-full min-[630px]:whitespace-nowrap py-1">
+            <div className="flex items-center justify-center min-[630px]:justify-center gap-2">
               <Star className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
               <span>10+ Years</span>
             </div>
-            <div className="flex items-center justify-start min-[630px]:justify-center gap-1.5 sm:gap-2">
+            <div className="flex items-center justify-center min-[630px]:justify-center gap-2">
               <Compass className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
               <span>Expert Exploration</span>
             </div>
-            <div className="flex items-center justify-start min-[630px]:justify-center gap-1.5 sm:gap-2">
+            <div className="flex items-center justify-center min-[630px]:justify-center gap-2">
               <FileText className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
               <span>Carefully Selected</span>
             </div>
-            <div className="flex items-center justify-start min-[630px]:justify-center gap-1.5 sm:gap-2">
+            <div className="flex items-center justify-center min-[630px]:justify-center gap-2">
               <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#222222] shrink-0" />
               <span>Quality Assured</span>
             </div>

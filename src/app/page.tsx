@@ -77,30 +77,43 @@ export default function HomePage() {
 
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isFading, setIsFading] = useState(false);
+  const isTransitioning = React.useRef(false);
+  const autoplayTimer = React.useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const triggerNext = () => {
+  const goToTestimonial = React.useCallback((getNext: (prev: number) => number) => {
+    if (isTransitioning.current) return;
+    isTransitioning.current = true;
     setIsFading(true);
     setTimeout(() => {
-      setActiveTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-      setIsFading(false);
-    }, 150);
-  };
+      setActiveTestimonial(getNext);
+      // Small delay before fading back in so the DOM updates first
+      requestAnimationFrame(() => {
+        setIsFading(false);
+        setTimeout(() => {
+          isTransitioning.current = false;
+        }, 350);
+      });
+    }, 300);
+  }, []);
 
-  const triggerPrev = () => {
-    setIsFading(true);
-    setTimeout(() => {
-      setActiveTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-      setIsFading(false);
-    }, 150);
-  };
+  const triggerNext = React.useCallback(() => {
+    goToTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  }, [goToTestimonial, testimonials.length]);
 
+  const triggerPrev = React.useCallback(() => {
+    goToTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  }, [goToTestimonial, testimonials.length]);
+
+  // Autoplay with stable ref to avoid recreating interval on every state change
   useEffect(() => {
-    const timer = setInterval(() => {
+    autoplayTimer.current = setInterval(() => {
       triggerNext();
     }, 5000);
 
-    return () => clearInterval(timer);
-  }, [activeTestimonial]);
+    return () => {
+      if (autoplayTimer.current) clearInterval(autoplayTimer.current);
+    };
+  }, [triggerNext]);
 
   // Ribbon highlights rotating cycle on mobile
   const ribbonHighlights = [
@@ -300,7 +313,7 @@ export default function HomePage() {
               </blockquote>
 
               {/* 4 Points Grid */}
-              <div className="grid grid-cols-2 gap-4 py-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-3">
                 <div className="p-3 border-t border-[rgba(15,15,15,0.1)]">
                   <div className="text-base sm:text-lg font-bold text-[#0F0F0F]">10+ Years</div>
                   <div className="text-xs sm:text-sm text-[#6B6B6B]">Carefully Selected</div>
@@ -523,18 +536,21 @@ export default function HomePage() {
 
               {/* Quote Content with Smooth Fade Animation */}
               <div
-                className={`flex-1 text-center transition-opacity duration-200 ease-out min-h-[160px] flex flex-col items-center justify-center ${isFading ? "opacity-0" : "opacity-100"
-                  }`}
+                className={`flex-1 text-center min-h-[200px] sm:min-h-[180px] flex flex-col items-center justify-center transform-gpu will-change-[opacity,transform] transition-[opacity,transform] duration-300 ease-in-out ${
+                  isFading
+                    ? "opacity-0 translate-y-1"
+                    : "opacity-100 translate-y-0"
+                }`}
               >
                 <p className="font-serif italic text-lg sm:text-xl md:text-2xl lg:text-[28px] text-[#0F0F0F] leading-relaxed max-w-3xl mx-auto mb-6">
-                  "{testimonials[activeTestimonial].quote}"
+                  &ldquo;{testimonials[activeTestimonial].quote}&rdquo;
                 </p>
 
-                <div className="flex items-center justify-center gap-2">
-                  <span className="font-bold text-lg sm:text-xl md:text-2xl text-[#0F0F0F] tracking-tight">
+                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
+                  <span className="font-bold text-base sm:text-lg md:text-xl text-[#0F0F0F] tracking-tight">
                     {testimonials[activeTestimonial].author}
                   </span>
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#0084FF] fill-[#0084FF] shrink-0" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#0084FF] fill-[#0084FF] shrink-0" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                   </svg>
                 </div>
@@ -643,27 +659,46 @@ export default function HomePage() {
             {faqs.map((faq, index) => {
               const isOpen = openFaq === index;
               return (
-                <div key={index} className="py-7 sm:py-8 transition-colors">
+                <div key={index} className="py-6 sm:py-7 transition-colors">
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between text-left gap-6 cursor-pointer group"
+                    className="w-full flex items-center justify-between text-left gap-6 cursor-pointer group py-1"
                     aria-expanded={isOpen}
                   >
                     <span className="font-medium text-base sm:text-lg text-[#111111] group-hover:text-neutral-700 transition-colors">
                       {faq.q}
                     </span>
-                    {isOpen ? (
-                      <Minus className="w-5 h-5 text-[#111111] shrink-0" />
-                    ) : (
-                      <Plus className="w-5 h-5 text-[#111111] shrink-0" />
-                    )}
+                    
+                    {/* Animated Plus to Minus Icon */}
+                    <div
+                      className={`relative w-5 h-5 flex items-center justify-center shrink-0 transition-transform duration-300 ease-out ${
+                        isOpen ? "rotate-180 text-neutral-800" : "rotate-0 text-[#111111]"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      {/* Horizontal Bar */}
+                      <span className="absolute w-4 h-[2px] bg-current rounded-full" />
+                      {/* Vertical Bar (Rotates & fades out to transform + into -) */}
+                      <span
+                        className={`absolute w-[2px] h-4 bg-current rounded-full transition-all duration-300 ease-out ${
+                          isOpen ? "rotate-90 opacity-0 scale-0" : "rotate-0 opacity-100 scale-100"
+                        }`}
+                      />
+                    </div>
                   </button>
 
-                  {isOpen && (
-                    <div className="mt-5 text-base sm:text-lg text-[#555555] leading-relaxed max-w-5xl pr-8 transition-all">
-                      {faq.a}
+                  {/* Smooth Sliding Answer */}
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-in-out ${
+                      isOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0 mt-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="text-base sm:text-lg text-[#555555] leading-relaxed max-w-5xl pr-8 pb-1">
+                        {faq.a}
+                      </p>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
