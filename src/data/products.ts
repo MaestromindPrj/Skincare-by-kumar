@@ -45,7 +45,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "kid-soap-extra-luxurious",
-    name: "Kid Soap - Extra Luxurious Bar",
+    name: "Velvet bathing bar - Kids special",
     subtitle: "Calendula Flowers • Almond Milk • Mango Butter",
     badge: "KIDS' FAVOURITE",
     price: 510,

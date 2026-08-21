@@ -54,7 +54,7 @@ function SupportContent() {
     },
     {
       q: "How do I choose the right soap for my skin type?",
-      a: "For dry or sensitive skin, nourishing bars like Almond Cream or Zaarraa are ideal. For combination or acne-prone skin, French Red Clay and Indus River provide gentle clarifying benefits. For kids and delicate skin, Kiddos and Lush Oats offer hypoallergenic, fragrance-safe care."
+      a: "For dry or sensitive skin, nourishing bars like Almond Cream or Zaarraa are ideal. For combination or acne-prone skin, French Red Clay and Indus River provide gentle clarifying benefits. For kids and delicate skin, Velvet bathing bar - Kids special and Lush Oats offer hypoallergenic, fragrance-safe care."
     },
     {
       q: "How long does a handmade cold-process soap bar last?",
