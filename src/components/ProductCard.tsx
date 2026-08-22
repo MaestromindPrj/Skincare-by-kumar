@@ -38,7 +38,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </Link>
 
         {/* Card Content */}
-        <div className="p-5 flex flex-col gap-2">
+        <div className="p-5 flex flex-col gap-1.5">
           <Link href={`/shop/${product.id}`} className="group-hover:text-[#CB8C00] transition-colors block overflow-hidden">
             <h3 className="font-serif text-base sm:text-lg font-bold text-[#0F0F0F] leading-snug truncate" title={product.name}>
               {product.name}

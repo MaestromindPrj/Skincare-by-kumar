@@ -6,18 +6,19 @@ import { Product, PRODUCTS } from "@/data/products";
 export interface WishlistItem {
   product: Product;
   quantity: number;
+  selectedVariant?: string;
 }
 
 interface WishlistContextType {
   items: WishlistItem[];
-  addToWishlist: (product: Product, quantity?: number) => void;
-  removeFromWishlist: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  isInWishlist: (productId: string) => boolean;
+  addToWishlist: (product: Product, quantity?: number, selectedVariant?: string) => void;
+  removeFromWishlist: (productId: string, selectedVariant?: string) => void;
+  updateQuantity: (productId: string, quantity: number, selectedVariant?: string) => void;
+  isInWishlist: (productId: string, selectedVariant?: string) => boolean;
   clearWishlist: () => void;
   totalEstimatedPrice: number;
-  generateWhatsAppLink: (singleProduct?: Product, singleQty?: number) => string;
-  sendAutomatedEnquiry: (singleProduct?: Product, singleQty?: number, customerInfo?: { name?: string; phone?: string }) => Promise<void>;
+  generateWhatsAppLink: (singleProduct?: Product, singleQty?: number, selectedVariant?: string) => string;
+  sendAutomatedEnquiry: (singleProduct?: Product, singleQty?: number, customerInfo?: { name?: string; phone?: string }, selectedVariant?: string) => Promise<void>;
 }
 
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
@@ -37,7 +38,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         const rehydrated = parsed
           .map((item) => {
             const product = PRODUCTS.find((p) => p.id === item.product.id);
-            return product ? { product, quantity: item.quantity } : null;
+            return product ? { product, quantity: item.quantity, selectedVariant: item.selectedVariant } : null;
           })
           .filter(Boolean) as WishlistItem[];
         setItems(rehydrated);
@@ -58,40 +59,64 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
   }, [items, mounted]);
 
-  const addToWishlist = (product: Product, quantity = 3) => {
-    const qtyToAdd = Math.max(3, quantity);
+  const isSoapProduct = (p: Product) => {
+    return (
+      p.category === "Handcrafted Soaps" ||
+      p.category === "Face & Glow" ||
+      p.category === "Fresh & Clean" ||
+      p.category === "Kid's Care"
+    );
+  };
+
+  const addToWishlist = (product: Product, quantity?: number, selectedVariant?: string) => {
+    const min = isSoapProduct(product) ? 3 : 1;
+    const qtyToAdd = Math.max(min, quantity ?? min);
     setItems((prev) => {
-      const existing = prev.find((item) => item.product.id === product.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.product.id === product.id
+      const existingIndex = prev.findIndex(
+        (item) => item.product.id === product.id && item.selectedVariant === selectedVariant
+      );
+      if (existingIndex > -1) {
+        return prev.map((item, idx) =>
+          idx === existingIndex
             ? { ...item, quantity: item.quantity + qtyToAdd }
             : item
         );
       }
-      return [...prev, { product, quantity: qtyToAdd }];
+      return [...prev, { product, quantity: qtyToAdd, selectedVariant }];
     });
   };
 
-  const removeFromWishlist = (productId: string) => {
-    setItems((prev) => prev.filter((item) => item.product.id !== productId));
-  };
-
-  const updateQuantity = (productId: string, quantity: number) => {
-    if (quantity <= 0) {
-      removeFromWishlist(productId);
-      return;
-    }
-    const validatedQty = Math.max(3, quantity);
+  const removeFromWishlist = (productId: string, selectedVariant?: string) => {
     setItems((prev) =>
-      prev.map((item) =>
-        item.product.id === productId ? { ...item, quantity: validatedQty } : item
+      prev.filter(
+        (item) => !(item.product.id === productId && (selectedVariant === undefined || item.selectedVariant === selectedVariant))
       )
     );
   };
 
-  const isInWishlist = (productId: string) => {
-    return items.some((item) => item.product.id === productId);
+  const updateQuantity = (productId: string, quantity: number, selectedVariant?: string) => {
+    if (quantity <= 0) {
+      removeFromWishlist(productId, selectedVariant);
+      return;
+    }
+    const item = items.find(
+      (i) => i.product.id === productId && (selectedVariant === undefined || i.selectedVariant === selectedVariant)
+    );
+    const min = item && isSoapProduct(item.product) ? 3 : 1;
+    const validatedQty = Math.max(min, quantity);
+    setItems((prev) =>
+      prev.map((item) =>
+        item.product.id === productId && (selectedVariant === undefined || item.selectedVariant === selectedVariant)
+          ? { ...item, quantity: validatedQty }
+          : item
+      )
+    );
+  };
+
+  const isInWishlist = (productId: string, selectedVariant?: string) => {
+    return items.some(
+      (item) => item.product.id === productId && (selectedVariant === undefined || item.selectedVariant === selectedVariant)
+    );
   };
 
   const clearWishlist = () => {
@@ -103,19 +128,20 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     0
   );
 
-  const generateWhatsAppLink = (singleProduct?: Product, singleQty?: number) => {
+  const generateWhatsAppLink = (singleProduct?: Product, singleQty?: number, selectedVariant?: string) => {
     const phoneNumber = "919952820016"; // Business WhatsApp phone number
     const baseUrl = "https://skincarebykumar.com";
 
     let message = "";
 
     if (singleProduct) {
-      const qty = singleQty || 3;
+      const qty = singleQty || (isSoapProduct(singleProduct) ? 3 : 1);
       const productUrl = `${baseUrl}/shop/${singleProduct.id}`;
       const totalPrice = singleProduct.price * qty;
 
       message = `Hello Skincare By Kumar,\n\nI would like to enquire about ordering:\n\n` +
-        `🧼 *Product:* ${singleProduct.name}\n` +
+        `🧼 *Product:* ${singleProduct.name}${selectedVariant ? ` (${selectedVariant})` : ""}\n` +
+        (selectedVariant ? `🎨 *Selected Shade / Option:* ${selectedVariant}\n` : "") +
         `💰 *Price:* ₹${singleProduct.price}${singleProduct.weight ? ` (${singleProduct.weight})` : ""}\n` +
         `📦 *Quantity:* ${qty}\n` +
         `💵 *Total Amount:* ₹${totalPrice.toLocaleString("en-IN")}\n\n` +
@@ -124,12 +150,12 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     } else if (items.length > 0) {
       message = `Hello Skincare By Kumar,\n\nI would like to enquire about my wishlist selection:\n\n`;
       items.forEach((item, index) => {
-        message += `${index + 1}. *${item.product.name}*\n` +
+        message += `${index + 1}. *${item.product.name}*${item.selectedVariant ? ` (Shade: ${item.selectedVariant})` : ""}\n` +
           `   • Qty: ${item.quantity} | Unit Price: ₹${item.product.price} | Subtotal: ₹${(item.product.price * item.quantity).toLocaleString("en-IN")}\n`;
       });
       message += `\n*Estimated Total:* ₹${totalEstimatedPrice.toLocaleString("en-IN")}\n\nPlease share order and delivery details. Thank you!`;
     } else {
-      message = `Hello Skincare By Kumar,\n\nI would like to enquire about your handcrafted soaps range. Please help me select the best soap for my skin!`;
+      message = `Hello Skincare By Kumar,\n\nI would like to enquire about your products range. Please help me select the best products for my needs!`;
     }
 
     return `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
@@ -138,7 +164,8 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const sendAutomatedEnquiry = async (
     singleProduct?: Product,
     singleQty?: number,
-    customerInfo?: { name?: string; phone?: string }
+    customerInfo?: { name?: string; phone?: string },
+    selectedVariant?: string
   ) => {
     const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://skincarebykumar.com";
 

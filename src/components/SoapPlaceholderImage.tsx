@@ -16,8 +16,9 @@ export const SoapPlaceholderImage: React.FC<SoapPlaceholderImageProps> = ({
   src,
 }) => {
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const [hasError, setHasError] = React.useState(false);
 
-  if (src) {
+  if (src && !hasError) {
     return (
       <div className={`relative overflow-hidden bg-[#F7F5F0] rounded-sm ${className}`}>
         {!isLoaded && <div className="absolute inset-0 skeleton-shimmer z-0" />}
@@ -25,8 +26,10 @@ export const SoapPlaceholderImage: React.FC<SoapPlaceholderImageProps> = ({
           src={src}
           alt={alt}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           onLoad={() => setIsLoaded(true)}
-          className={`object-contain p-1 transition-all duration-500 ease-out hover:scale-105 ${
+          onError={() => setHasError(true)}
+          className={`object-contain p-2 transition-all duration-500 ease-out hover:scale-105 ${
             isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         />

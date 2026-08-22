@@ -24,7 +24,14 @@ import { ProductCard } from "@/components/ProductCard";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function HomePage() {
-  const featuredProducts = PRODUCTS.slice(0, 3);
+  const featuredProducts = [
+    PRODUCTS.find((p) => p.id === "french-red-clay-face-soap") || PRODUCTS[0],
+    PRODUCTS.find((p) => p.id === "teotema-rebuilding-hair-mask") || PRODUCTS[1],
+    PRODUCTS.find((p) => p.id === "malibu-suncare-sunscreen-clear-spray") || PRODUCTS[2],
+    PRODUCTS.find((p) => p.id === "goat-milk-pure-honey") || PRODUCTS[3],
+    PRODUCTS.find((p) => p.id === "bamboo-charcoal-detox-facial-wipes") || PRODUCTS[4],
+    PRODUCTS.find((p) => p.id === "malibu-suncare-lip-gloss-strawberry") || PRODUCTS[5],
+  ];
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -345,7 +352,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 text-left items-start">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#CB8C00] font-semibold">
-                Artisanal Collection
+                Curated Collection
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F] mt-1">
                 A Curated Selection
@@ -355,12 +362,12 @@ export default function HomePage() {
               href="/shop"
               className="hidden sm:flex text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] items-center gap-1.5 transition-colors whitespace-nowrap shrink-0"
             >
-              <span>View all</span>
+              <span>View all (43 Products)</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -372,7 +379,7 @@ export default function HomePage() {
               href="/shop"
               className="text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] flex items-center gap-1.5 transition-colors whitespace-nowrap"
             >
-              <span>View all</span>
+              <span>View all (43 Products)</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -383,78 +390,104 @@ export default function HomePage() {
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
         <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-14">
+            <span className="text-xs uppercase tracking-widest text-[#CB8C00] font-semibold block mb-1">
+              Top Categories
+            </span>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F]">
               Discover Your Everyday Care
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            {/* Category 1: Face & Glow */}
-            <div className="relative group rounded-xl overflow-hidden p-8 flex flex-col justify-end min-h-[380px] sm:min-h-[420px] shadow-lg border border-gray-100 hover-lift">
+            {/* Category 1: Handcrafted Soaps */}
+            <div className="relative group rounded-xl overflow-hidden p-6 flex flex-col justify-end min-h-[340px] shadow-md border border-gray-100 hover-lift bg-[#181818]">
               <Image
                 src="/discover/face and glow.jpg"
-                alt="Face & Glow Soaps"
+                alt="Handcrafted Soaps"
                 fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-              <div className="relative z-10 text-white flex flex-col gap-2">
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold">Face & Glow</h3>
-                <p className="text-xs sm:text-sm text-white/80">Radiant, refreshed skin</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
+              <div className="relative z-10 text-white flex flex-col gap-1.5">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold">Handcrafted Soaps</h3>
+                <p className="text-xs text-white/80 line-clamp-2">Cold-process soaps infused with wild botanicals and milk cream.</p>
                 <Link
-                  href="/shop?category=Brightness"
-                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white mt-4 hover:text-[#CB8C00] transition-colors"
+                  href="/shop?category=Handcrafted+Soaps"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white mt-3 hover:text-[#CB8C00] transition-colors"
                 >
-                  <span>Explore</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Explore Soaps</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
-            {/* Category 2: Fresh & Clean */}
-            <div className="relative group rounded-xl overflow-hidden p-8 flex flex-col justify-end min-h-[380px] sm:min-h-[420px] shadow-lg border border-gray-100 hover-lift">
+            {/* Category 2: Hair Care (Teotema Italy) */}
+            <div className="relative group rounded-xl overflow-hidden p-6 flex flex-col justify-end min-h-[340px] shadow-md border border-gray-100 hover-lift bg-[#25201B]">
               <Image
                 src="/discover/Fresh  and clean.png"
-                alt="Fresh & Clean Soaps"
+                alt="Teotema Hair Care"
                 fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-              <div className="relative z-10 text-white flex flex-col gap-2">
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold">Fresh & Clean</h3>
-                <p className="text-xs sm:text-sm text-white/80">Everyday cleansing care</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
+              <div className="relative z-10 text-white flex flex-col gap-1.5">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold">Hair Care</h3>
+                <p className="text-xs text-white/80 line-clamp-2">Italian salon shampoos, keratin masks, styling creams & ammonia-free colours.</p>
                 <Link
-                  href="/shop?category=Hydrating"
-                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white mt-4 hover:text-[#CB8C00] transition-colors"
+                  href="/shop?category=Hair+Care"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white mt-3 hover:text-[#CB8C00] transition-colors"
                 >
-                  <span>Explore</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Explore Haircare</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
-            {/* Category 3: Kid's Care */}
-            <div className="relative group rounded-xl overflow-hidden p-8 flex flex-col justify-end min-h-[380px] sm:min-h-[420px] shadow-lg border border-gray-100 hover-lift">
+            {/* Category 3: Sun Care & SPF (Malibu UK) */}
+            <div className="relative group rounded-xl overflow-hidden p-6 flex flex-col justify-end min-h-[340px] shadow-md border border-gray-100 hover-lift bg-[#1B2225]">
               <Image
                 src="/discover/kids care.png"
-                alt="Kid's Care Soaps"
+                alt="Malibu Sun Care & SPF"
                 fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-              <div className="relative z-10 text-white flex flex-col gap-2">
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold">Kid's Care</h3>
-                <p className="text-xs sm:text-sm text-white/80">Gentle, nourishing care</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
+              <div className="relative z-10 text-white flex flex-col gap-1.5">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold">Sun Care & SPF</h3>
+                <p className="text-xs text-white/80 line-clamp-2">SPF 50 all-day clear sprays, face creams, and water-resistant protective lotions.</p>
                 <Link
-                  href="/shop?category=Baby+Friendly"
-                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white mt-4 hover:text-[#CB8C00] transition-colors"
+                  href="/shop?category=Sun+Care+%26+SPF"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white mt-3 hover:text-[#CB8C00] transition-colors"
                 >
-                  <span>Explore</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Explore Suncare</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Category 4: Lip Care & Cleansing Wipes */}
+            <div className="relative group rounded-xl overflow-hidden p-6 flex flex-col justify-end min-h-[340px] shadow-md border border-gray-100 hover-lift bg-[#28211E]">
+              <Image
+                src="/discover/face and glow.jpg"
+                alt="Lip Care & Facial Wipes"
+                fill
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
+              <div className="relative z-10 text-white flex flex-col gap-1.5">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold">Lips & Facial Wipes</h3>
+                <p className="text-xs text-white/80 line-clamp-2">SPF 30 flavored lip balms, vegan glosses, and bamboo charcoal detox wipes.</p>
+                <Link
+                  href="/shop?category=Lip+Care"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white mt-3 hover:text-[#CB8C00] transition-colors"
+                >
+                  <span>Explore Lips & Wipes</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>

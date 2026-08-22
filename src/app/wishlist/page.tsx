@@ -44,7 +44,12 @@ export default function WishlistPage() {
               {/* Table Rows */}
               <div className="divide-y divide-[rgba(15,15,15,0.08)]">
                 {items.map(({ product, quantity }) => {
-                  const currentQty = Math.max(3, quantity);
+                  const isSoap = product.category === "Handcrafted Soaps" ||
+                    product.category === "Face & Glow" ||
+                    product.category === "Fresh & Clean" ||
+                    product.category === "Kid's Care";
+                  const minQty = isSoap ? 3 : 1;
+                  const currentQty = Math.max(minQty, quantity);
                   const itemTotal = product.price * currentQty;
                   const itemOriginalTotal = product.originalPrice * currentQty;
 
@@ -63,6 +68,11 @@ export default function WishlistPage() {
                         </Link>
 
                         <div className="flex flex-col gap-1 min-w-0">
+                          {product.brand && (
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-[#888888]">
+                              {product.brand}
+                            </span>
+                          )}
                           <Link
                             href={`/shop/${product.id}`}
                             className="font-serif font-bold text-base sm:text-lg text-[#0F0F0F] hover:text-[#CB8C00] transition-colors leading-snug truncate"
@@ -78,18 +88,18 @@ export default function WishlistPage() {
 
                       {/* Quantity Stepper & Price Row */}
                       <div className="w-full sm:w-auto sm:col-span-6 flex items-center justify-between sm:grid sm:grid-cols-6 gap-4">
-                        {/* Stepper with Min 3 constraint */}
+                        {/* Stepper with category constraint */}
                         <div className="sm:col-span-3 flex items-center justify-start sm:justify-center">
                           <div className="flex items-center border border-[rgba(15,15,15,0.15)] rounded-md px-2 py-1.5 bg-white shadow-2xs">
                             <button
-                              onClick={() => updateQuantity(product.id, Math.max(3, currentQty - 1))}
-                              disabled={currentQty <= 3}
-                              className={`p-1.5 min-w-[32px] min-h-[32px] flex items-center justify-center transition-all ${currentQty <= 3
+                              onClick={() => updateQuantity(product.id, Math.max(minQty, currentQty - 1))}
+                              disabled={currentQty <= minQty}
+                              className={`p-1.5 min-w-[32px] min-h-[32px] flex items-center justify-center transition-all ${currentQty <= minQty
                                   ? "text-gray-300 cursor-not-allowed"
                                   : "text-[#0F0F0F] hover:text-[#CB8C00] active:scale-90 cursor-pointer"
                                 }`}
-                              aria-label="Decrease quantity (minimum 3)"
-                              title={currentQty <= 3 ? "Minimum quantity is 3. Use delete button to remove." : "Decrease quantity"}
+                              aria-label={`Decrease quantity (minimum ${minQty})`}
+                              title={currentQty <= minQty ? `Minimum quantity is ${minQty}. Use delete button to remove.` : "Decrease quantity"}
                             >
                               <Minus className="w-3.5 h-3.5" />
                             </button>
