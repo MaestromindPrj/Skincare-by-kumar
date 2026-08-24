@@ -10,14 +10,7 @@ import {
   HeartHandshake,
   ArrowRight,
   ArrowLeft,
-  ChevronDown,
-  ChevronUp,
   Play,
-  CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
-  Plus,
-  Minus,
 } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
@@ -141,7 +134,7 @@ export default function HomePage() {
     }, 3500);
 
     return () => clearInterval(ribbonTimer);
-  }, []);
+  }, [ribbonHighlights.length]);
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-[#0F0F0F] animate-fade-in">
@@ -636,7 +629,7 @@ export default function HomePage() {
                 </div>
                 <div className="relative z-10">
                   <p className="font-serif italic text-base mb-1">
-                    "Changed my skincare routine entirely."
+                    &ldquo;Changed my skincare routine entirely.&rdquo;
                   </p>
                   <span className="text-xs font-semibold text-white/80">Maria</span>
                 </div>
@@ -652,7 +645,7 @@ export default function HomePage() {
                 </div>
                 <div className="relative z-10">
                   <p className="font-serif italic text-base mb-1">
-                    "The best natural soap I've used."
+                    &ldquo;The best natural soap I&apos;ve used.&rdquo;
                   </p>
                   <span className="text-xs font-semibold text-white/80">David Warner</span>
                 </div>
@@ -668,7 +661,7 @@ export default function HomePage() {
                 </div>
                 <div className="relative z-10">
                   <p className="font-serif italic text-base mb-1">
-                    "Incredible quality and scent."
+                    &ldquo;Incredible quality and scent.&rdquo;
                   </p>
                   <span className="text-xs font-semibold text-white/80">Deesha</span>
                 </div>

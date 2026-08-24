@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { HelpCircle, ChevronDown, MessageSquare, ArrowLeft } from "lucide-react";
+import { ChevronDown, MessageSquare, ArrowLeft } from "lucide-react";
 
 export default function FaqPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);

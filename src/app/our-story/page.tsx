@@ -7,16 +7,8 @@ import {
   Star,
   Compass,
   FileText,
-  CheckCircle2,
-  Award,
-  ShieldCheck,
-  Sparkles,
-  Heart,
-  Globe,
-  Feather,
-  Leaf
+  CheckCircle2
 } from "lucide-react";
-import { SoapPlaceholderImage } from "@/components/SoapPlaceholderImage";
 
 export default function OurStoryPage() {
   return (
@@ -205,11 +197,11 @@ export default function OurStoryPage() {
               </h2>
 
               <p className="text-base sm:text-lg text-[#444444] leading-relaxed">
-                "For more than 10 years, I have explored the world of skincare, constantly searching for products that truly stand out in quality and effectiveness. Whenever I travel, I take the opportunity to discover new products, meet skincare experts, understand ingredients, and learn from experienced professionals."
+                &ldquo;For more than 10 years, I have explored the world of skincare, constantly searching for products that truly stand out in quality and effectiveness. Whenever I travel, I take the opportunity to discover new products, meet skincare experts, understand ingredients, and learn from experienced professionals.&rdquo;
               </p>
 
               <p className="text-base sm:text-lg text-[#444444] leading-relaxed">
-                "This journey has helped me build knowledge, experience, and a strong understanding of what makes a skincare product worth choosing."
+                &ldquo;This journey has helped me build knowledge, experience, and a strong understanding of what makes a skincare product worth choosing.&rdquo;
               </p>
             </div>
 
@@ -303,7 +295,7 @@ export default function OurStoryPage() {
                   Quality Focus
                 </h3>
                 <p className="font-serif text-xs sm:text-sm text-[#777777] leading-relaxed max-w-md">
-                  'I carefully select the products I offer based on quality, ingredients, craftsmanship, and real-world experience.'
+                  &lsquo;I carefully select the products I offer based on quality, ingredients, craftsmanship, and real-world experience.&rsquo;
                 </p>
               </div>
 
@@ -330,7 +322,7 @@ export default function OurStoryPage() {
           {/* Full-width Quote Below */}
           <div className="text-center max-w-4xl mx-auto pt-4">
             <p className="font-serif text-xl sm:text-3xl font-semibold text-[#111111] leading-relaxed">
-              "My promise is simple – quality you can trust and products chosen with a focus on visible, result-oriented skincare."
+              &ldquo;My promise is simple – quality you can trust and products chosen with a focus on visible, result-oriented skincare.&rdquo;
             </p>
           </div>
         </div>

@@ -19,7 +19,6 @@ import {
   Minus,
   Plus,
   Sparkles,
-  Trees,
   Maximize2,
   X
 } from "lucide-react";
@@ -32,7 +31,10 @@ export default function ProductDetailPage() {
   const params = useParams();
   const id = params?.id as string;
 
-  const product = getProductById(id) || PRODUCTS[0];
+  const product = getProductById(id);
+  if (!product) {
+    notFound();
+  }
 
   const isSoap = product.category === "Handcrafted Soaps" || 
                  product.category === "Face & Glow" || 
@@ -46,7 +48,6 @@ export default function ProductDetailPage() {
     product.variants?.[0]
   );
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
   const { addToWishlist, removeFromWishlist, isInWishlist, generateWhatsAppLink, sendAutomatedEnquiry } = useWishlist();
 
@@ -63,10 +64,6 @@ export default function ProductDetailPage() {
     }
     return list.length > 0 ? list : [product.image || "/soaps/FRENCH RED.png"];
   }, [product]);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Sync min quantity and initial variant when product changes
   useEffect(() => {
@@ -504,7 +501,7 @@ export default function ProductDetailPage() {
       </div>
 
       {/* FULL SCREEN LIGHTBOX MODAL */}
-      {isLightboxOpen && mounted && createPortal(
+      {isLightboxOpen && typeof document !== "undefined" && createPortal(
         <div
           className="fixed inset-0 z-[99999] bg-black/95 flex flex-col justify-between p-4 sm:p-6 backdrop-blur-md animate-fade-in"
           onClick={() => setIsLightboxOpen(false)}

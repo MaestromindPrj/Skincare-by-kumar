@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import {
   HelpCircle,
@@ -24,19 +23,31 @@ type SupportTab = "contact" | "faq" | "shipping" | "returns" | "privacy" | "term
 
 function SupportContent() {
   const searchParams = useSearchParams();
-  const initialTab = (searchParams?.get("tab") as SupportTab) || "contact";
-  const [activeTab, setActiveTab] = useState<SupportTab>("contact");
+  const tabParam = (searchParams?.get("tab") as SupportTab) || "contact";
+  const [activeTab, setActiveTab] = useState<SupportTab>(() => {
+    if (["contact", "faq", "shipping", "returns", "privacy", "terms"].includes(tabParam)) {
+      return tabParam;
+    }
+    return "contact";
+  });
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Sync tab with URL hash or search params
+  // Sync tab with URL hash changes
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "") as SupportTab;
-    if (["contact", "faq", "shipping", "returns", "privacy", "terms"].includes(hash)) {
-      setActiveTab(hash);
-    } else if (initialTab && ["contact", "faq", "shipping", "returns", "privacy", "terms"].includes(initialTab)) {
-      setActiveTab(initialTab);
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "") as SupportTab;
+      if (["contact", "faq", "shipping", "returns", "privacy", "terms"].includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+
+    if (window.location.hash) {
+      handleHashChange();
     }
-  }, [initialTab]);
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   const tabs = [
     { id: "contact" as SupportTab, label: "Contact Us", icon: MessageSquare },

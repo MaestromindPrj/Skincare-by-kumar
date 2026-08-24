@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useMemo, useEffect, Suspense } from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, ArrowUpDown, ChevronDown, RotateCcw, Sparkles } from "lucide-react";
-import { PRODUCTS, Product } from "@/data/products";
+import { PRODUCTS } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
-import { ScrollReveal } from "@/components/ScrollReveal";
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -167,7 +167,7 @@ function ShopContent() {
       if (selectedTags.length > 0) {
         const checkTagMatch = (tag: string) => {
           return (
-            product.tags.includes(tag as any) ||
+            (product.tags as readonly string[]).includes(tag) ||
             product.benefits.some((b) => b.toLowerCase().includes(tag.toLowerCase())) ||
             (tag === "Brightness" && product.benefits.includes("Brightening")) ||
             (tag === "Baby Friendly" && (product.category === "Kid's Care" || product.benefits.includes("Ultra Gentle"))) ||
@@ -236,11 +236,12 @@ function ShopContent() {
               >
                 {/* Consolidated Image on Top (Transparent Container) */}
                 <div className="relative w-20 h-20 sm:w-24 sm:h-24 overflow-hidden flex items-center justify-center p-1 bg-transparent mb-2.5">
-                  <img
+                  <Image
                     src={cat.image}
                     alt={cat.label}
-                    className="w-full h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 640px) 80px, 96px"
+                    className="object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
 

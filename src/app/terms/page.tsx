@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FileText, Shield, Sparkles, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export default function TermsOfServicePage() {
   return (

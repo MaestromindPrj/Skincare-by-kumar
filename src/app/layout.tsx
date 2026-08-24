@@ -12,9 +12,53 @@ const josefin = Josefin_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Skincare By Kumar | Pure Ingredients. Beautifully Crafted.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://skincarebykumar.com"),
+  title: {
+    default: "Skincare By Kumar | Pure Ingredients. Beautifully Crafted.",
+    template: "%s | Skincare By Kumar",
+  },
   description:
-    "Carefully selected handcrafted soaps from an established manufacturer with 10+ years of market experience.",
+    "Discover handcrafted cold-processed artisanal soaps, premium Italian haircare, vegan sun protection, and hydrating facial essentials carefully curated with 10+ years of skincare experience.",
+  keywords: [
+    "Skincare By Kumar",
+    "handcrafted soaps",
+    "cold process soap",
+    "artisanal soap India",
+    "natural skincare",
+    "Teotema Milano",
+    "Malibu suncare",
+    "KleenOWipe",
+    "organic bath soaps",
+    "tan removal soap",
+    "bridal ubtan bar",
+  ],
+  authors: [{ name: "Skincare By Kumar" }],
+  creator: "Skincare By Kumar",
+  publisher: "Skincare By Kumar",
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://skincarebykumar.com",
+    title: "Skincare By Kumar | Pure Ingredients. Beautifully Crafted.",
+    description:
+      "Handcrafted cold-processed artisanal soaps and curated international skincare essentials.",
+    siteName: "Skincare By Kumar",
+    images: [
+      {
+        url: "/hero-soap.png",
+        width: 1200,
+        height: 630,
+        alt: "Skincare By Kumar Artisanal Collection",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Skincare By Kumar | Pure Ingredients. Beautifully Crafted.",
+    description:
+      "Handcrafted cold-processed artisanal soaps and curated international skincare essentials.",
+    images: ["/hero-soap.png"],
+  },
   icons: {
     icon: [
       { url: "/icon.png", type: "image/png" },

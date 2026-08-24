@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Trash2, Minus, Plus, MessageCircle, ShoppingBag, ArrowLeft } from "lucide-react";
+import { Trash2, Minus, Plus, MessageCircle, ShoppingBag } from "lucide-react";
 import { useWishlist } from "@/context/WishlistContext";
 import { SoapPlaceholderImage } from "@/components/SoapPlaceholderImage";
 
@@ -145,17 +145,10 @@ export default function WishlistPage() {
               </div>
 
               {/* Clear Wishlist Footer */}
-              <div className="px-4 sm:px-6 py-4 bg-[#FAFAFA] border-t border-[rgba(15,15,15,0.08)] flex justify-between items-center">
-                <Link
-                  href="/shop"
-                  className="text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] flex items-center gap-1.5 min-h-[40px]"
-                >
-
-                </Link>
-
+              <div className="px-4 sm:px-6 py-3.5 bg-[#FAFAFA] border-t border-[rgba(15,15,15,0.08)] flex justify-end items-center">
                 <button
                   onClick={clearWishlist}
-                  className="text-xs font-semibold text-rose-600 hover:underline min-h-[40px] px-2 flex items-center cursor-pointer"
+                  className="text-xs font-semibold text-rose-600 hover:underline min-h-[36px] px-2 flex items-center cursor-pointer"
                 >
                   Clear Wishlist
                 </button>
@@ -210,7 +203,7 @@ export default function WishlistPage() {
               Your Wishlist is Empty
             </h2>
             <p className="text-sm text-[#6B6B6B] mt-2 mb-6">
-              You haven't saved any handcrafted soaps yet. Browse our collection and save your favourites!
+              You haven&apos;t saved any handcrafted soaps yet. Browse our collection and save your favourites!
             </p>
             <Link
               href="/shop"

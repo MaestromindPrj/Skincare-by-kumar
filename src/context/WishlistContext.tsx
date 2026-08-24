@@ -171,12 +171,12 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     try {
       if (singleProduct) {
-        const qty = singleQty || 3;
+        const qty = singleQty || 1;
         await fetch("/api/enquire", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            productName: singleProduct.name,
+            productName: singleProduct.name + (selectedVariant ? ` - ${selectedVariant}` : ""),
             price: singleProduct.price,
             quantity: qty,
             totalAmount: singleProduct.price * qty,

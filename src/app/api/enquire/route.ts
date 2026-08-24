@@ -1,5 +1,13 @@
 import { NextResponse } from "next/server";
 
+interface EnquireItem {
+  product: {
+    name: string;
+    price: number;
+  };
+  quantity: number;
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -34,9 +42,9 @@ ${customerName ? `👤 *Customer Name:* ${customerName}\n` : ""}${customerPhone 
       formattedMessage = `
 🚨 *AUTOMATED WISHLIST ENQUIRY* 🚨
 
-${items
+${(items as EnquireItem[])
   .map(
-    (item: any, idx: number) =>
+    (item: EnquireItem, idx: number) =>
       `${idx + 1}. *${item.product.name}*\n   Qty: ${item.quantity} | Unit Price: ₹${item.product.price} | Subtotal: ₹${item.product.price * item.quantity}`
   )
   .join("\n")}
@@ -80,10 +88,11 @@ Customer requested skincare consultation.
       message: "Enquiry submitted automatically to business number " + businessNumber,
       details: formattedMessage,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error sending automated enquiry:", error);
+    const errorMessage = error instanceof Error ? error.message : "Internal server error";
     return NextResponse.json(
-      { success: false, error: error?.message || "Internal server error" },
+      { success: false, error: errorMessage },
       { status: 500 }
     );
   }

@@ -15,12 +15,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToWishlist, removeFromWishlist, isInWishlist, generateWhatsAppLink, sendAutomatedEnquiry } = useWishlist();
   const wishlisted = isInWishlist(product.id);
 
+  const isSoap = product.category === "Handcrafted Soaps" || 
+                 product.category === "Face & Glow" || 
+                 product.category === "Fresh & Clean" || 
+                 product.category === "Kid's Care";
+  const defaultQty = isSoap ? 3 : 1;
+
   const handleWishlistToggle = (e: React.MouseEvent) => {
     e.preventDefault();
     if (wishlisted) {
       removeFromWishlist(product.id);
     } else {
-      addToWishlist(product, 3);
+      addToWishlist(product, defaultQty);
     }
   };
 
@@ -73,10 +79,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {/* Buttons */}
       <div className="px-4 sm:px-5 pb-5 pt-1 flex flex-col gap-2.5">
         <a
-          href={generateWhatsAppLink(product, 3)}
+          href={generateWhatsAppLink(product, defaultQty)}
           target="_blank"
           rel="noreferrer"
-          onClick={() => sendAutomatedEnquiry(product, 3)}
+          onClick={() => sendAutomatedEnquiry(product, defaultQty)}
           className="w-full bg-[#020101] hover:bg-[#25D366] active:bg-[#20b858] text-white text-xs font-semibold uppercase tracking-wider min-h-[44px] py-3 rounded-md flex items-center justify-center gap-2 transition-colors shadow-sm cursor-pointer"
         >
           <MessageCircle className="w-4 h-4 shrink-0" />
