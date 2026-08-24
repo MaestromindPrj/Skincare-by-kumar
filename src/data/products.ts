@@ -38,14 +38,14 @@ export interface Product {
 export const PRODUCTS: Product[] = [
   {
     "id": "french-red-clay-face-soap",
-    "name": "French Red Clay Face Soap",
+    "name": "Red Clay Brightening Face Bar",
     "subtitle": "Organic French Red Clay • Wild Turmeric • Milk Cream",
     "badge": "POPULAR",
     "price": 330,
     "originalPrice": 390,
     "benefits": [
       "Brightening",
-      "Hydrating"
+      "Deep Cleansing"
     ],
     "tags": [
       "Brightness",
@@ -53,7 +53,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Deep Cleansing, Complexion Brightening & Moisture Balance",
+    "skinFocus": "Deep Pore Cleansing, Complexion Brightening & Moisture Balance",
     "weight": "118 - 123 Gms",
     "image": "/soaps/FRENCH RED.png",
     "freeFrom": [
@@ -88,7 +88,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "kid-soap-extra-luxurious",
-    "name": "Velvet bathing bar - Kids special",
+    "name": "Calendula Gentle Baby Bar",
     "subtitle": "Calendula Flowers • Almond Milk • Mango Butter",
     "badge": "KIDS' FAVOURITE",
     "price": 510,
@@ -138,14 +138,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "caffe-latte-creamy-exfoliating-spa",
-    "name": "Caffe Latte Creamy Exfoliating Spa",
+    "name": "Coffee & Cream Body Scrub",
     "subtitle": "Coffee Grounds • Coffee Bean Oil • Milk Cream Malai",
     "badge": "BEST SELLER",
     "price": 402,
     "originalPrice": 470,
     "benefits": [
       "Exfoliating",
-      "Hydrating"
+      "Skin Smoothing"
     ],
     "tags": [
       "Hydrating",
@@ -153,7 +153,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Exfoliation, Skin Softening & Circulation Boost",
+    "skinFocus": "Body Exfoliation, Skin Softening & Circulation Boost",
     "weight": "118 - 123 Gms",
     "image": "/soaps/CAFFE LATTE.png",
     "freeFrom": [
@@ -188,7 +188,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "caffe-berrie-creamy-exfoliating-spa",
-    "name": "Caffe Berrie Creamy Exfoliating Spa",
+    "name": "Wild Berry Glow Scrub",
     "subtitle": "Pomegranate Oil • Strawberry Oil • Coffee Grounds",
     "badge": "NEW",
     "price": 402,
@@ -203,7 +203,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Antioxidant Exfoliation & Berry Glow",
+    "skinFocus": "Antioxidant Polish, Dead Skin Removal & Berry Glow",
     "weight": "118 - 123 Gms",
     "image": "/soaps/CAFFE BERRIE.png",
     "freeFrom": [
@@ -238,7 +238,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "caffe-orange-creamy-milk-exfoliation-spa",
-    "name": "Caffe Orange Creamy Milk Exfoliation Spa",
+    "name": "Orange & Coffee Tan Removal Bar",
     "subtitle": "Orange Peel Powder • Orange Oil • Fresh Juice",
     "badge": "POPULAR",
     "price": 402,
@@ -253,7 +253,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Tan Reversal, Citrus Refreshment & Exfoliation",
+    "skinFocus": "Sun Tan Reversal, Vitamin C Polishing & Fresh Exfoliation",
     "weight": "118 - 123 Gms",
     "image": "/soaps/CAFFE ORANGE.png",
     "freeFrom": [
@@ -287,14 +287,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "siberiian-waters-cologne-spa",
-    "name": "SIBERIIAN WATERS COLOGNE SPA",
-    "subtitle": "Cedarwood • Lavender • Spearmint • French Blue Clay",
+    "name": "Cologne Spice Fresh Bar",
+    "subtitle": "Cologne Spice • Rosemary & Cypress Oil • AloeVera",
     "badge": "POPULAR",
     "price": 280,
     "originalPrice": 350,
     "benefits": [
-      "Cooling Freshness",
-      "Pore Cleansing"
+      "Active Freshness",
+      "Deodorizing"
     ],
     "tags": [
       "Brightness",
@@ -302,30 +302,30 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Invigorating Cleanse & Cologne Freshness",
+    "skinFocus": "Active Cleanse, Long-Lasting Aroma & Skin Invigoration",
     "weight": "118 - 123 Gms",
     "image": "/soaps/SIBERIIAN.png",
     "freeFrom": [
       "Synthetic Fragrances Free",
       "Harsh Chemicals Free"
     ],
-    "description": "Enriched with Cedarwood Essential Oil, Lavender Essential Oil, Spearmint Oil, AloeVera Puree, Saponified Shea Butter, Kokum Butter, Olive Oil, Almond Oil, Coconut Oil, Castor Oil, Organic Palmate, Colours in compliance with EU and other global standards. Premium Fragrance Oils, French Blue Clay, Natural Kaolin Clay.",
+    "description": "Enriched with Cologne, Rosemary Essential Oil, Cypress Essential Oil, AloeVera Puree, Saponified Shea Butter, Kokum Butter, Olive Oil, Almond Oil, Coconut Oil, Castor Oil, Organic Palmate, Colours in compliance with EU and other global standards. Premium Fragrance Oils, Natural Kaolin Clay.",
     "directions": "Apply onto damp skin, enjoy the crisp cooling aroma, and rinse thoroughly.",
     "keyIngredients": [
       {
-        "name": "Cedarwood & Lavender",
-        "description": "Soothing woody notes that calm irritated skin.",
+        "name": "Rosemary & Cypress Essential Oil",
+        "description": "Soothing botanical notes that tone and invigorate skin.",
         "icon": "Leaf"
       },
       {
-        "name": "Spearmint Essential Oil",
-        "description": "Delivers an instant burst of cooling freshness.",
+        "name": "Cologne Spice Essence",
+        "description": "Delivers an instant burst of long-lasting fresh aroma.",
         "icon": "Zap"
       },
       {
-        "name": "French Blue Clay",
-        "description": "Draws out deep environmental impurities.",
-        "icon": "Sparkles"
+        "name": "AloeVera Puree",
+        "description": "Deeply cools and rehydrates skin post-activity.",
+        "icon": "Droplet"
       },
       {
         "name": "Shea & Kokum Butter",
@@ -336,14 +336,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "ocean-waters-cologne-spa",
-    "name": "OCEAN WATERS COLOGNE SPA",
-    "subtitle": "Aquatic Marine Notes • Bergamot • Sea Salt • Blue Clay",
+    "name": "Aqua Citrus Purifying Bar",
+    "subtitle": "Bergamot & Lime • Lemon Essential Oil • AloeVera",
     "badge": "BEST SELLER",
     "price": 280,
     "originalPrice": 350,
     "benefits": [
-      "Aquatic Freshness",
-      "Deep Cleanse"
+      "Pore Purifying",
+      "Oil Control"
     ],
     "tags": [
       "Brightness",
@@ -351,48 +351,48 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Refreshing Ocean Splash & Long-Lasting Aroma",
+    "skinFocus": "Pore Clarifying, Excess Sebum Balance & Aqua Freshness",
     "weight": "118 - 123 Gms",
     "image": "/soaps/OCEAN WATERS.png",
     "freeFrom": [
       "Harsh Chemicals Free",
       "Paraben Free"
     ],
-    "description": "Enriched with Marine Extracts, Bergamot Essential Oil, Sea Minerals, AloeVera Puree, Saponified Shea Butter, Kokum Butter, Olive Oil, Almond Oil, Coconut Oil, Castor Oil, Organic Palmate, Colours in compliance with EU and other global standards. Premium Fragrance Oils, Natural Kaolin Clay, Blue French Clay.",
+    "description": "Enriched with Orange Peel Extract, Bergamot Essential Oil, Lime Essential Oil, Lemon Essential Oil, AloeVera Puree, Saponified Shea Butter, Kokum Butter, Olive Oil, Almond Oil, Coconut Oil, Castor Oil, Organic Palmate, Colours in compliance with EU and other global standards. Premium Fragrance Oils, Yellow Bentonite Clay, Natural Kaolin Clay.",
     "directions": "Lather across body during showers for a crisp, oceanic revitalizing experience.",
     "keyIngredients": [
       {
-        "name": "Marine Minerals & Sea Salts",
-        "description": "Replenishes trace minerals and tones the skin.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Bergamot Essential Oil",
-        "description": "Refreshes skin surface and balances natural oils.",
+        "name": "Bergamot, Lime & Lemon Oils",
+        "description": "Energizing citrus trio that purifies pores and balances oil.",
         "icon": "Sun"
       },
       {
-        "name": "Blue French Clay",
-        "description": "Gently cleanses and clarifies pores.",
+        "name": "Yellow Bentonite & Kaolin Clay",
+        "description": "Draws out micro-toxins and excess skin sebum.",
         "icon": "Sparkles"
       },
       {
-        "name": "Olive & Almond Oil",
-        "description": "Leaves skin soft, hydrated and supple.",
-        "icon": "Shield"
+        "name": "AloeVera Puree",
+        "description": "Restores soothing hydration without heaviness.",
+        "icon": "Droplet"
+      },
+      {
+        "name": "Orange Peel Extract",
+        "description": "Natural botanical astringent for refreshed skin tone.",
+        "icon": "Leaf"
       }
     ]
   },
   {
     "id": "zaarraa-oudh-glow-face-soap",
-    "name": "ZAARRAA OUDH GLOW Face Soap",
-    "subtitle": "Arabian Oudh • Saffron Extract • Sweet Almond Milk",
+    "name": "Spearmint & Green Tea Cooling Bar",
+    "subtitle": "Spearmint Oil • Green Tea Extract • Lime & AloeVera",
     "badge": "POPULAR",
     "price": 402,
     "originalPrice": 490,
     "benefits": [
-      "Luxurious Glow",
-      "Anti-Dryness"
+      "Cooling Freshness",
+      "Anti-Pollution"
     ],
     "tags": [
       "Brightness",
@@ -400,41 +400,41 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Royal Oudh Radiance & Velvety Nourishment",
+    "skinFocus": "Cooling Freshness, Anti-Pollution & Daily Oil Balance",
     "weight": "118 - 123 Gms",
     "image": "/soaps/ZAARRAA.png",
     "freeFrom": [
       "Synthetic Fragrances Free",
       "Harsh Chemicals Free"
     ],
-    "description": "Enriched with Rare Arabian Oudh Essence, Saffron Extract, Thick Milk Cream, Fresh Almond Milk, AloeVera Puree, Saponified Shea Butter, Kokum Butter, Pure Ghee, Olive Oil, Almond Oil, Coconut Oil, Castor Oil, Organic Palmate. Colours in compliance with EU standards, Kaolin Clay, Rhassoul Red Clay.",
-    "directions": "Massage the rich Oudh lather over face and neck, leave on for 1 minute, and rinse with tepid water.",
+    "description": "Enriched with Spearmint Oil, Orange Peel Extract, Green Tea Extract, Lime Oil, AloeVera Puree, Saponified Shea Butter, Kokum Butter, Olive Oil, Almond Oil, Coconut Oil, Castor Oil, Organic Palmate. Colours in compliance with EU standards, Natural Kaolin Clay.",
+    "directions": "Massage the cooling spearmint lather over face and body, and rinse with tepid water.",
     "keyIngredients": [
       {
-        "name": "Arabian Oudh Essence",
-        "description": "Exquisite royal aroma that elevates bath ritual.",
-        "icon": "Sparkles"
+        "name": "Spearmint & Lime Oil",
+        "description": "Delivers an invigorating, cooling crisp freshness.",
+        "icon": "Zap"
       },
       {
-        "name": "Saffron Extract & Milk Cream",
-        "description": "Reveals luminous, even skin complexion.",
-        "icon": "Sun"
+        "name": "Green Tea Extract",
+        "description": "Rich in antioxidants that protect against urban pollution.",
+        "icon": "Leaf"
       },
       {
-        "name": "Pure Desi Ghee & Shea Butter",
-        "description": "Infuses supreme moisture into thirsty skin.",
+        "name": "AloeVera Puree",
+        "description": "Deeply hydrates and restores skin moisture barrier.",
         "icon": "Droplet"
       },
       {
-        "name": "Rhassoul Clay",
-        "description": "Purifies pores softly and refines texture.",
-        "icon": "Shield"
+        "name": "Shea & Kokum Butter",
+        "description": "Leaves skin soft and nourished without tightness.",
+        "icon": "Heart"
       }
     ]
   },
   {
     "id": "sanskruti-shahi-ubtan",
-    "name": "SANSKRUTI SHAHI UBTAN",
+    "name": "Shahi Kesar Ubtan Glow Bar",
     "subtitle": "Kesar Ubtan • Sandalwood Oil • Wild Turmeric",
     "badge": "ALL TIME FAVOURITE",
     "price": 330,
@@ -449,7 +449,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Royal Herbal Ubtan Glow & Deep Tan Removal",
+    "skinFocus": "Traditional Ayurvedic Tan Removal & Bridal Radiance",
     "weight": "118 - 123 Gms",
     "image": "/soaps/SANSKRUTI.png",
     "freeFrom": [
@@ -483,13 +483,13 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "almond-cream-spa-almond-milk",
-    "name": "ALMOND CREAM SPA - Almond Milk Almond Oil",
+    "name": "Sweet Almond Deep Moisture Bar",
     "subtitle": "Virgin Sweet Almond Oil • Fresh Almond Milk • AloeVera",
     "badge": "BEST SELLER",
     "price": 303,
     "originalPrice": 380,
     "benefits": [
-      "Rich Moisture",
+      "Deep Hydration",
       "Nourishing"
     ],
     "tags": [
@@ -498,7 +498,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Intense Moisture & Velvet Softness for Dry Skin",
+    "skinFocus": "Dry Skin Relief, Lipid Barrier Repair & Velvet Softness",
     "weight": "118 - 123 Gms",
     "image": "/soaps/ALMOND CREAM.png",
     "freeFrom": [
@@ -532,14 +532,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "lush-oats-honey",
-    "name": "LUSH OATS HONEY",
+    "name": "Oat Milk & Honey Soothing Bar",
     "subtitle": "Powdered Oats • Oats Milk • Raw Honey • Vanilla",
     "badge": "POPULAR",
     "price": 330,
     "originalPrice": 400,
     "benefits": [
-      "Softening",
-      "Soothing Care"
+      "Soothing Care",
+      "Softening"
     ],
     "tags": [
       "Hydrating",
@@ -547,7 +547,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Soothing Moisture, Calm Skin & Gentle Exfoliation",
+    "skinFocus": "Calming Sensitive Skin, Anti-Itch Relief & Gentle Exfoliation",
     "weight": "118 - 123 Gms",
     "image": "/soaps/LUSH OATS.png",
     "freeFrom": [
@@ -581,14 +581,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "oasis-arabiian-oudh",
-    "name": "OASIS ARABIIAN OUDH",
-    "subtitle": "Agar Oil (Oudh) • Sandalwood Oil • Cocoa Butter",
+    "name": "Arabian Oudh Nourishing Bar",
+    "subtitle": "Agarwood Oudh • Sandalwood Oil • Cocoa Butter",
     "badge": "NEW",
     "price": 402,
     "originalPrice": 480,
     "benefits": [
-      "Luxury Aroma",
-      "Nourishing"
+      "Rich Moisture",
+      "Aromatherapy"
     ],
     "tags": [
       "Hydrating",
@@ -596,7 +596,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Deep Moisture & Exotic Arabian Oudh Fragrance",
+    "skinFocus": "Deep Skin Conditioning & Exotic Arabian Oudh Fragrance",
     "weight": "118 - 123 Gms",
     "image": "/soaps/OASIS ARABIIAN OUDH.png",
     "freeFrom": [
@@ -630,14 +630,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "indus-riverr-cinnamon-bergamot",
-    "name": "INDUS RIVERR - CINNAMON BERGAMOT",
+    "name": "Spiced Cinnamon Detox Bar",
     "subtitle": "Bergamot Essential Oil • Cinnamon • Rose Geranium",
     "badge": "POPULAR",
     "price": 280,
     "originalPrice": 350,
     "benefits": [
-      "Purifying",
-      "Freshness"
+      "Circulation Boost",
+      "Purifying"
     ],
     "tags": [
       "Brightness",
@@ -645,7 +645,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Purifying Spice & Citrus Refreshment",
+    "skinFocus": "Warming Micro-Circulation, Deep Detox & Citrus Freshness",
     "weight": "118 - 123 Gms",
     "image": "/soaps/INDUS RIVERR - CINNAMON BERGAMOT.png",
     "freeFrom": [
@@ -679,7 +679,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "chandaan-gold-face-soap",
-    "name": "CHANDAAN GOLD Face Soap",
+    "name": "Sandalwood Golden Glow Face Bar",
     "subtitle": "Sandalwood • Wild Turmeric • Pure Ghee • Brazilian Golden Clay",
     "badge": "ALL TIME FAVOURITE",
     "price": 402,
@@ -696,7 +696,7 @@ export const PRODUCTS: Product[] = [
       "Handcrafted Soaps"
     ],
     "category": "Handcrafted Soaps",
-    "skinFocus": "Brightening, Moisturising & Golden Radiance",
+    "skinFocus": "Complexion Brightening, Moisture Infusion & Golden Radiance",
     "weight": "118 - 123 Gms",
     "image": "/soaps/Chandaan Gold Face Soap.png",
     "freeFrom": [

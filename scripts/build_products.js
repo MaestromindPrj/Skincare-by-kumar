@@ -1,4 +1,4 @@
-cconst fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 
 const kowskinData = require('../scratch_kowskin_products.json');

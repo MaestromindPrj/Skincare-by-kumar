@@ -66,12 +66,12 @@ export default function HomePage() {
   // Testimonial carousel active index
   const testimonials = [
     {
-      quote: "I regularly buy Chandaan Gold Face Soap. The quality of the soaps and the direct communication make the entire experience feel personalized and reliable.",
+      quote: "I regularly buy the Sandalwood Golden Glow Face Bar. The quality of the soaps and the direct communication make the entire experience feel personalized and reliable.",
       author: "Sabrina",
       role: "Verified Buyer"
     },
     {
-      quote: "The Zaarraa Spearmint soap has completely transformed my morning skin routine. My skin feels fresh, hydrated, and glowing without feeling tight.",
+      quote: "The Spearmint & Green Tea Cooling Bar has completely transformed my morning skin routine. My skin feels fresh, hydrated, and glowing without feeling tight.",
       author: "Ananya Sharma",
       role: "Verified Buyer"
     },
