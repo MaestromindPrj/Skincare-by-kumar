@@ -59,16 +59,6 @@ function ShopContent() {
       value: "Sun Care & SPF",
       image: "/categories/sun-care.png",
     },
-    {
-      label: "Lip Care",
-      value: "Lip Care",
-      image: "/categories/lip-care.png",
-    },
-    {
-      label: "Facial Wipes",
-      value: "Facial Wipes",
-      image: "/categories/facial-wipes.png",
-    },
   ];
 
   const brands = [
@@ -76,7 +66,6 @@ function ShopContent() {
     { label: "Skincare By Kumar", value: "Skincare By Kumar" },
     { label: "Teotema Milano", value: "Teotema" },
     { label: "Malibu Suncare", value: "Malibu Suncare" },
-    { label: "KleenOWipe", value: "KleenOWipe" },
   ];
 
   const availableTags = useMemo(() => {
@@ -86,16 +75,10 @@ function ShopContent() {
     if (selectedCategory === "Sun Care & SPF") {
       return ["All", "SPF 50", "Tan Removal", "Water Resistant"];
     }
-    if (selectedCategory === "Lip Care") {
-      return ["All", "SPF 30", "Hydrating", "Lip Gloss", "Lip Balm"];
-    }
-    if (selectedCategory === "Facial Wipes") {
-      return ["All", "Tan Removal", "Brightness", "Detox"];
-    }
     if (selectedCategory === "Handcrafted Soaps") {
-      return ["All", "Brightness", "Hydrating", "Baby Friendly", "Tan Removal"];
+      return ["All", "Men's Special", "Brightness", "Hydrating", "Baby Friendly", "Tan Removal"];
     }
-    return ["All", "Brightness", "Hydrating", "Baby Friendly", "Tan Removal", "SPF 50", "SPF 30"];
+    return ["All", "Men's Special", "Brightness", "Hydrating", "Baby Friendly", "Tan Removal", "SPF 50"];
   }, [selectedCategory]);
 
   // Toggle multi-tag selection
@@ -169,6 +152,7 @@ function ShopContent() {
           return (
             (product.tags as readonly string[]).includes(tag) ||
             product.benefits.some((b) => b.toLowerCase().includes(tag.toLowerCase())) ||
+            (tag === "Men's Special" && (product.tags.includes("Men's Special") || product.tags.includes("Men Special") || product.badge?.includes("MEN'S") || product.badge?.includes("MEN"))) ||
             (tag === "Brightness" && product.benefits.includes("Brightening")) ||
             (tag === "Baby Friendly" && (product.category === "Kid's Care" || product.benefits.includes("Ultra Gentle"))) ||
             (tag === "Hydrating" && (product.benefits.includes("Hydrating") || product.tags.includes("Hydrating"))) ||
@@ -211,7 +195,7 @@ function ShopContent() {
             Explore Our Premium Collection
           </h1>
           <p className="text-sm sm:text-base text-[#6B6B6B] mt-2.5 max-w-xl mx-auto">
-            From artisanal cold-processed soaps to world-class Italian haircare, vegan sun protection, and detox facial wipes.
+            From artisanal cold-processed soaps to world-class Italian haircare and vegan sun protection.
           </p>
         </div>
 

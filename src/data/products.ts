@@ -12,12 +12,13 @@ export interface Product {
   id: string;
   name: string;
   subtitle: string;
-  badge?: "POPULAR" | "ALL TIME FAVOURITE" | "KIDS' FAVOURITE" | "BEST SELLER" | "NEW" | "SPF 50" | "SPF 30" | "AMMONIA FREE" | "DETOX" | string;
+  badge?: "POPULAR" | "ALL TIME FAVOURITE" | "KIDS' FAVOURITE" | "BEST SELLER" | "NEW" | "SPF 50" | "SPF 30" | "AMMONIA FREE" | "DETOX" | "MEN SPECIAL" | string;
+  badgeImage?: string;
   price: number;
   originalPrice: number;
   benefits: string[];
   tags: string[];
-  category: "Handcrafted Soaps" | "Hair Care" | "Sun Care & SPF" | "Lip Care" | "Facial Wipes" | "Face & Glow" | "Fresh & Clean" | "Kid's Care" | string;
+  category: "Handcrafted Soaps" | "Hair Care" | "Sun Care & SPF" | "Face & Glow" | "Fresh & Clean" | "Kid's Care" | string;
   brand?: "Skincare By Kumar" | "Teotema" | "Malibu Suncare" | "KleenOWipe" | string;
   description: string;
   directions?: string;
@@ -36,6 +37,63 @@ export interface Product {
 }
 
 export const PRODUCTS: Product[] = [
+  {
+    "id": "zaap-men-special-soap",
+    "name": "Zaap Men Special Handcrafted Soap",
+    "subtitle": "Activated Charcoal • Yellow Clay • Mint & Ylang-Ylang",
+    "badge": "MEN'S SPECIAL",
+    "price": 420,
+    "originalPrice": 490,
+    "benefits": [
+      "Men's Special",
+      "Deep Pore Detox",
+      "Fresh & Refreshing"
+    ],
+    "tags": [
+      "Men's Special",
+      "Handcrafted Soaps",
+      "Brightness",
+      "Hydrating"
+    ],
+    "category": "Handcrafted Soaps",
+    "brand": "Skincare By Kumar",
+    "skinFocus": "Men's Skin Detox, Deep Cleansing & Invigorating Freshness",
+    "weight": "118 - 123 Gms",
+    "image": "/soaps/Zaap (2).png",
+    "images": [
+      "/soaps/Zaap (2).png"
+    ],
+    "freeFrom": [
+      "Synthetic Fragrances Free",
+      "Harsh Chemicals Free",
+      "Paraben Free",
+      "Sulphate Free"
+    ],
+    "description": "Enriched with Ylang-Ylang oil, Cassia Oil, Anise Oil, Geranium Oil, Mint Extract, Menthol, Fresh Aloevera Puree, Saponified Shea Butter, Kokum Butter, Olive Oil, Almond Oil, Coconut Oil, Castor Oil, Organic Palmate, Colours in compliance with EU and other global standards, Premium Fragrance Oils, Activated Charcoal, Natural Kaolin Clay, Bentonite Yellow Clay.",
+    "directions": "Lather with warm water between hands, gently massage onto damp skin in circular motions, and rinse thoroughly.",
+    "keyIngredients": [
+      {
+        "name": "Activated Charcoal & Kaolin Clay",
+        "description": "Extracts deep-seated toxins, dirt, and excess sebum.",
+        "icon": "Shield"
+      },
+      {
+        "name": "Menthol & Mint Extract",
+        "description": "Provides an immediate cooling, invigorating fresh feel.",
+        "icon": "Sparkles"
+      },
+      {
+        "name": "Shea & Kokum Butter",
+        "description": "Rich botanical fats that protect and nourish skin barrier.",
+        "icon": "Heart"
+      },
+      {
+        "name": "Ylang-Ylang & Geranium Oils",
+        "description": "Therapeutic botanical essential oils for skin balancing.",
+        "icon": "Leaf"
+      }
+    ]
+  },
   {
     "id": "french-red-clay-face-soap",
     "name": "Red Clay Brightening Face Bar",
@@ -138,7 +196,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "caffe-latte-creamy-exfoliating-spa",
-    "name": "Coffee & Cream Body Scrub",
+    "name": "Coffee & Cream Velvet Bar",
     "subtitle": "Coffee Grounds • Coffee Bean Oil • Milk Cream Malai",
     "badge": "BEST SELLER",
     "price": 402,
@@ -188,7 +246,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "caffe-berrie-creamy-exfoliating-spa",
-    "name": "Wild Berry Glow Scrub",
+    "name": "Wild Berry Glow Bar",
     "subtitle": "Pomegranate Oil • Strawberry Oil • Coffee Grounds",
     "badge": "NEW",
     "price": 402,
@@ -1546,221 +1604,7 @@ export const PRODUCTS: Product[] = [
       }
     ]
   },
-  {
-    "id": "malibu-suncare-lip-gloss-strawberry",
-    "name": "Malibu Suncare Lip Gloss - Strawberry Flavour",
-    "subtitle": "Suncare Lip Gloss - Strawberry Flavour • SPF 30 • 1.5 mL",
-    "badge": "SPF 30",
-    "price": 899,
-    "originalPrice": 1034,
-    "benefits": [
-      "SPF 30 Protection",
-      "Moisturizing",
-      "UVA/UVB Defense"
-    ],
-    "tags": [
-      "Lip Care",
-      "SPF 30",
-      "Hydrating"
-    ],
-    "category": "Lip Care",
-    "brand": "Malibu Suncare",
-    "skinFocus": "Daily Lip Hydration, Chapped Lip Healing & Sun Defense",
-    "weight": "1.5 ml",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Gloss-0633710430265-A.jpg?v=1685639404",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Gloss-0633710430265-A.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Gloss-0633710430265-B.jpg?v=1685639403",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Gloss-0633710430265-C.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Gloss-0633710430265-D.jpg?v=1685639403",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Gloss-0633710430265-E.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Gloss-0633710430265-F.jpg?v=1685639404"
-    ],
-    "freeFrom": [
-      "Vegan Formula",
-      "Cruelty Free",
-      "Paraben Free"
-    ],
-    "description": "Delicious Strawberry flavored vegan lip gloss offering SPF 30 broad spectrum UVA/UVB protection and long-lasting moisture against sun, wind, and dryness.",
-    "directions": "Glide over lips frequently, especially before sun exposure or outdoor activities.",
-    "keyIngredients": [
-      {
-        "name": "SPF 30 Solar Filters",
-        "description": "Blocks harmful sunburn UVA & UVB rays.",
-        "icon": "Sun"
-      },
-      {
-        "name": "Vitamin E & Aloe",
-        "description": "Nourishes and heals dry, chapped lips.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Natural Fruit Flavours",
-        "description": "Delicious refreshing taste and comfortable wear.",
-        "icon": "Sparkles"
-      }
-    ]
-  },
-  {
-    "id": "malibu-suncare-lip-gloss-coconut",
-    "name": "Malibu Suncare Lip Gloss - Coconut Flavour",
-    "subtitle": "Suncare Lip Gloss - Coconut Flavour • SPF 30 • 1.5 mL",
-    "badge": "SPF 30",
-    "price": 899,
-    "originalPrice": 1034,
-    "benefits": [
-      "SPF 30 Protection",
-      "Moisturizing",
-      "UVA/UVB Defense"
-    ],
-    "tags": [
-      "Lip Care",
-      "SPF 30",
-      "Hydrating"
-    ],
-    "category": "Lip Care",
-    "brand": "Malibu Suncare",
-    "skinFocus": "Daily Lip Hydration, Chapped Lip Healing & Sun Defense",
-    "weight": "1.5 ml",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Coconut-Lip-Gloss-0633710430272-A.jpg?v=1685639404",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Coconut-Lip-Gloss-0633710430272-A.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Coconut-Lip-Gloss-0633710430272-C.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Coconut-Lip-Gloss-0633710430272-D.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Coconut-Lip-Gloss-0633710430272-E.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Coconut-Lip-Gloss-0633710430272-F.jpg?v=1685639403"
-    ],
-    "freeFrom": [
-      "Vegan Formula",
-      "Cruelty Free",
-      "Paraben Free"
-    ],
-    "description": "Tropical Coconut flavored vegan lip gloss infused with SPF 30 solar filters to shield lips from burning and chapping while delivering a high-shine glossy finish.",
-    "directions": "Apply liberally to lips throughout the day as needed.",
-    "keyIngredients": [
-      {
-        "name": "SPF 30 Solar Filters",
-        "description": "Blocks harmful sunburn UVA & UVB rays.",
-        "icon": "Sun"
-      },
-      {
-        "name": "Vitamin E & Aloe",
-        "description": "Nourishes and heals dry, chapped lips.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Natural Fruit Flavours",
-        "description": "Delicious refreshing taste and comfortable wear.",
-        "icon": "Sparkles"
-      }
-    ]
-  },
-  {
-    "id": "spf-lip-balm-pina-colada",
-    "name": "Spf Lip Balm",
-    "subtitle": "SPF 30 Lip Balm • Malibu Pina Colada • SPF 30 • 4 gm",
-    "badge": "SPF 30",
-    "price": 299,
-    "originalPrice": 344,
-    "benefits": [
-      "SPF 30 Protection",
-      "Moisturizing",
-      "UVA/UVB Defense"
-    ],
-    "tags": [
-      "Lip Care",
-      "SPF 30",
-      "Hydrating"
-    ],
-    "category": "Lip Care",
-    "brand": "Malibu Suncare",
-    "skinFocus": "Daily Lip Hydration, Chapped Lip Healing & Sun Defense",
-    "weight": "4g",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/flavour-Lipcare-Catalog-1.jpg?v=1685639404",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/flavour-Lipcare-Catalog-1.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/flavour-Lipcare-Catalog-2.jpg?v=1685639403",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Pina-Colada-flavour-Lipcare-3.jpg?v=1685639405",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/flavour-Lipcare-Catalog-4.jpg?v=1685639404"
-    ],
-    "freeFrom": [
-      "Vegan Formula",
-      "Cruelty Free",
-      "Paraben Free"
-    ],
-    "description": "Moisturizing Pina Colada SPF 30 lip balm that shields lips from UV rays, harsh winds, and cold weather, leaving lips deeply hydrated and soft.",
-    "directions": "Apply generously on lips 15 minutes before sun exposure. Reapply regularly.",
-    "keyIngredients": [
-      {
-        "name": "SPF 30 Solar Filters",
-        "description": "Blocks harmful sunburn UVA & UVB rays.",
-        "icon": "Sun"
-      },
-      {
-        "name": "Vitamin E & Aloe",
-        "description": "Nourishes and heals dry, chapped lips.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Natural Fruit Flavours",
-        "description": "Delicious refreshing taste and comfortable wear.",
-        "icon": "Sparkles"
-      }
-    ]
-  },
-  {
-    "id": "spf-lip-balm-mojito",
-    "name": "Spf Lip Balm",
-    "subtitle": "SPF 30 Lip Balm • Malibu Mojito • SPF 30 • 4 gm",
-    "badge": "SPF 30",
-    "price": 299,
-    "originalPrice": 344,
-    "benefits": [
-      "SPF 30 Protection",
-      "Moisturizing",
-      "UVA/UVB Defense"
-    ],
-    "tags": [
-      "Lip Care",
-      "SPF 30",
-      "Hydrating"
-    ],
-    "category": "Lip Care",
-    "brand": "Malibu Suncare",
-    "skinFocus": "Daily Lip Hydration, Chapped Lip Healing & Sun Defense",
-    "weight": "4g",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Mojito-flavour-Lipcare-Catalog-A.jpg?v=1685639403",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Mojito-flavour-Lipcare-Catalog-A.jpg?v=1685639403",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Mojito-flavour-Lipcare-Catalog-B.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Mojito-flavour-Lipcare-Catalog-C.jpg?v=1685639404",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Mojito-flavour-Lipcare-Catalog-D.jpg?v=1685639404"
-    ],
-    "freeFrom": [
-      "Vegan Formula",
-      "Cruelty Free",
-      "Paraben Free"
-    ],
-    "description": "Refreshing Mojito flavored SPF 30 lip balm packed with soothing emollients to nourish dry lips and provide reliable UVA/UVB photoprotection.",
-    "directions": "Smooth onto lips as needed for continuous sun and wind protection.",
-    "keyIngredients": [
-      {
-        "name": "SPF 30 Solar Filters",
-        "description": "Blocks harmful sunburn UVA & UVB rays.",
-        "icon": "Sun"
-      },
-      {
-        "name": "Vitamin E & Aloe",
-        "description": "Nourishes and heals dry, chapped lips.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Natural Fruit Flavours",
-        "description": "Delicious refreshing taste and comfortable wear.",
-        "icon": "Sparkles"
-      }
-    ]
-  },
+
   {
     "id": "malibu-suncare-sunscreen-clear-spray",
     "name": "Malibu Suncare Sunscreen",
@@ -1816,60 +1660,7 @@ export const PRODUCTS: Product[] = [
       }
     ]
   },
-  {
-    "id": "spf-lip-balm-watermelon",
-    "name": "Spf Lip Balm",
-    "subtitle": "SPF 30 Lip Balm • Malibu Watermelon • SPF 30 • Vegan • 5 gm",
-    "badge": "SPF 30",
-    "price": 299,
-    "originalPrice": 344,
-    "benefits": [
-      "SPF 30 Protection",
-      "Moisturizing",
-      "UVA/UVB Defense"
-    ],
-    "tags": [
-      "Lip Care",
-      "SPF 30",
-      "Hydrating"
-    ],
-    "category": "Lip Care",
-    "brand": "Malibu Suncare",
-    "skinFocus": "Daily Lip Hydration, Chapped Lip Healing & Sun Defense",
-    "weight": "5g",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Watermelon-Lip-Balm-5025135118562-A.jpg?v=1688231461",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Watermelon-Lip-Balm-5025135118562-A.jpg?v=1688231461",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Watermelon-Lip-Balm-5025135118562-B.jpg?v=1688231461",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Watermelon-Lip-Balm-5025135118562-D.jpg?v=1688231461",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Watermelon-Lip-Balm-5025135118562-C.jpg?v=1688231460",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Watermelon-Lip-Balm-5025135118562-E.jpg?v=1688231461"
-    ],
-    "freeFrom": [
-      "Vegan Formula",
-      "Cruelty Free",
-      "Paraben Free"
-    ],
-    "description": "Juicy Watermelon flavored vegan SPF 30 lip balm that glides smoothly over lips to lock in moisture and protect delicate lip tissue from sun damage.",
-    "directions": "Apply evenly to lips as needed throughout the day.",
-    "keyIngredients": [
-      {
-        "name": "SPF 30 Solar Filters",
-        "description": "Blocks harmful sunburn UVA & UVB rays.",
-        "icon": "Sun"
-      },
-      {
-        "name": "Vitamin E & Aloe",
-        "description": "Nourishes and heals dry, chapped lips.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Natural Fruit Flavours",
-        "description": "Delicious refreshing taste and comfortable wear.",
-        "icon": "Sparkles"
-      }
-    ]
-  },
+
   {
     "id": "malibu-suncare-spf-body-lotion-spray",
     "name": "Spf Body Lotion Spray",
@@ -1924,223 +1715,7 @@ export const PRODUCTS: Product[] = [
       }
     ]
   },
-  {
-    "id": "spf-lip-balm-tropical",
-    "name": "Spf Lip Balm",
-    "subtitle": "SPF 30 Lip Balm • Malibu Tropical • SPF 30 • Vegan • 5 gm",
-    "badge": "SPF 30",
-    "price": 299,
-    "originalPrice": 344,
-    "benefits": [
-      "SPF 30 Protection",
-      "Moisturizing",
-      "UVA/UVB Defense"
-    ],
-    "tags": [
-      "Lip Care",
-      "SPF 30",
-      "Hydrating"
-    ],
-    "category": "Lip Care",
-    "brand": "Malibu Suncare",
-    "skinFocus": "Daily Lip Hydration, Chapped Lip Healing & Sun Defense",
-    "weight": "5g",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Tropical-Lip-Balm-5025135118562-A.jpg?v=1688231461",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Tropical-Lip-Balm-5025135118562-A.jpg?v=1688231461",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Tropical-Lip-Balm-5025135118562-B.jpg?v=1688231460",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Tropical-Lip-Balm-5025135118562-D.jpg?v=1688231460",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Tropical-Lip-Balm-5025135118562-C.jpg?v=1688231460",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Tropical-Lip-Balm-5025135118562-E.jpg?v=1688231461"
-    ],
-    "freeFrom": [
-      "Vegan Formula",
-      "Cruelty Free",
-      "Paraben Free"
-    ],
-    "description": "Exotic Tropical fruit flavor SPF 30 vegan lip balm providing essential moisture and UV defense to prevent painful sunburn and peeling lips.",
-    "directions": "Apply to lips liberally before heading outdoors.",
-    "keyIngredients": [
-      {
-        "name": "SPF 30 Solar Filters",
-        "description": "Blocks harmful sunburn UVA & UVB rays.",
-        "icon": "Sun"
-      },
-      {
-        "name": "Vitamin E & Aloe",
-        "description": "Nourishes and heals dry, chapped lips.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Natural Fruit Flavours",
-        "description": "Delicious refreshing taste and comfortable wear.",
-        "icon": "Sparkles"
-      }
-    ]
-  },
-  {
-    "id": "spf-lip-balm-vanilla",
-    "name": "Spf Lip Balm",
-    "subtitle": "SPF 30 Lip Balm • Malibu Vanilla • SPF30 • Vegan • 5g",
-    "badge": "SPF 30",
-    "price": 299,
-    "originalPrice": 344,
-    "benefits": [
-      "SPF 30 Protection",
-      "Moisturizing",
-      "UVA/UVB Defense"
-    ],
-    "tags": [
-      "Lip Care",
-      "SPF 30",
-      "Hydrating"
-    ],
-    "category": "Lip Care",
-    "brand": "Malibu Suncare",
-    "skinFocus": "Daily Lip Hydration, Chapped Lip Healing & Sun Defense",
-    "weight": "5g",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Vanilla-Lip-Balm-5025135118586-A.jpg?v=1688231461",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Vanilla-Lip-Balm-5025135118586-A.jpg?v=1688231461",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Vanilla-Lip-Balm-5025135118586-B.jpg?v=1688231462",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Vanilla-Lip-Balm-5025135118586-D.jpg?v=1688231462",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Vanilla-Lip-Balm-5025135118586-C.jpg?v=1690910063",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Vanilla-Lip-Balm-5025135118586-E.jpg?v=1688231462"
-    ],
-    "freeFrom": [
-      "Vegan Formula",
-      "Cruelty Free",
-      "Paraben Free"
-    ],
-    "description": "Sweet soothing Vanilla flavored vegan SPF 30 lip balm that delivers rich barrier hydration and broad spectrum solar protection in all seasons.",
-    "directions": "Smooth over lips regularly for continuous comfort and UV defense.",
-    "keyIngredients": [
-      {
-        "name": "SPF 30 Solar Filters",
-        "description": "Blocks harmful sunburn UVA & UVB rays.",
-        "icon": "Sun"
-      },
-      {
-        "name": "Vitamin E & Aloe",
-        "description": "Nourishes and heals dry, chapped lips.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Natural Fruit Flavours",
-        "description": "Delicious refreshing taste and comfortable wear.",
-        "icon": "Sparkles"
-      }
-    ]
-  },
-  {
-    "id": "spf-lip-balm-strawberry",
-    "name": "Spf Lip Balm",
-    "subtitle": "SPF 30 Lip Balm • Malibu Strawberry • Vegan • 5g",
-    "badge": "SPF 30",
-    "price": 299,
-    "originalPrice": 344,
-    "benefits": [
-      "SPF 30 Protection",
-      "Moisturizing",
-      "UVA/UVB Defense"
-    ],
-    "tags": [
-      "Lip Care",
-      "SPF 30",
-      "Hydrating"
-    ],
-    "category": "Lip Care",
-    "brand": "Malibu Suncare",
-    "skinFocus": "Daily Lip Hydration, Chapped Lip Healing & Sun Defense",
-    "weight": "5g",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Balm-5025135118951-A-1.jpg?v=1690910064",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Balm-5025135118951-A-1.jpg?v=1690910064",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Balm-5025135118951-B-1.jpg?v=1690910064",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Balm-5025135118951-C-1.jpg?v=1690910064",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Balm-5025135118951-D-1.jpg?v=1690910063",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Strawberry-Lip-Balm-5025135118951-E.jpg?v=1688231461"
-    ],
-    "freeFrom": [
-      "Vegan Formula",
-      "Cruelty Free",
-      "Paraben Free"
-    ],
-    "description": "Sweet Strawberry flavored vegan SPF 30 lip balm formulated to protect lips from drying sun and wind while providing long-lasting hydration.",
-    "directions": "Apply evenly to lips throughout the day.",
-    "keyIngredients": [
-      {
-        "name": "SPF 30 Solar Filters",
-        "description": "Blocks harmful sunburn UVA & UVB rays.",
-        "icon": "Sun"
-      },
-      {
-        "name": "Vitamin E & Aloe",
-        "description": "Nourishes and heals dry, chapped lips.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Natural Fruit Flavours",
-        "description": "Delicious refreshing taste and comfortable wear.",
-        "icon": "Sparkles"
-      }
-    ]
-  },
-  {
-    "id": "malibu-lip-gloss-combo",
-    "name": "Malibu Lip Gloss Combo (Set of 2) - Coconut and Strawberry Flavour",
-    "subtitle": "Lip Gloss Combo (Set of 2) - Coconut and Strawberry Flavour • SPF 30 • Vega",
-    "badge": "SPF 30",
-    "price": 1499,
-    "originalPrice": 1724,
-    "benefits": [
-      "SPF 30 Protection",
-      "Moisturizing",
-      "UVA/UVB Defense"
-    ],
-    "tags": [
-      "Lip Care",
-      "SPF 30",
-      "Hydrating"
-    ],
-    "category": "Lip Care",
-    "brand": "Malibu Suncare",
-    "skinFocus": "Daily Lip Hydration, Chapped Lip Healing & Sun Defense",
-    "weight": "Set of 2 (1.5 ml each)",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Lip-Gloss-Combo-5025135119545-A.jpg?v=1688231462",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Lip-Gloss-Combo-5025135119545-A.jpg?v=1688231462",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Lip-Gloss-Combo-5025135119545-B.jpg?v=1690910064",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Lip-Gloss-Combo-5025135119545-C.jpg?v=1688231462",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Lip-Gloss-Combo-5025135119545-D.jpg?v=1690910063",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Lip-Gloss-Combo-5025135119545-E.jpg?v=1688231461",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Malibu-Lip-Gloss-Combo-5025135119545-F.jpg?v=1690910064"
-    ],
-    "freeFrom": [
-      "Vegan Formula",
-      "Cruelty Free",
-      "Paraben Free"
-    ],
-    "description": "Value duo pack featuring Malibu Coconut and Strawberry SPF 30 vegan lip glosses, combining radiant high-shine gloss with high-level sun defense.",
-    "directions": "Apply either flavor onto bare lips or over lip color for SPF 30 shine.",
-    "keyIngredients": [
-      {
-        "name": "SPF 30 Solar Filters",
-        "description": "Blocks harmful sunburn UVA & UVB rays.",
-        "icon": "Sun"
-      },
-      {
-        "name": "Vitamin E & Aloe",
-        "description": "Nourishes and heals dry, chapped lips.",
-        "icon": "Droplet"
-      },
-      {
-        "name": "Natural Fruit Flavours",
-        "description": "Delicious refreshing taste and comfortable wear.",
-        "icon": "Sparkles"
-      }
-    ]
-  },
+
   {
     "id": "all-day-face-cream",
     "name": "Malibu",
@@ -2195,162 +1770,7 @@ export const PRODUCTS: Product[] = [
       }
     ]
   },
-  {
-    "id": "charcoal-facial-wipes-for-men",
-    "name": "KleenOWipe Beard and Face Detox Charcoal Facial Wipes for Men",
-    "subtitle": "Beard and Face Detox Charcoal Facial Wipes for Men • 20 Wipes",
-    "badge": "DETOX",
-    "price": 314,
-    "originalPrice": 349,
-    "benefits": [
-      "Pore Detox",
-      "Gentle Cleansing",
-      "Alcohol Free"
-    ],
-    "tags": [
-      "Facial Wipes",
-      "Tan Removal",
-      "Brightness"
-    ],
-    "category": "Facial Wipes",
-    "brand": "KleenOWipe",
-    "skinFocus": "Instant Dirt & Makeup Removal, Skin Detox & Freshness",
-    "weight": "20 Wipes",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1.jpg?v=1690910064",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1.jpg?v=1690910064",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1-copy-3.jpg?v=1690910064",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1-copy-4.jpg?v=1690910065"
-    ],
-    "freeFrom": [
-      "Alcohol Free",
-      "Paraben Free",
-      "100% Bamboo Biodegradable"
-    ],
-    "description": "Heavy-duty beard and face detox wipes infused with Activated Charcoal that deeply purify pores, dissolve dirt, sweat, and pollution without alcohol or harsh drying agents.",
-    "directions": "Gently wipe face, neck, and beard area. Reseal pack tightly after use to maintain moisture.",
-    "keyIngredients": [
-      {
-        "name": "Activated Bamboo Charcoal",
-        "description": "Traps deep environmental toxins and pollution.",
-        "icon": "Shield"
-      },
-      {
-        "name": "100% Natural Bamboo",
-        "description": "Ultra-soft, biodegradable, non-irritating cloth.",
-        "icon": "Leaf"
-      },
-      {
-        "name": "Hydrating Micellar Essence",
-        "description": "Cleanses without leaving sticky or dry residue.",
-        "icon": "Droplet"
-      }
-    ]
-  },
-  {
-    "id": "exfoliating-and-cleansing-facial-wipes",
-    "name": "KleenOWipe Exfoliating and Cleansing Facial Wipes",
-    "subtitle": "Exfoliating and Cleansing Facial Wipes • 15 Wipes",
-    "badge": "DETOX",
-    "price": 293,
-    "originalPrice": 325,
-    "benefits": [
-      "Pore Detox",
-      "Gentle Cleansing",
-      "Alcohol Free"
-    ],
-    "tags": [
-      "Facial Wipes",
-      "Tan Removal",
-      "Brightness"
-    ],
-    "category": "Facial Wipes",
-    "brand": "KleenOWipe",
-    "skinFocus": "Instant Dirt & Makeup Removal, Skin Detox & Freshness",
-    "weight": "15 Wipes",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1-1.jpg?v=1690910065",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1-1.jpg?v=1690910065",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1-copy-3-1.jpg?v=1690910064",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1-copy-4-1.jpg?v=1690910065"
-    ],
-    "freeFrom": [
-      "Alcohol Free",
-      "Paraben Free",
-      "100% Bamboo Biodegradable"
-    ],
-    "description": "Dual-action textured facial wipes that gently exfoliate dead surface cells while removing waterproof makeup, sweat, and impurities, leaving skin revitalized and soft.",
-    "directions": "Use textured side for gentle exfoliation and smooth side to wipe away makeup and impurities.",
-    "keyIngredients": [
-      {
-        "name": "Activated Bamboo Charcoal",
-        "description": "Traps deep environmental toxins and pollution.",
-        "icon": "Shield"
-      },
-      {
-        "name": "100% Natural Bamboo",
-        "description": "Ultra-soft, biodegradable, non-irritating cloth.",
-        "icon": "Leaf"
-      },
-      {
-        "name": "Hydrating Micellar Essence",
-        "description": "Cleanses without leaving sticky or dry residue.",
-        "icon": "Droplet"
-      }
-    ]
-  },
-  {
-    "id": "bamboo-charcoal-detox-facial-wipes",
-    "name": "KleenOWipe Bamboo Charcoal Detox Facial Wipes",
-    "subtitle": "Bamboo Charcoal Detox Facial Wipes • 20 Wipes",
-    "badge": "DETOX",
-    "price": 314,
-    "originalPrice": 349,
-    "benefits": [
-      "Pore Detox",
-      "Gentle Cleansing",
-      "Alcohol Free"
-    ],
-    "tags": [
-      "Facial Wipes",
-      "Tan Removal",
-      "Brightness"
-    ],
-    "category": "Facial Wipes",
-    "brand": "KleenOWipe",
-    "skinFocus": "Instant Dirt & Makeup Removal, Skin Detox & Freshness",
-    "weight": "20 Wipes",
-    "image": "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1_d22b6249-429f-4b69-bc7c-edc50ed0976e.jpg?v=1690910063",
-    "images": [
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1_d22b6249-429f-4b69-bc7c-edc50ed0976e.jpg?v=1690910063",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1-copy-3_9958ebda-a3c9-4c43-b3d5-54d9e7fd1548.jpg?v=1690910064",
-      "https://cdn.shopify.com/s/files/1/0651/5877/5003/products/Artboard-1-copy-4_6248d823-b25c-4cdf-962a-05e0657ed8af.jpg?v=1688231461"
-    ],
-    "freeFrom": [
-      "Alcohol Free",
-      "Paraben Free",
-      "100% Bamboo Biodegradable"
-    ],
-    "description": "100% biodegradable bamboo wipes infused with Activated Charcoal and micellar water to extract deep pore impurities, dust, and excess oil instantly on the go.",
-    "directions": "Wipe gently over face and eye area with eyes closed. No rinsing required.",
-    "keyIngredients": [
-      {
-        "name": "Activated Bamboo Charcoal",
-        "description": "Traps deep environmental toxins and pollution.",
-        "icon": "Shield"
-      },
-      {
-        "name": "100% Natural Bamboo",
-        "description": "Ultra-soft, biodegradable, non-irritating cloth.",
-        "icon": "Leaf"
-      },
-      {
-        "name": "Hydrating Micellar Essence",
-        "description": "Cleanses without leaving sticky or dry residue.",
-        "icon": "Droplet"
-      }
-    ]
-  }
+
 ];
 
 export function getProductById(id: string): Product | undefined {

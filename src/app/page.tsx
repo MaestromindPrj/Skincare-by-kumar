@@ -18,12 +18,12 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function HomePage() {
   const featuredProducts = [
-    PRODUCTS.find((p) => p.id === "french-red-clay-face-soap") || PRODUCTS[0],
-    PRODUCTS.find((p) => p.id === "teotema-rebuilding-hair-mask") || PRODUCTS[1],
-    PRODUCTS.find((p) => p.id === "malibu-suncare-sunscreen-clear-spray") || PRODUCTS[2],
-    PRODUCTS.find((p) => p.id === "goat-milk-pure-honey") || PRODUCTS[3],
-    PRODUCTS.find((p) => p.id === "bamboo-charcoal-detox-facial-wipes") || PRODUCTS[4],
-    PRODUCTS.find((p) => p.id === "malibu-suncare-lip-gloss-strawberry") || PRODUCTS[5],
+    PRODUCTS.find((p) => p.id === "kid-soap-extra-luxurious") || PRODUCTS[0],
+    PRODUCTS.find((p) => p.id === "zaap-men-special-soap") || PRODUCTS[1],
+    PRODUCTS.find((p) => p.id === "chandaan-gold-face-soap") || PRODUCTS[2],
+    PRODUCTS.find((p) => p.id === "french-red-clay-face-soap") || PRODUCTS[3],
+    PRODUCTS.find((p) => p.id === "goat-milk-pure-honey") || PRODUCTS[4],
+    PRODUCTS.find((p) => p.id === "teotema-rebuilding-hair-mask") || PRODUCTS[5],
   ];
 
   // FAQ Accordion State
@@ -355,7 +355,7 @@ export default function HomePage() {
               href="/shop"
               className="hidden sm:flex text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] items-center gap-1.5 transition-colors whitespace-nowrap shrink-0"
             >
-              <span>View all (43 Products)</span>
+              <span>View all ({PRODUCTS.length} Products)</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -372,7 +372,7 @@ export default function HomePage() {
               href="/shop"
               className="text-xs font-semibold uppercase tracking-wider text-[#0F0F0F] hover:text-[#CB8C00] flex items-center gap-1.5 transition-colors whitespace-nowrap"
             >
-              <span>View all (43 Products)</span>
+              <span>View all ({PRODUCTS.length} Products)</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -391,7 +391,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
             {/* Category 1: Handcrafted Soaps */}
             <div className="relative group rounded-xl overflow-hidden p-6 flex flex-col justify-end min-h-[340px] shadow-md border border-gray-100 hover-lift bg-[#181818]">
@@ -399,7 +399,7 @@ export default function HomePage() {
                 src="/discover/face and glow.jpg"
                 alt="Handcrafted Soaps"
                 fill
-                sizes="(max-width: 768px) 100vw, 25vw"
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
@@ -422,7 +422,7 @@ export default function HomePage() {
                 src="/discover/Fresh  and clean.png"
                 alt="Teotema Hair Care"
                 fill
-                sizes="(max-width: 768px) 100vw, 25vw"
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
@@ -445,7 +445,7 @@ export default function HomePage() {
                 src="/discover/kids care.png"
                 alt="Malibu Sun Care & SPF"
                 fill
-                sizes="(max-width: 768px) 100vw, 25vw"
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
@@ -457,29 +457,6 @@ export default function HomePage() {
                   className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white mt-3 hover:text-[#CB8C00] transition-colors"
                 >
                   <span>Explore Suncare</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Category 4: Lip Care & Cleansing Wipes */}
-            <div className="relative group rounded-xl overflow-hidden p-6 flex flex-col justify-end min-h-[340px] shadow-md border border-gray-100 hover-lift bg-[#28211E]">
-              <Image
-                src="/discover/face and glow.jpg"
-                alt="Lip Care & Facial Wipes"
-                fill
-                sizes="(max-width: 768px) 100vw, 25vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
-              <div className="relative z-10 text-white flex flex-col gap-1.5">
-                <h3 className="font-serif text-xl sm:text-2xl font-bold">Lips & Facial Wipes</h3>
-                <p className="text-xs text-white/80 line-clamp-2">SPF 30 flavored lip balms, vegan glosses, and bamboo charcoal detox wipes.</p>
-                <Link
-                  href="/shop?category=Lip+Care"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white mt-3 hover:text-[#CB8C00] transition-colors"
-                >
-                  <span>Explore Lips & Wipes</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

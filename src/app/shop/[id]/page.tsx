@@ -169,13 +169,17 @@ export default function ProductDetailPage() {
               <SoapPlaceholderImage alt={product.name} src={galleryImages[activeImageIndex]} className="w-full h-full object-contain p-4" />
 
               {/* Badges Overlay */}
-              {product.badge && (
+              {product.badgeImage ? (
+                <div className="absolute top-4 left-4 z-10 w-14 sm:w-16 drop-shadow-md">
+                  <img src={product.badgeImage} alt={product.badge || "Men Special Tag"} className="w-full h-auto object-contain" />
+                </div>
+              ) : product.badge ? (
                 <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
                   <span className="bg-[#CB8C00] text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-sm shadow-sm">
                     {product.badge}
                   </span>
                 </div>
-              )}
+              ) : null}
 
               {/* Tap for Full Screen Overlay Badge */}
               <div className="absolute bottom-3 right-3 bg-[#020101]/85 hover:bg-[#020101] text-white text-[11px] font-semibold tracking-wider px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md backdrop-blur-xs transition-all">

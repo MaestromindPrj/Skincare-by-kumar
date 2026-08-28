@@ -35,11 +35,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div>
         {/* Image Container with Badge */}
         <Link href={`/shop/${product.id}`} className="block relative overflow-hidden bg-[#FAFAFA]">
-          {product.badge && (
+          {product.badgeImage ? (
+            <div className="absolute top-2.5 left-2.5 z-10 w-10 sm:w-12 drop-shadow-md">
+              <img src={product.badgeImage} alt={product.badge || "Men Special Tag"} className="w-full h-auto object-contain" />
+            </div>
+          ) : product.badge ? (
             <div className="absolute top-3 left-3 z-10 bg-[#020101] text-white text-[10px] sm:text-[11px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-xs shadow-xs">
               {product.badge}
             </div>
-          )}
+          ) : null}
           <SoapPlaceholderImage alt={product.name} src={product.image} className="w-full h-64 sm:h-72" />
         </Link>
 

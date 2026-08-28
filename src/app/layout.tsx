@@ -27,7 +27,6 @@ export const metadata: Metadata = {
     "natural skincare",
     "Teotema Milano",
     "Malibu suncare",
-    "KleenOWipe",
     "organic bath soaps",
     "tan removal soap",
     "bridal ubtan bar",
