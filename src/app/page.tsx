@@ -379,7 +379,9 @@ export default function HomePage() {
         </ScrollReveal>
       </section>
 
-      {/* DISCOVER YOUR EVERYDAY CARE (CATEGORIES) */}
+      {/* 
+          TOP CATEGORIES SECTION 
+          
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
         <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-14">
@@ -393,7 +395,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
-            {/* Category 1: Handcrafted Soaps */}
+            [Category 1: Handcrafted Soaps]
             <div className="relative group rounded-xl overflow-hidden p-6 flex flex-col justify-end min-h-[340px] shadow-md border border-gray-100 hover-lift bg-[#181818]">
               <Image
                 src="/discover/face and glow.jpg"
@@ -416,7 +418,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Category 2: Hair Care (Teotema Italy) */}
+            [Category 2: Hair Care (Teotema Italy)]
             <div className="relative group rounded-xl overflow-hidden p-6 flex flex-col justify-end min-h-[340px] shadow-md border border-gray-100 hover-lift bg-[#25201B]">
               <Image
                 src="/discover/Fresh  and clean.png"
@@ -439,7 +441,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Category 3: Sun Care & SPF (Malibu UK) */}
+            [Category 3: Sun Care & SPF (Malibu UK)]
             <div className="relative group rounded-xl overflow-hidden p-6 flex flex-col justify-end min-h-[340px] shadow-md border border-gray-100 hover-lift bg-[#1B2225]">
               <Image
                 src="/discover/kids care.png"
@@ -465,6 +467,7 @@ export default function HomePage() {
           </div>
         </ScrollReveal>
       </section>
+      */}
 
       {/* SOURCING & ORDERING PROCESS */}
       <section className="py-20 bg-[#F9F8F6]">
@@ -516,7 +519,7 @@ export default function HomePage() {
         </ScrollReveal>
       </section>
 
-      {/* REVIEWS & VIDEO TESTIMONIALS */}
+      {/* REVIEWS & TESTIMONIALS */}
       <section className="py-20 bg-white border-b border-[rgba(15,15,15,0.06)]">
         <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto mb-12 px-4">
@@ -526,7 +529,7 @@ export default function HomePage() {
           </div>
 
           {/* Featured Quote */}
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-12 lg:gap-16">
               {/* Previous Button (Desktop) */}
               <button
@@ -588,7 +591,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Video Testimonials Grid */}
+          {/* 
+              OTHER VIDEO TESTIMONIALS 
+              
           <div className="mt-12">
             <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0F0F0F] mb-6 text-center">
               Other Video Testimonials
@@ -596,7 +601,7 @@ export default function HomePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
-              {/* Video 1 */}
+              [Video 1]
               <div className="relative group rounded-xl overflow-hidden bg-slate-900 aspect-[3/4] flex flex-col justify-end p-6 text-white border border-gray-200 shadow-md">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -612,7 +617,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Video 2 */}
+              [Video 2]
               <div className="relative group rounded-xl overflow-hidden bg-slate-900 aspect-[3/4] flex flex-col justify-end p-6 text-white border border-gray-200 shadow-md">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -628,7 +633,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Video 3 */}
+              [Video 3]
               <div className="relative group rounded-xl overflow-hidden bg-slate-900 aspect-[3/4] flex flex-col justify-end p-6 text-white border border-gray-200 shadow-md">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -646,6 +651,7 @@ export default function HomePage() {
 
             </div>
           </div>
+          */}
         </ScrollReveal>
       </section>
 
