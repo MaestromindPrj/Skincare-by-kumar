@@ -12,7 +12,7 @@ const josefin = Josefin_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://skincarebykumar.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://skincarebykumar.in"),
   title: {
     default: "Skincare By Kumar | Pure Ingredients. Beautifully Crafted.",
     template: "%s | Skincare By Kumar",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://skincarebykumar.com",
+    url: "https://skincarebykumar.in",
     title: "Skincare By Kumar | Pure Ingredients. Beautifully Crafted.",
     description:
       "Handcrafted cold-processed artisanal soaps and curated international skincare essentials.",

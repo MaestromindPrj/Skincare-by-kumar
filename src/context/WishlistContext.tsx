@@ -130,7 +130,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const generateWhatsAppLink = (singleProduct?: Product, singleQty?: number, selectedVariant?: string) => {
     const phoneNumber = "919952820016"; // Business WhatsApp phone number
-    const baseUrl = "https://skincarebykumar.com";
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://skincarebykumar.in";
 
     let message = "";
 
@@ -167,7 +167,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     customerInfo?: { name?: string; phone?: string },
     selectedVariant?: string
   ) => {
-    const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://skincarebykumar.com";
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://skincarebykumar.in";
 
     try {
       if (singleProduct) {
