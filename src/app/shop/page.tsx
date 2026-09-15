@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, Suspense } from "react";
+import React, { useState, useMemo, useEffect, useRef, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, ArrowUpDown, ChevronDown, RotateCcw, Sparkles } from "lucide-react";
@@ -17,11 +17,39 @@ function ShopContent() {
   const [priceFilter, setPriceFilter] = useState<string>("All");
   const [sortBy, setSortBy] = useState<string>("newest");
 
+  const productsSectionRef = useRef<HTMLDivElement>(null);
+
+  // Smooth scroll helper to navigate below filter to the product grid
+  const scrollToProducts = (delay = 60) => {
+    setTimeout(() => {
+      if (productsSectionRef.current) {
+        // Offset so the filter toolbar is completely scrolled past and products are fully in view
+        const topOffset = typeof window !== "undefined" && window.innerWidth < 768 ? 16 : 24;
+        const elementPosition = productsSectionRef.current.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - topOffset;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: "smooth",
+        });
+      }
+    }, delay);
+  };
+
+  // Handler for category clicks
+  const handleCategoryClick = (categoryValue: string) => {
+    setSelectedCategory(categoryValue);
+    setSelectedTags([]);
+    scrollToProducts(60);
+  };
+
   // Read URL search params on mount or param change
   useEffect(() => {
     const categoryParam = searchParams.get("category");
     const brandParam = searchParams.get("brand");
     const tagParam = searchParams.get("tag");
+
+    let shouldScroll = false;
 
     if (categoryParam) {
       if (categoryParam === "Brightness" || categoryParam === "Hydrating" || categoryParam === "Baby Friendly" || categoryParam === "Baby+Friendly") {
@@ -29,12 +57,17 @@ function ShopContent() {
       } else {
         setSelectedCategory(categoryParam);
       }
+      shouldScroll = true;
     }
     if (brandParam) {
       setSelectedBrand(brandParam);
     }
     if (tagParam) {
       setSelectedTags([tagParam]);
+    }
+
+    if (shouldScroll) {
+      scrollToProducts(250);
     }
   }, [searchParams]);
 
@@ -207,10 +240,7 @@ function ShopContent() {
               <button
                 key={cat.value}
                 type="button"
-                onClick={() => {
-                  setSelectedCategory(cat.value);
-                  setSelectedTags([]);
-                }}
+                onClick={() => handleCategoryClick(cat.value)}
                 className={`group relative flex flex-col items-center justify-between p-3 sm:p-3.5 rounded-2xl border transition-all duration-200 cursor-pointer shrink-0 w-28 sm:w-36 text-center ${
                   isActive
                     ? "bg-[#020101] text-white border-transparent"
@@ -364,29 +394,54 @@ function ShopContent() {
 
         </div>
 
-        {/* Product Grid */}
-        {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-20 bg-[#FAFAFA] rounded-xl border border-dashed border-gray-200">
-            <h3 className="font-serif text-xl font-bold text-[#0F0F0F]">
-              No products found matching your search.
-            </h3>
-            <p className="text-sm text-[#6B6B6B] mt-2">
-              Try adjusting your category, brand, or price filters to see more results.
-            </p>
-            <button
-              onClick={handleReset}
-              className="mt-5 text-xs font-semibold uppercase tracking-wider bg-[#020101] text-white px-6 py-2.5 rounded-md hover:bg-[#CB8C00] transition-colors cursor-pointer"
-            >
-              Reset All Filters
-            </button>
-          </div>
-        )}
+        {/* Products Section */}
+        <div id="products-section" ref={productsSectionRef} className="scroll-mt-24">
+          {/* Active Category Indicator Bar */}
+          {selectedCategory !== "All" && (
+            <div className="flex items-center justify-between mb-6 pb-3 border-b border-[rgba(15,15,15,0.06)]">
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-wider text-[#888888] font-semibold">Category:</span>
+                <span className="text-sm font-bold text-[#0F0F0F] bg-[#FAF8F5] px-3 py-1 rounded-full border border-[rgba(15,15,15,0.08)]">
+                  {selectedCategory}
+                </span>
+                <span className="text-xs text-[#888888] ml-1">
+                  ({filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"})
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => handleCategoryClick("All")}
+                className="text-xs text-[#6B6B6B] hover:text-[#0F0F0F] underline cursor-pointer transition-colors"
+              >
+                View all products
+              </button>
+            </div>
+          )}
+
+          {/* Product Grid */}
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20 bg-[#FAFAFA] rounded-xl border border-dashed border-gray-200">
+              <h3 className="font-serif text-xl font-bold text-[#0F0F0F]">
+                No products found matching your search.
+              </h3>
+              <p className="text-sm text-[#6B6B6B] mt-2">
+                Try adjusting your category, brand, or price filters to see more results.
+              </p>
+              <button
+                onClick={handleReset}
+                className="mt-5 text-xs font-semibold uppercase tracking-wider bg-[#020101] text-white px-6 py-2.5 rounded-md hover:bg-[#CB8C00] transition-colors cursor-pointer"
+              >
+                Reset All Filters
+              </button>
+            </div>
+          )}
+        </div>
 
       </div>
     </div>

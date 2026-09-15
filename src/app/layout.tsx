@@ -3,6 +3,7 @@ import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { WishlistProvider } from "@/context/WishlistContext";
 
 const josefin = Josefin_Sans({
@@ -99,6 +100,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
+          <ScrollToTop />
         </WishlistProvider>
       </body>
     </html>
