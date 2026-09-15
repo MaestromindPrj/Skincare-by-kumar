@@ -396,28 +396,6 @@ function ShopContent() {
 
         {/* Products Section */}
         <div id="products-section" ref={productsSectionRef} className="scroll-mt-24">
-          {/* Active Category Indicator Bar */}
-          {selectedCategory !== "All" && (
-            <div className="flex items-center justify-between mb-6 pb-3 border-b border-[rgba(15,15,15,0.06)]">
-              <div className="flex items-center gap-2">
-                <span className="text-xs uppercase tracking-wider text-[#888888] font-semibold">Category:</span>
-                <span className="text-sm font-bold text-[#0F0F0F] bg-[#FAF8F5] px-3 py-1 rounded-full border border-[rgba(15,15,15,0.08)]">
-                  {selectedCategory}
-                </span>
-                <span className="text-xs text-[#888888] ml-1">
-                  ({filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"})
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => handleCategoryClick("All")}
-                className="text-xs text-[#6B6B6B] hover:text-[#0F0F0F] underline cursor-pointer transition-colors"
-              >
-                View all products
-              </button>
-            </div>
-          )}
-
           {/* Product Grid */}
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
